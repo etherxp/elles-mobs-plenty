@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "ellesmobsnplenty",
+	"version": "${version}",
+	"name": "Elle's Mobs & Plenty",
+	"description": "This Mod is for my wife Elle, I LOVE YOU ELLE",
+	"authors": [
+		"FindSnow",
+		"OhElle"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/ellesmobsnplenty/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.findsnow.ellesmobsnplenty.EllesMobsNPlenty"
+		],
+		"fabric-datagen": [
+			"net.findsnow.ellesmobsnplenty.EllesMobsNPlentyDataGenerator"
+		],
+		"client": [
+			"net.findsnow.ellesmobsnplenty.EllesMobsNPlentyClient"
+		]
+	},
+	"mixins": [
+		"ellesmobsnplenty.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.10",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
