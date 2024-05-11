@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right",
+  "textures": {
+    "bottom": "ellesmobsnplenty:block/lucero_door_bottom",
+    "top": "ellesmobsnplenty:block/lucero_door_top"
+  }
+}

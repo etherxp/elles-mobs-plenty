@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "ellesmobsnplenty:nephrite"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "ellesmobsnplenty:nephrite_nugget"
+  }
+}

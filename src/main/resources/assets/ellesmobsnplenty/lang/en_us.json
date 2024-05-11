@@ -1,0 +1,34 @@
+{
+  "item.ellesmobsnplenty.nephrite": "Nephrite",
+  "item.ellesmobsnplenty.raw_nephrite": "Raw Nephrite",
+  "item.ellesmobsnplenty.nephrite_nugget": "Nephrite Nugget",
+  "item.ellesmobsnplenty.night_time_music_disc": "Night Time",
+  "item.ellesmobsnplenty.night_time_music_disc.desc": "FindSnow - Night Time",
+
+  "block.ellesmobsnplenty.nephrite_block": "Block of Nephrite",
+  "block.ellesmobsnplenty.raw_nephrite_block": "Block of Raw Nephrite",
+  "block.ellesmobsnplenty.nephrite_ore": "Nephrite Ore",
+  "block.ellesmobsnplenty.deepslate_nephrite_ore": "Deepslate Nephrite Ore",
+  "block.ellesmobsnplenty.green_mushroom_lamp": "Green Mushroom Lamp",
+  "block.ellesmobsnplenty.chomper_block": "Chomper",
+
+  "block.ellesmobsnplenty.lucero_planks": "Lucero Planks",
+  "block.ellesmobsnplenty.lucero_stairs": "Lucero Stairs",
+  "block.ellesmobsnplenty.lucero_slabs": "Lucero Slab",
+  "block.ellesmobsnplenty.lucero_button": "Lucero Button",
+  "block.ellesmobsnplenty.lucero_pressure_plate": "Lucero Pressure Plate",
+  "block.ellesmobsnplenty.lucero_door": "Lucero Door",
+  "block.ellesmobsnplenty.lucero_trapdoor": "Lucero Trapdoor",
+  "block.ellesmobsnplenty.lucero_fence": "Lucero Fence",
+  "block.ellesmobsnplenty.lucero_fence_gate": "Lucero Fence Gate",
+  "block.ellesmobsnplenty.lucero_wall": "Lucero Wall",
+  "block.ellesmobsnplenty.lucero_log": "Lucero Log",
+  "block.ellesmobsnplenty.lucero_wood": "Lucero Wood",
+  "block.ellesmobsnplenty.stripped_lucero_log": "Stripped Lucero Log",
+  "block.ellesmobsnplenty.stripped_lucero_wood": "Stripped Lucero Wood",
+  "block.ellesmobsnplenty.lucero_leaves": "Lucero Leaves",
+  "block.ellesmobsnplenty.lucero_sapling": "Lucero Sapling",
+
+
+  "itemGroup.elles_mobs_n_plenty_group": "Elles Mobs N' Plenty"
+}

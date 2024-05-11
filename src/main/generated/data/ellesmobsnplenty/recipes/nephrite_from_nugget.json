@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "ellesmobsnplenty:nephrite_nugget"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "NNN",
+    "NNN"
+  ],
+  "result": {
+    "item": "ellesmobsnplenty:nephrite"
+  },
+  "show_notification": true
+}

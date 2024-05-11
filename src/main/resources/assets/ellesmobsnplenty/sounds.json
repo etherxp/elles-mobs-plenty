@@ -1,0 +1,10 @@
+{
+  "night_time": {
+    "sounds": [
+      {
+        "name": "ellesmobsnplenty:night_time",
+        "stream": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "ellesmobsnplenty:block/lucero_planks",
+    "side": "ellesmobsnplenty:block/lucero_planks",
+    "top": "ellesmobsnplenty:block/lucero_planks"
+  }
+}

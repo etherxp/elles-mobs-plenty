@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "ellesmobsnplenty:block/lucero_planks"
+  }
+}

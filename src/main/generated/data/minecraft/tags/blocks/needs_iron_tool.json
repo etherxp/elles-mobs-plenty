@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "ellesmobsnplenty:nephrite_ore",
+    "ellesmobsnplenty:nephrite_block",
+    "ellesmobsnplenty:raw_nephrite_block",
+    "ellesmobsnplenty:deepslate_nephrite_ore"
+  ]
+}

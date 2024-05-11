@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ellesmobsnplenty:block/lucero_slabs"
+    },
+    "type=double": {
+      "model": "ellesmobsnplenty:block/lucero_planks"
+    },
+    "type=top": {
+      "model": "ellesmobsnplenty:block/lucero_slabs_top"
+    }
+  }
+}
