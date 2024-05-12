@@ -4,6 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -26,9 +29,13 @@ public class ChomperBlock extends Block {
   }
 
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+  public ActionResult onUse(BlockState state, World world, BlockPos pos,
+                            PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (!world.isClient() && hand == Hand.MAIN_HAND) {
-      world.setBlockState(pos, state.cycle(OPEN));
+      boolean open = state.get(OPEN);
+      world.setBlockState(pos, state.with(OPEN, !open));
+      SoundEvent soundEvent = open ? SoundEvents.BLOCK_CHERRY_WOOD_FENCE_GATE_CLOSE : SoundEvents.BLOCK_CHERRY_WOOD_FENCE_GATE_OPEN;
+      world.playSound(null, pos, soundEvent, SoundCategory.BLOCKS);
     }
     return ActionResult.SUCCESS;
   }
