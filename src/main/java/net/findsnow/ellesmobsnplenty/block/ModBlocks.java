@@ -18,7 +18,7 @@ import net.minecraft.util.StringIdentifiable;
 
 public class ModBlocks {
 
-  //BLOCKS
+  // Blocks
   public static final Block NEPHRITE_BLOCK = registerBlock("nephrite_block",
           new Block(FabricBlockSettings.copy(Blocks.EMERALD_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
   public static final Block GREEN_MUSHROOM_LAMP = registerBlock("green_mushroom_lamp",
@@ -33,7 +33,7 @@ public class ModBlocks {
   public static final Block CHOMPER_BLOCK = registerBlock("chomper_block",
           new ChomperBlock(FabricBlockSettings.copy(Blocks.CHERRY_PLANKS)));
 
-  // WOOD BLOCKS
+  // Wood Blocks
   public static final Block LUCERO_LOG = registerBlock("lucero_log",
           new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LOG).strength(4f)));
   public static final Block LUCERO_WOOD = registerBlock("lucero_wood",
@@ -43,7 +43,7 @@ public class ModBlocks {
   public static final Block STRIPPED_LUCERO_WOOD = registerBlock("stripped_lucero_wood",
           new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_CHERRY_WOOD).strength(4f)));
   public static final Block LUCERO_LEAVES = registerBlock("lucero_leaves",
-          new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(1f).sounds(BlockSoundGroup.CHERRY_LEAVES)));
+          new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).sounds(BlockSoundGroup.CHERRY_LEAVES)));
   public static final Block LUCERO_SAPLING = registerBlock("lucero_sapling",
           new SaplingBlock(new LuceroSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).strength(1f)));
   public static final Block LUCERO_PLANKS = registerBlock("lucero_planks",
@@ -68,7 +68,7 @@ public class ModBlocks {
           new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
                   FabricBlockSettings.copyOf(Blocks.CHERRY_PRESSURE_PLATE), BlockSetType.OAK));
 
-  //ORE BLOCKS
+  // Ore Blocks
   public static final Block NEPHRITE_ORE = registerBlock("nephrite_ore",
           new Block(FabricBlockSettings.copy(Blocks.STONE)));
 
@@ -77,7 +77,7 @@ public class ModBlocks {
 
 
 
-  // HELPER METHODS
+  // Helper Methods
 
   private static Block registerBlock(String name, Block block) {
     registerBlockItem(name, block);

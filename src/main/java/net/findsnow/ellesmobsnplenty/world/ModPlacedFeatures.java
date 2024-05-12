@@ -21,7 +21,7 @@ public class ModPlacedFeatures {
 
     register(context, LUCERO_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LUCERO_KEY),
             VegetationPlacedFeatures.treeModifiersWithWouldSurvive(
-                    PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), ModBlocks.LUCERO_SAPLING));
+                    PlacedFeatures.createCountExtraModifier(1, 0.5f, 4), ModBlocks.LUCERO_SAPLING));
   }
 
 

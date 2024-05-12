@@ -24,6 +24,9 @@
 		],
 		"client": [
 			"net.findsnow.ellesmobsnplenty.EllesMobsNPlentyClient"
+		],
+		"terrablender": [
+			"net.findsnow.ellesmobsnplenty.world.biome.ModTerraBlenderAPI"
 		]
 	},
 	"mixins": [

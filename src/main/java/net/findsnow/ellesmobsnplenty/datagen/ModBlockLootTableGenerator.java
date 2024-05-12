@@ -27,6 +27,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
     addDrop(ModBlocks.LUCERO_DOOR, doorDrops(ModBlocks.LUCERO_DOOR));
     addDrop(ModBlocks.LUCERO_LOG);
     addDrop(ModBlocks.LUCERO_WOOD);
+    addDrop(ModBlocks.LUCERO_LEAVES, leavesDrops(ModBlocks.LUCERO_LEAVES, ModBlocks.LUCERO_SAPLING, 0.1f));
     addDrop(ModBlocks.STRIPPED_LUCERO_LOG);
     addDrop(ModBlocks.STRIPPED_LUCERO_WOOD);
     addDrop(ModBlocks.CHOMPER_BLOCK);

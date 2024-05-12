@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-11T20:56:00.5729457	Elle's Mobs & Plenty/Block Loot Tables
+// 1.20.1	2024-05-12T10:08:32.8535024	Elle's Mobs & Plenty/Block Loot Tables
 d4a8945ea6d5da5975aa43439a34c7c185e891ac data\ellesmobsnplenty\loot_tables\blocks\lucero_trapdoor.json
 d6c02b12e92f436c9c655a0c1334ab4492205a11 data\ellesmobsnplenty\loot_tables\blocks\lucero_fence_gate.json
 557b458fe04f3a20e8c87d3416097f4ef8c70aaf data\ellesmobsnplenty\loot_tables\blocks\lucero_slabs.json
@@ -14,6 +14,7 @@ a13c02031c30e97e3484578750cea2e9f6a4befa data\ellesmobsnplenty\loot_tables\block
 b6ddee24d28e790135b4f355bcce9bd06e3ef850 data\ellesmobsnplenty\loot_tables\blocks\nephrite_ore.json
 135f5288eb8bba18461697a689174e16cb5889a4 data\ellesmobsnplenty\loot_tables\blocks\lucero_fence.json
 b6ddee24d28e790135b4f355bcce9bd06e3ef850 data\ellesmobsnplenty\loot_tables\blocks\deepslate_nephrite_ore.json
+ed46ac94afd44be18995390fd44e02bebb0c8843 data\ellesmobsnplenty\loot_tables\blocks\lucero_leaves.json
 5644e2aa7cbcb1ba8ea15aafbcd3cb75ca1a5d21 data\ellesmobsnplenty\loot_tables\blocks\stripped_lucero_log.json
 a13b02e3e4d74f5c2503686017dba6f0262eb3b0 data\ellesmobsnplenty\loot_tables\blocks\green_mushroom_lamp.json
 57d04153b23e8935ac468f630d1b0ca5d62b1920 data\ellesmobsnplenty\loot_tables\blocks\lucero_wood.json

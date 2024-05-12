@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.findsnow.ellesmobsnplenty.datagen.*;
 import net.findsnow.ellesmobsnplenty.world.ModConfiguredFeatures;
 import net.findsnow.ellesmobsnplenty.world.ModPlacedFeatures;
+import net.findsnow.ellesmobsnplenty.world.biome.ModBiomes;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 
@@ -25,5 +26,6 @@ public class EllesMobsNPlentyDataGenerator implements DataGeneratorEntrypoint {
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
 		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.BIOME, ModBiomes::bootstrap);
 	}
 }

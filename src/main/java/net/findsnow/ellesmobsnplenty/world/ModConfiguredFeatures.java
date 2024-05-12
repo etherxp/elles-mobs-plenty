@@ -21,6 +21,7 @@ import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.CherryFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.trunk.CherryTrunkPlacer;
 
 import static com.mojang.serialization.codecs.RecordCodecBuilder.build;
@@ -31,12 +32,13 @@ public class ModConfiguredFeatures {
   public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
     register(context, LUCERO_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
             BlockStateProvider.of(ModBlocks.LUCERO_LOG),
-            new CherryTrunkPlacer(7, 1, 0,
+            new CherryTrunkPlacer(8, 1, 0,
                     new WeightedListIntProvider(DataPool.<IntProvider>builder().add(ConstantIntProvider.create(1), 1).add(ConstantIntProvider.create(2), 1).add(ConstantIntProvider.create(3), 1).build()),
                     UniformIntProvider.create(2, 4), UniformIntProvider.create(-4, -3), UniformIntProvider.create(-1, 0)),
             BlockStateProvider.of(ModBlocks.LUCERO_LEAVES),
             new CherryFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0), ConstantIntProvider.create(5), 0.25f, 0.5f, 0.16666667f, 0.33333334f),
-            new TwoLayersFeatureSize(1, 0, 2)).ignoreVines().build());
+            new TwoLayersFeatureSize(1, 0, 2)).ignoreVines()
+            .build());
   }
 
 

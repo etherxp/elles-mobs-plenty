@@ -30,12 +30,12 @@ public class ModItems {
   }
 
   private static void itemGroupIngredients(FabricItemGroupEntries entries) {
-    //ITEMS
+    // Items
     entries.add(NEPHRITE);
     entries.add(RAW_NEPHRITE);
     entries.add(NEPHRITE_NUGGET);
 
-    //BLOCKS
+    // Blocks
     entries.add(ModBlocks.NEPHRITE_BLOCK);
     entries.add(ModBlocks.RAW_NEPHRITE_BLOCK);
     entries.add(ModBlocks.NEPHRITE_ORE);

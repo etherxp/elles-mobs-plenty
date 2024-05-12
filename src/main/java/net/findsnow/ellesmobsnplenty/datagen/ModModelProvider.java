@@ -19,20 +19,20 @@ public class ModModelProvider extends FabricModelProvider {
 
   @Override
   public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-    // BLOCKS
+    // Blocks
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_BLOCK);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_NEPHRITE_BLOCK);
 
-    // CUSTOM BLOCKS
+    // Custom Blocks
     registerChomper(blockStateModelGenerator);
     registerGreenMushroomLamp(blockStateModelGenerator);
     registerBlueMushroomLamp(blockStateModelGenerator);
 
-    // ORES
+    // Ores
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_ORE);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_NEPHRITE_ORE);
 
-    // LUCERO WOOD
+    // Lucero Wood
     BlockStateModelGenerator.BlockTexturePool luceroTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LUCERO_PLANKS);
     luceroTexturePool.stairs(ModBlocks.LUCERO_STAIRS);
     luceroTexturePool.slab(ModBlocks.LUCERO_SLABS);
@@ -52,6 +52,7 @@ public class ModModelProvider extends FabricModelProvider {
     blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.LUCERO_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
   }
 
+  // Custom Registers
   private void registerChomper(BlockStateModelGenerator blockStateModelGenerator) {
     Identifier identifier = ModelIds.getBlockModelId(ModBlocks.CHOMPER_BLOCK);
     Identifier identifier2 = ModelIds.getBlockSubModelId(ModBlocks.CHOMPER_BLOCK, "_open");
@@ -59,7 +60,6 @@ public class ModModelProvider extends FabricModelProvider {
             .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
             .coordinate(BlockStateModelGenerator.createBooleanModelMap(ChomperBlock.OPEN, identifier2, identifier)));
   }
-
   private void registerGreenMushroomLamp(BlockStateModelGenerator blockStateModelGenerator) {
     Identifier identifier = ModelIds.getBlockModelId(ModBlocks.GREEN_MUSHROOM_LAMP);
     Identifier identifier2 = ModelIds.getBlockSubModelId(ModBlocks.GREEN_MUSHROOM_LAMP, "_lit");
@@ -67,7 +67,6 @@ public class ModModelProvider extends FabricModelProvider {
             .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
             .coordinate(BlockStateModelGenerator.createBooleanModelMap(GreenMushroomLampBlock.CLICKED, identifier2, identifier)));
   }
-
   private void registerBlueMushroomLamp(BlockStateModelGenerator blockStateModelGenerator) {
     Identifier identifier = ModelIds.getBlockModelId(ModBlocks.BLUE_MUSHROOM_LAMP);
     Identifier identifier2 = ModelIds.getBlockSubModelId(ModBlocks.BLUE_MUSHROOM_LAMP, "_lit");
@@ -76,6 +75,7 @@ public class ModModelProvider extends FabricModelProvider {
             .coordinate(BlockStateModelGenerator.createBooleanModelMap(BlueMushroomLampBlock.CLICKED, identifier2, identifier)));
   }
 
+  // Item Models
   @Override
   public void generateItemModels(ItemModelGenerator itemModelGenerator) {
     itemModelGenerator.register(ModItems.NEPHRITE, Models.GENERATED);

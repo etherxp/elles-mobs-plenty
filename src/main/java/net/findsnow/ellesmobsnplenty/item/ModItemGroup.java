@@ -15,14 +15,14 @@ public class ModItemGroup {
           new Identifier(EllesMobsNPlenty.MOD_ID, "elles_mobs_n_plenty"),
           FabricItemGroup.builder().displayName(Text.translatable("itemGroup.elles_mobs_n_plenty_group"))
                   .icon(() -> new ItemStack(ModItems.NEPHRITE)).entries((displayContext, entries) -> {
-                    //ITEMS
+                    // Items
                     entries.add(ModItems.NEPHRITE);
                     entries.add(ModItems.RAW_NEPHRITE);
                     entries.add(ModItems.NEPHRITE_NUGGET);
                     entries.add(ModItems.NIGHT_TIME_MUSIC_DISC);
 
 
-                    //BLOCKS
+                    // Blocks
                     entries.add(ModBlocks.NEPHRITE_BLOCK);
                     entries.add(ModBlocks.RAW_NEPHRITE_BLOCK);
                     entries.add(ModBlocks.NEPHRITE_ORE);
@@ -31,7 +31,7 @@ public class ModItemGroup {
                     entries.add(ModBlocks.BLUE_MUSHROOM_LAMP);
                     entries.add(ModBlocks.CHOMPER_BLOCK);
 
-                    //LUCERO WOOD
+                    // Lucero Wood
                     entries.add(ModBlocks.LUCERO_PLANKS);
                     entries.add(ModBlocks.LUCERO_STAIRS);
                     entries.add(ModBlocks.LUCERO_SLABS);
@@ -50,9 +50,8 @@ public class ModItemGroup {
                     entries.add(ModBlocks.LUCERO_SAPLING);
                   }).build());
 
-
-
   public static void registerItemGroups() {
+    // idk what this does
 
   }
 }
