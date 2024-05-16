@@ -12,9 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.StringIdentifiable;
 
 public class ModBlocks {
 
@@ -34,37 +32,41 @@ public class ModBlocks {
           new ChomperBlock(FabricBlockSettings.copy(Blocks.CHERRY_PLANKS)));
 
   // Wood Blocks
-  public static final Block LUCERO_LOG = registerBlock("lucero_log",
-          new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LOG).strength(4f)));
-  public static final Block LUCERO_WOOD = registerBlock("lucero_wood",
-          new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_WOOD).strength(4f)));
-  public static final Block STRIPPED_LUCERO_LOG = registerBlock("stripped_lucero_log",
-          new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_CHERRY_LOG).strength(4f)));
-  public static final Block STRIPPED_LUCERO_WOOD = registerBlock("stripped_lucero_wood",
-          new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_CHERRY_WOOD).strength(4f)));
-  public static final Block LUCERO_LEAVES = registerBlock("lucero_leaves",
-          new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).sounds(BlockSoundGroup.CHERRY_LEAVES)));
-  public static final Block LUCERO_SAPLING = registerBlock("lucero_sapling",
-          new SaplingBlock(new LuceroSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).strength(1f)));
-  public static final Block LUCERO_PLANKS = registerBlock("lucero_planks",
+  public static final Block LUCI_LOG = registerBlock("luci_log",
+          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, FabricBlockSettings.copyOf(Blocks.CHERRY_LOG)));
+  public static final Block HOLLOW_LUCI_LOG = registerBlock("hollow_luci_log",
+          new HollowLuciLogBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LOG).nonOpaque()));
+  public static final Block LUCI_WOOD = registerBlock("luci_wood",
+          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, FabricBlockSettings.copyOf(Blocks.CHERRY_WOOD)));
+  public static final Block STRIPPED_LUCI_LOG = registerBlock("stripped_luci_log",
+          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, FabricBlockSettings.copyOf(Blocks.STRIPPED_CHERRY_LOG)));
+  public static final Block STRIPPED_LUCI_WOOD = registerBlock("stripped_luci_wood",
+          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, FabricBlockSettings.copyOf(Blocks.STRIPPED_CHERRY_WOOD)));
+  public static final Block LUCI_LEAVES = registerBlock("luci_leaves",
+          new LuciLeavesBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LEAVES).nonOpaque().mapColor(MapColor.EMERALD_GREEN)));
+  public static final Block BLOSSOMING_LUCI_LEAVES = registerBlock("blossoming_luci_leaves",
+          new LuciLeavesBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LEAVES).nonOpaque().mapColor(MapColor.EMERALD_GREEN)));
+  public static final Block LUCI_SAPLING = registerBlock("luci_sapling",
+          new SaplingBlock(new LuceroSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+  public static final Block LUCI_PLANKS = registerBlock("luci_planks",
           new Block(FabricBlockSettings.copy(Blocks.CHERRY_PLANKS)));
-  public static final Block LUCERO_STAIRS = registerBlock("lucero_stairs",
-          new StairsBlock(ModBlocks.LUCERO_PLANKS.getDefaultState(), FabricBlockSettings.copy(Blocks.CHERRY_STAIRS)));
-  public static final Block LUCERO_SLABS = registerBlock("lucero_slabs",
+  public static final Block LUCI_STAIRS = registerBlock("luci_stairs",
+          new StairsBlock(ModBlocks.LUCI_PLANKS.getDefaultState(), FabricBlockSettings.copy(Blocks.CHERRY_STAIRS)));
+  public static final Block LUCI_SLABS = registerBlock("luci_slabs",
           new SlabBlock(FabricBlockSettings.copy(Blocks.CHERRY_SLAB)));
-  public static final Block LUCERO_BUTTON = registerBlock("lucero_button",
+  public static final Block LUCI_BUTTON = registerBlock("luci_button",
           new ButtonBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_BUTTON), BlockSetType.OAK, 10, true));
-  public static final Block LUCERO_FENCE = registerBlock("lucero_fence",
+  public static final Block LUCI_FENCE = registerBlock("luci_fence",
           new FenceBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_FENCE)));
-  public static final Block LUCERO_FENCE_GATE = registerBlock("lucero_fence_gate",
+  public static final Block LUCI_FENCE_GATE = registerBlock("luci_fence_gate",
           new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_FENCE_GATE), WoodType.OAK));
-  public static final Block LUCERO_WALL = registerBlock("lucero_wall",
+  public static final Block LUCI_WALL = registerBlock("luci_wall",
           new WallBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
-  public static final Block LUCERO_DOOR = registerBlock("lucero_door",
+  public static final Block LUCI_DOOR = registerBlock("luci_door",
           new DoorBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_DOOR), BlockSetType.OAK));
-  public static final Block LUCERO_TRAPDOOR = registerBlock("lucero_trapdoor",
+  public static final Block LUCI_TRAPDOOR = registerBlock("luci_trapdoor",
           new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_TRAPDOOR), BlockSetType.OAK));
-  public static final Block LUCERO_PRESSURE_PLATE = registerBlock("lucero_pressure_plate",
+  public static final Block LUCI_PRESSURE_PLATE = registerBlock("luci_pressure_plate",
           new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
                   FabricBlockSettings.copyOf(Blocks.CHERRY_PRESSURE_PLATE), BlockSetType.OAK));
 

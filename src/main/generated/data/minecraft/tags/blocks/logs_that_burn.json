@@ -1,9 +1,6 @@
 {
   "replace": false,
   "values": [
-    "ellesmobsnplenty:lucero_log",
-    "ellesmobsnplenty:stripped_lucero_log",
-    "ellesmobsnplenty:stripped_lucero_wood",
-    "ellesmobsnplenty:lucero_wood"
+    "#ellesmobsnplenty:luci_logs"
   ]
 }

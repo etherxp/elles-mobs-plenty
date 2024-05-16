@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lucero_planks": {
+    "has_luci_planks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "ellesmobsnplenty:lucero_planks"
+              "ellesmobsnplenty:luci_planks"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_lucero_planks",
+      "has_luci_planks",
       "has_the_recipe"
     ]
   ],

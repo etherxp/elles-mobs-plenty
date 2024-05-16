@@ -14,13 +14,14 @@ import java.util.function.Consumer;
 
 public class ModOverworldRegion extends Region {
   public ModOverworldRegion(Identifier name, int weight) {
-    super(name, RegionType.OVERWORLD, 5);
+    super(name, RegionType.OVERWORLD, weight);
   }
 
   @Override
   public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
     this.addModifiedVanillaOverworldBiomes(mapper, modifiedVanillaOverworldBuilder -> {
-      modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.MEADOW, ModBiomes.LUCERO_BIOME);
+      modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.FLOWER_FOREST, ModBiomes.LUCERO_BIOME);
+
     });
   }
 }

@@ -1,7 +1,16 @@
-// 1.20.1	2024-05-12T10:08:32.8606089	Elle's Mobs & Plenty/Tags for minecraft:block
-7e93ddf4a4d95966b3abb1cb2d5ffb1500b93cb3 data\minecraft\tags\blocks\fences.json
-5888c2e4a03cd36c9009be19b3bc3b37fd4f7811 data\minecraft\tags\blocks\mineable\axe.json
-5deb9e08d4c7b5f1f9f8f543b76830a13210de82 data\minecraft\tags\blocks\logs_that_burn.json
+// 1.20.1	2024-05-16T07:07:43.4235655	Elle's Mobs & Plenty/Tags for minecraft:block
+9e862dfe319ea1ab50230e1eb240aca657f90605 data\minecraft\tags\blocks\fences.json
+3fae0793950074dd7f9875a7898e70ffee01902b data\minecraft\tags\blocks\mineable\axe.json
+abacf27df9dac0b881323ad33c0a4cbd22aa86c7 data\minecraft\tags\blocks\mineable\hoe.json
+abacf27df9dac0b881323ad33c0a4cbd22aa86c7 data\ellesmobsnplenty\tags\blocks\luci_leaves.json
+d70d67f2f09dca4529177dff33e930996eb8f6f1 data\minecraft\tags\blocks\saplings.json
 72726189e2095c7d4e38dddbf3fc5d64bdc1b429 data\minecraft\tags\blocks\needs_iron_tool.json
-1a42d8f16c34c911dbddeb2a903f450119326304 data\minecraft\tags\blocks\walls.json
-c626868abb6b374cd652bc2649f1484eb0bad0b2 data\minecraft\tags\blocks\fence_gates.json
+d9ceedc5b8dc9dae089b5219ee2a7b8c6a654692 data\minecraft\tags\blocks\overworld_natural_logs.json
+e7fb2e7864ece4e46940a686089c4ca701656bd8 data\minecraft\tags\blocks\walls.json
+5ccf99a3a597f21986af304ca19c044133d615e3 data\minecraft\tags\blocks\leaves.json
+8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\fabric\tags\blocks\needs_tool_level_5.json
+0acd44f006d2ec3ee2d372846e19d188adfbb7b4 data\minecraft\tags\blocks\flowers.json
+38e4c11c58620f0e83162d7fcfcad5d792faa043 data\minecraft\tags\blocks\logs_that_burn.json
+fbb1b3aca5af490181e65325055ede5183143a6e data\minecraft\tags\blocks\planks.json
+fd829580e856541e0948615c4fb93a957fb0ba14 data\ellesmobsnplenty\tags\blocks\luci_logs.json
+beb855db743189dc5995c010734cc5972506ca61 data\minecraft\tags\blocks\fence_gates.json

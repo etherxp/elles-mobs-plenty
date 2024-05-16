@@ -12,5 +12,7 @@ public class ModTreeGeneration {
   public static void generateTrees() {
     BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.LUCERO_BIOME),
             GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.LUCERO_PLACED_KEY);
+
+
   }
 }

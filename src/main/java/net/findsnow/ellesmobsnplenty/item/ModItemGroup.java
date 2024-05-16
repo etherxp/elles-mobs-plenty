@@ -19,6 +19,11 @@ public class ModItemGroup {
                     entries.add(ModItems.NEPHRITE);
                     entries.add(ModItems.RAW_NEPHRITE);
                     entries.add(ModItems.NEPHRITE_NUGGET);
+                    entries.add(ModItems.NEPHRITE_PICKAXE);
+                    entries.add(ModItems.NEPHRITE_AXE);
+                    entries.add(ModItems.NEPHRITE_SHOVEL);
+                    entries.add(ModItems.NEPHRITE_HOE);
+                    entries.add(ModItems.NEPHRITE_SWORD);
                     entries.add(ModItems.NIGHT_TIME_MUSIC_DISC);
 
 
@@ -31,27 +36,29 @@ public class ModItemGroup {
                     entries.add(ModBlocks.BLUE_MUSHROOM_LAMP);
                     entries.add(ModBlocks.CHOMPER_BLOCK);
 
-                    // Lucero Wood
-                    entries.add(ModBlocks.LUCERO_PLANKS);
-                    entries.add(ModBlocks.LUCERO_STAIRS);
-                    entries.add(ModBlocks.LUCERO_SLABS);
-                    entries.add(ModBlocks.LUCERO_BUTTON);
-                    entries.add(ModBlocks.LUCERO_PRESSURE_PLATE);
-                    entries.add(ModBlocks.LUCERO_FENCE);
-                    entries.add(ModBlocks.LUCERO_FENCE_GATE);
-                    entries.add(ModBlocks.LUCERO_WALL);
-                    entries.add(ModBlocks.LUCERO_DOOR);
-                    entries.add(ModBlocks.LUCERO_TRAPDOOR);
-                    entries.add(ModBlocks.LUCERO_LOG);
-                    entries.add(ModBlocks.STRIPPED_LUCERO_LOG);
-                    entries.add(ModBlocks.LUCERO_LEAVES);
-                    entries.add(ModBlocks.STRIPPED_LUCERO_WOOD);
-                    entries.add(ModBlocks.LUCERO_WOOD);
-                    entries.add(ModBlocks.LUCERO_SAPLING);
+                    // Luci Wood
+                    entries.add(ModBlocks.LUCI_PLANKS);
+                    entries.add(ModBlocks.LUCI_STAIRS);
+                    entries.add(ModBlocks.LUCI_SLABS);
+                    entries.add(ModBlocks.LUCI_BUTTON);
+                    entries.add(ModBlocks.LUCI_PRESSURE_PLATE);
+                    entries.add(ModBlocks.LUCI_FENCE);
+                    entries.add(ModBlocks.LUCI_FENCE_GATE);
+                    entries.add(ModBlocks.LUCI_WALL);
+                    entries.add(ModBlocks.LUCI_DOOR);
+                    entries.add(ModBlocks.LUCI_TRAPDOOR);
+                    entries.add(ModBlocks.LUCI_LOG);
+                    entries.add(ModBlocks.HOLLOW_LUCI_LOG);
+                    entries.add(ModBlocks.STRIPPED_LUCI_LOG);
+                    entries.add(ModBlocks.LUCI_LEAVES);
+                    entries.add(ModBlocks.BLOSSOMING_LUCI_LEAVES);
+                    entries.add(ModBlocks.STRIPPED_LUCI_WOOD);
+                    entries.add(ModBlocks.LUCI_WOOD);
+                    entries.add(ModBlocks.LUCI_SAPLING);
                   }).build());
 
   public static void registerItemGroups() {
-    // idk what this does
+    // I don't know what this does
 
   }
 }

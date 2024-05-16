@@ -6,9 +6,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.findsnow.ellesmobsnplenty.sound.ModSounds;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.MusicDiscItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -21,6 +19,18 @@ public class ModItems {
           new Item(new FabricItemSettings()));
   public static final Item NEPHRITE_NUGGET = registerItem("nephrite_nugget",
           new Item(new FabricItemSettings()));
+
+  public static final Item NEPHRITE_PICKAXE = registerItem("nephrite_pickaxe",
+          new PickaxeItem(ModToolMaterial.NEPHRITE, 1, 1f, new FabricItemSettings()));
+  public static final Item NEPHRITE_SWORD = registerItem("nephrite_sword",
+          new SwordItem(ModToolMaterial.NEPHRITE, 7, 1.6f, new FabricItemSettings()));
+  public static final Item NEPHRITE_AXE = registerItem("nephrite_axe",
+          new AxeItem(ModToolMaterial.NEPHRITE, 10, .9f, new FabricItemSettings()));
+  public static final Item NEPHRITE_HOE = registerItem("nephrite_hoe",
+          new HoeItem(ModToolMaterial.NEPHRITE, 1, 1f, new FabricItemSettings()));
+  public static final Item NEPHRITE_SHOVEL = registerItem("nephrite_shovel",
+          new ShovelItem(ModToolMaterial.NEPHRITE, 5, 4f, new FabricItemSettings()));
+
   public static final Item NIGHT_TIME_MUSIC_DISC = registerItem("night_time_music_disc",
           new MusicDiscItem(9, ModSounds.NIGHT_TIME, new FabricItemSettings().maxCount(1), 156));
 
@@ -41,9 +51,9 @@ public class ModItems {
     entries.add(ModBlocks.NEPHRITE_ORE);
     entries.add(ModBlocks.DEEPSLATE_NEPHRITE_ORE);
     entries.add(ModBlocks.CHOMPER_BLOCK);
-    entries.add(ModBlocks.LUCERO_PLANKS);
-    entries.add(ModBlocks.LUCERO_STAIRS);
-    entries.add(ModBlocks.LUCERO_WALL);
+    entries.add(ModBlocks.LUCI_PLANKS);
+    entries.add(ModBlocks.LUCI_STAIRS);
+    entries.add(ModBlocks.LUCI_WALL);
   }
 
 

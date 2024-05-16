@@ -18,11 +18,12 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.MiscPlacedFeatures;
 import net.minecraft.world.gen.feature.OceanPlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 public class ModBiomes {
-  public static final RegistryKey<Biome> LUCERO_BIOME = register("lucero");
+  public static final RegistryKey<Biome> LUCERO_BIOME = register("luci");
 
 
   public static RegistryKey<Biome> register(String name) {
@@ -40,7 +41,9 @@ public class ModBiomes {
     DefaultBiomeFeatures.addMineables(builder);
     DefaultBiomeFeatures.addSprings(builder);
     DefaultBiomeFeatures.addFrozenTopLayer(builder);
+
   }
+
 
   public static Biome lucerobiome(Registerable<Biome> context) {
 
@@ -56,26 +59,27 @@ public class ModBiomes {
                     context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
     globalOverworldGeneration(biomeBuilder);
-    DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
+    DefaultBiomeFeatures.addForestFlowers(biomeBuilder);
+    DefaultBiomeFeatures.addExtraDefaultFlowers(biomeBuilder);
     DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
     DefaultBiomeFeatures.addForestGrass(biomeBuilder);
-    DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
-    DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
+    DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
+    DefaultBiomeFeatures.addMossyRocks(biomeBuilder);
     DefaultBiomeFeatures.addGrassAndClayDisks(biomeBuilder);
-
+    DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
     return new Biome.Builder()
             .precipitation(true)
             .downfall(0.25f)
-            .temperature(0.8f)
+            .temperature(0.7f)
             .generationSettings(biomeBuilder.build())
             .spawnSettings(spawnBuilder.build())
             .effects((new BiomeEffects.Builder())
                     .waterColor(0x2e6ce8)
                     .waterFogColor(0x618ee8)
-                    .skyColor(0x468df7)
-                    .grassColor(0x2e702d)
-                    .foliageColor(0x4b8b4a)
-                    .fogColor(0x60805c)
+                    .skyColor(0x87ceeb)
+                    .grassColor(0x56b054)
+                    .foliageColor(0x56b054)
+                    .fogColor(0x9ABD95)
                     .moodSound(BiomeMoodSound.CAVE)
                     .music(MusicType.GAME)
                     .build())

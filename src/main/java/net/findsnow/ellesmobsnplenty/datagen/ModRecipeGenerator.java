@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -25,10 +24,10 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
   public void generate(Consumer<RecipeJsonProvider> exporter) {
 
     // BLOCKS
-    ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.LUCERO_PLANKS, 4)
-            .input(ModBlocks.LUCERO_LOG)
-            .criterion(hasItem(ModBlocks.LUCERO_LOG), conditionsFromItem(ModBlocks.LUCERO_LOG))
-            .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.LUCERO_PLANKS) + "_from_log"));
+    ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.LUCI_PLANKS, 4)
+            .input(ModBlocks.LUCI_LOG)
+            .criterion(hasItem(ModBlocks.LUCI_LOG), conditionsFromItem(ModBlocks.LUCI_LOG))
+            .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.LUCI_PLANKS) + "_from_log"));
     ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHOMPER_BLOCK, 1)
                     .pattern("III")
                     .pattern("ICI")
@@ -45,28 +44,28 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
     ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.CRAFTING_TABLE, 1)
             .pattern("NN ")
             .pattern("NN ")
-            .input('N', ModBlocks.LUCERO_PLANKS)
-            .criterion(hasItem(ModBlocks.LUCERO_PLANKS), conditionsFromItem(ModBlocks.LUCERO_PLANKS))
+            .input('N', ModBlocks.LUCI_PLANKS)
+            .criterion(hasItem(ModBlocks.LUCI_PLANKS), conditionsFromItem(ModBlocks.LUCI_PLANKS))
             .offerTo(exporter, new Identifier(getRecipeName(Blocks.CRAFTING_TABLE) + "_from_lucero_planks"));
-    ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.LUCERO_DOOR, 3)
+    ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.LUCI_DOOR, 3)
             .pattern("LL ")
             .pattern("LL ")
             .pattern("LL ")
-            .input('L', ModBlocks.LUCERO_PLANKS)
-            .criterion(hasItem(ModBlocks.LUCERO_PLANKS), conditionsFromItem(ModBlocks.LUCERO_PLANKS))
-            .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.LUCERO_DOOR) + "_from_lucero_planks"));
-    ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.LUCERO_WOOD, 4)
+            .input('L', ModBlocks.LUCI_PLANKS)
+            .criterion(hasItem(ModBlocks.LUCI_PLANKS), conditionsFromItem(ModBlocks.LUCI_PLANKS))
+            .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.LUCI_DOOR) + "_from_lucero_planks"));
+    ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.LUCI_WOOD, 4)
             .pattern("LL ")
             .pattern("LL ")
-            .input('L', ModBlocks.LUCERO_LOG)
-            .criterion(hasItem(ModBlocks.LUCERO_LOG), conditionsFromItem(ModBlocks.LUCERO_LOG))
-            .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.LUCERO_WOOD) + "_from_log"));
-    ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.STRIPPED_LUCERO_WOOD, 4)
+            .input('L', ModBlocks.LUCI_LOG)
+            .criterion(hasItem(ModBlocks.LUCI_LOG), conditionsFromItem(ModBlocks.LUCI_LOG))
+            .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.LUCI_WOOD) + "_from_log"));
+    ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.STRIPPED_LUCI_WOOD, 4)
             .pattern("LL ")
             .pattern("LL ")
-            .input('L', ModBlocks.STRIPPED_LUCERO_LOG)
-            .criterion(hasItem(ModBlocks.STRIPPED_LUCERO_LOG), conditionsFromItem(ModBlocks.STRIPPED_LUCERO_LOG))
-            .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.STRIPPED_LUCERO_WOOD) + "_from_log"));
+            .input('L', ModBlocks.STRIPPED_LUCI_LOG)
+            .criterion(hasItem(ModBlocks.STRIPPED_LUCI_LOG), conditionsFromItem(ModBlocks.STRIPPED_LUCI_LOG))
+            .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.STRIPPED_LUCI_WOOD) + "_from_log"));
 
     // BLOCKS -> INGOTS
     offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.NEPHRITE, RecipeCategory.MISC, ModBlocks.NEPHRITE_BLOCK);

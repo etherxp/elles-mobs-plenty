@@ -15,7 +15,7 @@ public class ModMaterialRules {
 
 
   public static MaterialRules.MaterialRule makeRules() {
-    MaterialRules.MaterialCondition isAtOrAboveWaterLevel = MaterialRules.water(-1, 0);
+    MaterialRules.MaterialCondition isAtOrAboveWaterLevel = MaterialRules.water(-3, 2);
 
     MaterialRules.MaterialRule grassSurface = MaterialRules.sequence(MaterialRules.condition(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
 

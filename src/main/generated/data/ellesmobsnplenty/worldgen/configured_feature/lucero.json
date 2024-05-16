@@ -10,24 +10,40 @@
     },
     "foliage_placer": {
       "type": "minecraft:cherry_foliage_placer",
-      "corner_hole_chance": 0.25,
-      "hanging_leaves_chance": 0.16666667,
-      "hanging_leaves_extension_chance": 0.33333334,
+      "corner_hole_chance": 0.3,
+      "hanging_leaves_chance": 0.36666667,
+      "hanging_leaves_extension_chance": 0.43333337,
       "height": 5,
       "offset": 0,
       "radius": 4,
-      "wide_bottom_layer_hole_chance": 0.25
+      "wide_bottom_layer_hole_chance": 0.3
     },
     "foliage_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "ellesmobsnplenty:lucero_leaves",
-        "Properties": {
-          "distance": "7",
-          "persistent": "false",
-          "waterlogged": "false"
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "ellesmobsnplenty:luci_leaves",
+            "Properties": {
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          },
+          "weight": 3
+        },
+        {
+          "data": {
+            "Name": "ellesmobsnplenty:blossoming_luci_leaves",
+            "Properties": {
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          },
+          "weight": 2
         }
-      }
+      ]
     },
     "force_dirt": false,
     "ignore_vines": true,
@@ -81,9 +97,11 @@
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "ellesmobsnplenty:lucero_log",
+        "Name": "ellesmobsnplenty:luci_log",
         "Properties": {
-          "axis": "y"
+          "axis": "y",
+          "leaf": "false",
+          "waterlogged": "false"
         }
       }
     }

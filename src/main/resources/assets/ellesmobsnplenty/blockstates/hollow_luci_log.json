@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":  { "model": "ellesmobsnplenty:block/hollow_luci_log" },
+    "axis=z":   { "model": "ellesmobsnplenty:block/hollow_luci_log_horizontal", "x": 90 },
+    "axis=x":   { "model": "ellesmobsnplenty:block/hollow_luci_log_horizontal", "x": 90, "y": 90 }
+  }
+}

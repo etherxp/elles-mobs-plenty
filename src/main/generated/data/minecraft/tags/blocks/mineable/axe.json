@@ -1,15 +1,20 @@
 {
   "replace": false,
   "values": [
-    "ellesmobsnplenty:lucero_planks",
-    "ellesmobsnplenty:lucero_stairs",
-    "ellesmobsnplenty:lucero_button",
-    "ellesmobsnplenty:lucero_pressure_plate",
-    "ellesmobsnplenty:lucero_fence",
-    "ellesmobsnplenty:lucero_fence_gate",
-    "ellesmobsnplenty:lucero_wall",
-    "ellesmobsnplenty:lucero_trapdoor",
-    "ellesmobsnplenty:lucero_door",
-    "ellesmobsnplenty:lucero_slabs"
+    "ellesmobsnplenty:luci_planks",
+    "ellesmobsnplenty:luci_stairs",
+    "ellesmobsnplenty:luci_button",
+    "ellesmobsnplenty:luci_log",
+    "ellesmobsnplenty:luci_wood",
+    "ellesmobsnplenty:stripped_luci_log",
+    "ellesmobsnplenty:stripped_luci_wood",
+    "ellesmobsnplenty:luci_pressure_plate",
+    "ellesmobsnplenty:luci_fence",
+    "ellesmobsnplenty:luci_fence_gate",
+    "ellesmobsnplenty:luci_wall",
+    "ellesmobsnplenty:luci_trapdoor",
+    "ellesmobsnplenty:luci_door",
+    "ellesmobsnplenty:luci_slabs",
+    "ellesmobsnplenty:chomper_block"
   ]
 }

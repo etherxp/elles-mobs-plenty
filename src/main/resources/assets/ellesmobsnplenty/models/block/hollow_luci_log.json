@@ -1,0 +1,8 @@
+{
+  "parent": "ellesmobsnplenty:block/hollow_log",
+  "textures": {
+      "end": "ellesmobsnplenty:block/luci_log_top",
+      "side": "ellesmobsnplenty:block/luci_log",
+      "inside": "ellesmobsnplenty:block/stripped_luci_log"
+  }
+}

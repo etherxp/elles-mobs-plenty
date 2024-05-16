@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ellesmobsnplenty:block/luci_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "ellesmobsnplenty:block/luci_wood"
+    },
+    "axis=z": {
+      "model": "ellesmobsnplenty:block/luci_wood",
+      "x": 90
+    }
+  }
+}
