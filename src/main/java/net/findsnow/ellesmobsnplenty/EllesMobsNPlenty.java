@@ -3,6 +3,7 @@ package net.findsnow.ellesmobsnplenty;
 import net.fabricmc.api.ModInitializer;
 
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
+import net.findsnow.ellesmobsnplenty.entity.ModEntities;
 import net.findsnow.ellesmobsnplenty.item.ModItemGroup;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
 import net.findsnow.ellesmobsnplenty.particle.ModParticles;
@@ -25,5 +26,6 @@ public class EllesMobsNPlenty implements ModInitializer {
 		ModWorldGeneration.generatorModWorldGeneration();
 		ModParticles.RegisterParticles();
 		ModSounds.registerSounds();
+		ModEntities.registerModEntities();
 	}
 }

@@ -11,6 +11,7 @@ import net.findsnow.ellesmobsnplenty.block.mushrooms.GreenMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
+import net.minecraft.data.family.BlockFamilies;
 import net.minecraft.util.Identifier;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -23,6 +24,7 @@ public class ModModelProvider extends FabricModelProvider {
     // Blocks
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_BLOCK);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_NEPHRITE_BLOCK);
+    blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.LUCILLE_TULIP, ModBlocks.POTTED_LUCILLE_TULIP, BlockStateModelGenerator.TintType.NOT_TINTED);
 
     // Custom Blocks
     registerChomper(blockStateModelGenerator);
@@ -32,6 +34,8 @@ public class ModModelProvider extends FabricModelProvider {
     // Ores
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_ORE);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_NEPHRITE_ORE);
+    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_ORE);
+    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_FROSTITE_ORE);
 
     // Lucero Wood
     BlockStateModelGenerator.BlockTexturePool luceroTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LUCI_PLANKS);
@@ -45,6 +49,8 @@ public class ModModelProvider extends FabricModelProvider {
 
     blockStateModelGenerator.registerDoor(ModBlocks.LUCI_DOOR);
     blockStateModelGenerator.registerTrapdoor(ModBlocks.LUCI_TRAPDOOR);
+    luceroTexturePool.family(BlockFamilies.register(ModBlocks.LUCI_PLANKS).sign(ModBlocks.LUCI_SIGN, ModBlocks.LUCI_WALL_SIGN).build());
+    blockStateModelGenerator.registerHangingSign(ModBlocks.STRIPPED_LUCI_LOG, ModBlocks.LUCI_HANGING_SIGN, ModBlocks.LUCI_WALL_HANGING_SIGN);
 
     blockStateModelGenerator.registerLog(ModBlocks.LUCI_LOG).log(ModBlocks.LUCI_LOG).wood(ModBlocks.LUCI_WOOD);
     blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_LUCI_LOG).log(ModBlocks.STRIPPED_LUCI_LOG).wood(ModBlocks.STRIPPED_LUCI_WOOD);
@@ -83,6 +89,7 @@ public class ModModelProvider extends FabricModelProvider {
   // Item Models
   @Override
   public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+    itemModelGenerator.register(ModItems.FROSTITE, Models.GENERATED);
     itemModelGenerator.register(ModItems.NEPHRITE, Models.GENERATED);
     itemModelGenerator.register(ModItems.RAW_NEPHRITE, Models.GENERATED);
     itemModelGenerator.register(ModItems.NEPHRITE_NUGGET, Models.GENERATED);
@@ -93,6 +100,11 @@ public class ModModelProvider extends FabricModelProvider {
     itemModelGenerator.register(ModItems.NEPHRITE_AXE, Models.HANDHELD);
     itemModelGenerator.register(ModItems.NEPHRITE_SHOVEL, Models.HANDHELD);
     itemModelGenerator.register(ModItems.NEPHRITE_HOE, Models.HANDHELD);
+
+    itemModelGenerator.register(ModItems.NEPHRITE_HELMET, Models.GENERATED);
+    itemModelGenerator.register(ModItems.NEPHRITE_CHESTPLATE, Models.GENERATED);
+    itemModelGenerator.register(ModItems.NEPHRITE_LEGGINGS, Models.GENERATED);
+    itemModelGenerator.register(ModItems.NEPHRITE_BOOTS, Models.GENERATED);
 
     itemModelGenerator.register(ModBlocks.LUCI_SAPLING.asItem(), Models.GENERATED);
 

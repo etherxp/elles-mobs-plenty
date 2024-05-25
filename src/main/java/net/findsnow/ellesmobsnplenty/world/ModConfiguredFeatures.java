@@ -33,8 +33,8 @@ public class ModConfiguredFeatures {
                             .add(ConstantIntProvider.create(2), 1).add(ConstantIntProvider.create(3), 1).build()),
                     UniformIntProvider.create(2, 4), UniformIntProvider.create(-4, -3), UniformIntProvider.create(-1, 0)),
             new WeightedBlockStateProvider(DataPool.<BlockState>builder()
-                    .add(ModBlocks.LUCI_LEAVES.getDefaultState(), 3)
-                    .add(ModBlocks.BLOSSOMING_LUCI_LEAVES.getDefaultState(), 2)
+                    .add(ModBlocks.LUCI_LEAVES.getDefaultState(), 4)
+                    .add(ModBlocks.BLOSSOMING_LUCI_LEAVES.getDefaultState(), 1)
                     .build()),
             new CherryFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0),
                     ConstantIntProvider.create(5), 0.3f, 0.5f,

@@ -24,17 +24,22 @@ public class ModItemGroup {
                     entries.add(ModItems.NEPHRITE_SHOVEL);
                     entries.add(ModItems.NEPHRITE_HOE);
                     entries.add(ModItems.NEPHRITE_SWORD);
-                    entries.add(ModItems.NIGHT_TIME_MUSIC_DISC);
-
+                    entries.add(ModItems.NEPHRITE_HELMET);
+                    entries.add(ModItems.NEPHRITE_CHESTPLATE);
+                    entries.add(ModItems.NEPHRITE_LEGGINGS);
+                    entries.add(ModItems.NEPHRITE_BOOTS);
 
                     // Blocks
                     entries.add(ModBlocks.NEPHRITE_BLOCK);
                     entries.add(ModBlocks.RAW_NEPHRITE_BLOCK);
+                    entries.add(ModBlocks.FROSTITE_ORE);
+                    entries.add(ModBlocks.DEEPSLATE_FROSTITE_ORE);
                     entries.add(ModBlocks.NEPHRITE_ORE);
                     entries.add(ModBlocks.DEEPSLATE_NEPHRITE_ORE);
                     entries.add(ModBlocks.GREEN_MUSHROOM_LAMP);
                     entries.add(ModBlocks.BLUE_MUSHROOM_LAMP);
                     entries.add(ModBlocks.CHOMPER_BLOCK);
+                    entries.add(ModBlocks.LUCILLE_TULIP);
 
                     // Luci Wood
                     entries.add(ModBlocks.LUCI_PLANKS);
@@ -55,6 +60,14 @@ public class ModItemGroup {
                     entries.add(ModBlocks.STRIPPED_LUCI_WOOD);
                     entries.add(ModBlocks.LUCI_WOOD);
                     entries.add(ModBlocks.LUCI_SAPLING);
+                    entries.add(ModItems.LUCI_SIGN);
+                    entries.add(ModItems.LUCI_HANGING_SIGN);
+
+                    // Music Discs
+                    entries.add(ModItems.NIGHT_TIME_MUSIC_DISC);
+
+                    // Frostite
+                    entries.add(ModItems.FROSTITE);
                   }).build());
 
   public static void registerItemGroups() {

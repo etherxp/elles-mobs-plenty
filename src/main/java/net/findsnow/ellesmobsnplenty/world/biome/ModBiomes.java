@@ -1,6 +1,7 @@
 package net.findsnow.ellesmobsnplenty.world.biome;
 
 import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
+import net.findsnow.ellesmobsnplenty.entity.ModEntities;
 import net.findsnow.ellesmobsnplenty.sound.ModSounds;
 import net.findsnow.ellesmobsnplenty.world.ModPlacedFeatures;
 import net.minecraft.client.sound.MusicType;
@@ -77,8 +78,8 @@ public class ModBiomes {
                     .waterColor(0x2e6ce8)
                     .waterFogColor(0x618ee8)
                     .skyColor(0x87ceeb)
-                    .grassColor(0x56b054)
-                    .foliageColor(0x56b054)
+                    .grassColor(0x5E9D34 )
+                    .foliageColor(0x5E9D34 )
                     .fogColor(0x9ABD95)
                     .moodSound(BiomeMoodSound.CAVE)
                     .music(MusicType.GAME)

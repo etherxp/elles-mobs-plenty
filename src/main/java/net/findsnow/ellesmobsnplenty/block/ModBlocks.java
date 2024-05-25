@@ -5,8 +5,14 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.BlueMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.GreenMushroomLampBlock;
+import net.findsnow.ellesmobsnplenty.block.signs.ModHangingSignBlock;
+import net.findsnow.ellesmobsnplenty.block.signs.ModStandingSignBlock;
+import net.findsnow.ellesmobsnplenty.block.signs.ModWallHangingSignBlock;
+import net.findsnow.ellesmobsnplenty.block.signs.ModWallSignBlock;
+import net.findsnow.ellesmobsnplenty.util.ModWoodTypes;
 import net.findsnow.ellesmobsnplenty.world.tree.LuceroSaplingGenerator;
 import net.minecraft.block.*;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -27,9 +33,14 @@ public class ModBlocks {
                   state -> state.get(GreenMushroomLampBlock.CLICKED) ? 7 : 0)));
   public static final Block RAW_NEPHRITE_BLOCK = registerBlock("raw_nephrite_block",
           new Block(FabricBlockSettings.copy(Blocks.RAW_GOLD_BLOCK)));
-
   public static final Block CHOMPER_BLOCK = registerBlock("chomper_block",
           new ChomperBlock(FabricBlockSettings.copy(Blocks.CHERRY_PLANKS)));
+
+  // Foliage
+  public static final Block LUCILLE_TULIP = registerBlock("lucille_tulip",
+          new FlowerBlock(StatusEffects.SATURATION,4, FabricBlockSettings.copy(Blocks.WHITE_TULIP)));
+  public static final Block POTTED_LUCILLE_TULIP = registerBlockWithoutBlockItem("potted_lucille_tulip",
+          new FlowerPotBlock(LUCILLE_TULIP, FabricBlockSettings.copy(Blocks.POTTED_WHITE_TULIP)));
 
   // Wood Blocks
   public static final Block LUCI_LOG = registerBlock("luci_log",
@@ -70,11 +81,24 @@ public class ModBlocks {
           new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
                   FabricBlockSettings.copyOf(Blocks.CHERRY_PRESSURE_PLATE), BlockSetType.OAK));
 
+  // Signs
+  public static final Block LUCI_SIGN = registerBlockWithoutBlockItem("luci_sign",
+          new ModStandingSignBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_SIGN), ModWoodTypes.LUCI));
+  public static final Block LUCI_WALL_SIGN = registerBlockWithoutBlockItem("luci_wall_sign",
+          new ModWallSignBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_WALL_SIGN), ModWoodTypes.LUCI));
+  public static final Block LUCI_HANGING_SIGN = registerBlockWithoutBlockItem("luci_hanging_sign",
+          new ModHangingSignBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_HANGING_SIGN), ModWoodTypes.LUCI));
+  public static final Block LUCI_WALL_HANGING_SIGN = registerBlockWithoutBlockItem("luci_wall_hanging_sign",
+          new ModWallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_WALL_HANGING_SIGN), ModWoodTypes.LUCI));
+
   // Ore Blocks
   public static final Block NEPHRITE_ORE = registerBlock("nephrite_ore",
           new Block(FabricBlockSettings.copy(Blocks.STONE)));
-
   public static final Block DEEPSLATE_NEPHRITE_ORE = registerBlock("deepslate_nephrite_ore",
+          new Block(FabricBlockSettings.copy(Blocks.DEEPSLATE)));
+  public static final Block FROSTITE_ORE = registerBlock("frostite_ore",
+          new Block(FabricBlockSettings.copy(Blocks.STONE)));
+  public static final Block DEEPSLATE_FROSTITE_ORE = registerBlock("deepslate_frostite_ore",
           new Block(FabricBlockSettings.copy(Blocks.DEEPSLATE)));
 
 
@@ -91,6 +115,9 @@ public class ModBlocks {
   }
   public static void registerModBlocks() {
     EllesMobsNPlenty.LOGGER.info("Registering Mod Blocks for " + EllesMobsNPlenty.MOD_ID);
+  }
 
+  public static Block registerBlockWithoutBlockItem(String name, Block block) {
+    return Registry.register(Registries.BLOCK, new Identifier(EllesMobsNPlenty.MOD_ID, name), block);
   }
 }

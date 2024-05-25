@@ -7,6 +7,11 @@
   "item.ellesmobsnplenty.nephrite_shovel": "Nephrite Shovel",
   "item.ellesmobsnplenty.nephrite_sword": "Nephrite Sword",
   "item.ellesmobsnplenty.nephrite_hoe": "Nephrite Hoe",
+  "item.ellesmobsnplenty.nephrite_helmet": "Nephrite Helmet",
+  "item.ellesmobsnplenty.nephrite_chestplate": "Nephrite Chestplate",
+  "item.ellesmobsnplenty.nephrite_leggings": "Nephrite Leggings",
+  "item.ellesmobsnplenty.nephrite_boots": "Nephrite Boots",
+  "item.ellesmobsnplenty.frostite": "Frostite",
 
   "item.ellesmobsnplenty.night_time_music_disc": "Night Time",
   "item.ellesmobsnplenty.night_time_music_disc.desc": "FindSnow - Night Time",
@@ -14,6 +19,8 @@
   "block.ellesmobsnplenty.nephrite_block": "Block of Nephrite",
   "block.ellesmobsnplenty.raw_nephrite_block": "Block of Raw Nephrite",
   "block.ellesmobsnplenty.nephrite_ore": "Nephrite Ore",
+  "block.ellesmobsnplenty.frostite_ore": "Frostite Ore",
+  "block.ellesmobsnplenty.deepslate_frostite_ore": "Deepslate Frostite Ore",
   "block.ellesmobsnplenty.deepslate_nephrite_ore": "Deepslate Nephrite Ore",
   "block.ellesmobsnplenty.green_mushroom_lamp": "Green Mushroom Lamp",
   "block.ellesmobsnplenty.blue_mushroom_lamp": "Blue Mushroom Lamp",
@@ -37,7 +44,14 @@
   "block.ellesmobsnplenty.luci_leaves": "Luci Leaves",
   "block.ellesmobsnplenty.blossoming_luci_leaves": "Blossoming Luci Leaves",
   "block.ellesmobsnplenty.luci_sapling": "Luci Sapling",
+  "block.ellesmobsnplenty.luci_sign": "Luci Sign",
+  "block.ellesmobsnplenty.luci_hanging_sign": "Luci Hanging Sign",
+  "block.ellesmobsnplenty.luci_wall_hanging_sign": "Luci Wall Hanging Sign",
 
+  "entity.ellesmobsnplenty.firefly": "Firefly",
+  "item.ellesmobsnplenty.firefly_spawn_egg": "Firefly Spawn Egg",
+
+  "block.ellesmobsnplenty.lucille_tulip": "Lucille Tulip",
 
   "itemGroup.elles_mobs_n_plenty_group": "Elles Mobs N' Plenty"
 }
