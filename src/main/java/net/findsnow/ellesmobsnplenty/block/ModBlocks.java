@@ -3,6 +3,8 @@ package net.findsnow.ellesmobsnplenty.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
+import net.findsnow.ellesmobsnplenty.block.custom.*;
+import net.findsnow.ellesmobsnplenty.block.hollow.HollowLuciLogBlock;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.BlueMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.GreenMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.block.signs.ModHangingSignBlock;
@@ -10,8 +12,10 @@ import net.findsnow.ellesmobsnplenty.block.signs.ModStandingSignBlock;
 import net.findsnow.ellesmobsnplenty.block.signs.ModWallHangingSignBlock;
 import net.findsnow.ellesmobsnplenty.block.signs.ModWallSignBlock;
 import net.findsnow.ellesmobsnplenty.util.ModWoodTypes;
+import net.findsnow.ellesmobsnplenty.world.tree.BlossomingLuciSaplingGenerator;
 import net.findsnow.ellesmobsnplenty.world.tree.LuceroSaplingGenerator;
 import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -25,6 +29,9 @@ public class ModBlocks {
   // Blocks
   public static final Block NEPHRITE_BLOCK = registerBlock("nephrite_block",
           new Block(FabricBlockSettings.copy(Blocks.EMERALD_BLOCK).sounds(BlockSoundGroup.NETHERITE)));
+  public static final Block BLOSSOMING_LUCI_VINE = registerBlock("blossoming_luci_vine",
+          new BlossomingLuciVineBlock(FabricBlockSettings.copy(Blocks.CHERRY_LEAVES).sounds(BlockSoundGroup.CHERRY_LEAVES).nonOpaque().noCollision().ticksRandomly()
+                  .pistonBehavior(PistonBehavior.DESTROY)));
   public static final Block GREEN_MUSHROOM_LAMP = registerBlock("green_mushroom_lamp",
           new GreenMushroomLampBlock(FabricBlockSettings.create().mapColor(MapColor.EMERALD_GREEN).sounds(BlockSoundGroup.FUNGUS).luminance(
                   state -> state.get(GreenMushroomLampBlock.CLICKED) ? 7 : 0)));
@@ -33,14 +40,28 @@ public class ModBlocks {
                   state -> state.get(GreenMushroomLampBlock.CLICKED) ? 7 : 0)));
   public static final Block RAW_NEPHRITE_BLOCK = registerBlock("raw_nephrite_block",
           new Block(FabricBlockSettings.copy(Blocks.RAW_GOLD_BLOCK)));
+  public static final Block LUCI_FUNGUS_SHELF_BLOCk = registerBlock("luci_fungus_shelf_block",
+          new LuciFungusShelfBlock(FabricBlockSettings.copy(Blocks.MUSHROOM_STEM).nonOpaque()));
   public static final Block CHOMPER_BLOCK = registerBlock("chomper_block",
           new ChomperBlock(FabricBlockSettings.copy(Blocks.CHERRY_PLANKS)));
+  public static final Block ANCIENT_FURNACE = registerBlock("ancient_furnace",
+          new AncientFurnaceBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE)
+                  .luminance(state -> state.get(AncientFurnaceBlock.LIT)? 13 : 0).mapColor(MapColor.EMERALD_GREEN)));
 
   // Foliage
   public static final Block LUCILLE_TULIP = registerBlock("lucille_tulip",
           new FlowerBlock(StatusEffects.SATURATION,4, FabricBlockSettings.copy(Blocks.WHITE_TULIP)));
   public static final Block POTTED_LUCILLE_TULIP = registerBlockWithoutBlockItem("potted_lucille_tulip",
           new FlowerPotBlock(LUCILLE_TULIP, FabricBlockSettings.copy(Blocks.POTTED_WHITE_TULIP)));
+
+  public static final Block FLAURELLE = registerBlock("flaurelle",
+          new FlowerBlock(StatusEffects.SATURATION,4, FabricBlockSettings.copy(Blocks.WHITE_TULIP)));
+  public static final Block POTTED_FLAURELLE = registerBlockWithoutBlockItem("potted_flaurelle",
+          new FlowerPotBlock(LUCILLE_TULIP, FabricBlockSettings.copy(Blocks.POTTED_WHITE_TULIP)));
+
+  public static final Block LUCI_PETAL = registerBlock("luci_petals",
+  new LuciPetals(FabricBlockSettings.copy(Blocks.PINK_PETALS).nonOpaque().noCollision()));
+
 
   // Wood Blocks
   public static final Block LUCI_LOG = registerBlock("luci_log",
@@ -56,9 +77,11 @@ public class ModBlocks {
   public static final Block LUCI_LEAVES = registerBlock("luci_leaves",
           new LuciLeavesBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LEAVES).nonOpaque().mapColor(MapColor.EMERALD_GREEN)));
   public static final Block BLOSSOMING_LUCI_LEAVES = registerBlock("blossoming_luci_leaves",
-          new LuciLeavesBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LEAVES).nonOpaque().mapColor(MapColor.EMERALD_GREEN)));
+          new BlossomingLuciLeavesBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_LEAVES).nonOpaque().mapColor(MapColor.EMERALD_GREEN)));
   public static final Block LUCI_SAPLING = registerBlock("luci_sapling",
           new SaplingBlock(new LuceroSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+  public static final Block BLOSSOMING_LUCI_SAPLING = registerBlock("blossoming_luci_sapling",
+          new SaplingBlock(new BlossomingLuciSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
   public static final Block LUCI_PLANKS = registerBlock("luci_planks",
           new Block(FabricBlockSettings.copy(Blocks.CHERRY_PLANKS)));
   public static final Block LUCI_STAIRS = registerBlock("luci_stairs",
@@ -100,6 +123,22 @@ public class ModBlocks {
           new Block(FabricBlockSettings.copy(Blocks.STONE)));
   public static final Block DEEPSLATE_FROSTITE_ORE = registerBlock("deepslate_frostite_ore",
           new Block(FabricBlockSettings.copy(Blocks.DEEPSLATE)));
+
+
+  /*
+  * UNUSED
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  * */
 
 
 

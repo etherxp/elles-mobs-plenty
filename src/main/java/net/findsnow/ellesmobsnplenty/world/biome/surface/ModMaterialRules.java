@@ -20,7 +20,7 @@ public class ModMaterialRules {
     MaterialRules.MaterialRule grassSurface = MaterialRules.sequence(MaterialRules.condition(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
 
     return MaterialRules.sequence(
-            MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(ModBiomes.LUCERO_BIOME),
+            MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(ModBiomes.LUCI_REGION_1),
                             MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, GRASS_BLOCK)),
                     MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, STONE)),
 

@@ -7,13 +7,18 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.event.listener.GameEventListener;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
+import net.minecraft.world.gen.placementmodifier.*;
 
 import java.util.List;
 
 public class ModPlacedFeatures {
   public static final RegistryKey<PlacedFeature> LUCERO_PLACED_KEY = registerKey("lucero_placed");
+  public static final RegistryKey<PlacedFeature> BLOSSOMING_LUCI_KEY = registerKey("blossoming_luci_placed");
+  public static final RegistryKey<PlacedFeature> LUCI_PETAL_PLACED_KEY = registerKey("luci_petal_placed");
+  public static final RegistryKey<PlacedFeature> FLAURELLE_PLACED_KEY = registerKey("flaurelle_placed");
+  public static final RegistryKey<PlacedFeature> LUCI_FALLEN_LOG = registerKey("luci_fallen_log");
 
   public static void bootstrap(Registerable<PlacedFeature> context) {
     var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -21,8 +26,21 @@ public class ModPlacedFeatures {
     register(context, LUCERO_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LUCERO_KEY),
             VegetationPlacedFeatures.treeModifiersWithWouldSurvive(
                     PlacedFeatures.createCountExtraModifier(1, 0.5f, 1), ModBlocks.LUCI_SAPLING));
-  }
 
+    register(context, BLOSSOMING_LUCI_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLOSSOMING_LUCI_KEY),
+            VegetationPlacedFeatures.treeModifiersWithWouldSurvive(
+                    PlacedFeatures.createCountExtraModifier(1, 0.5f, 1), ModBlocks.BLOSSOMING_LUCI_SAPLING));
+
+    register(context, LUCI_PETAL_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LUCI_PETALS),
+            RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+
+    register(context, FLAURELLE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FLAURELLE),
+            RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+
+    register(context, LUCI_FALLEN_LOG, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LUCI_FALLEN_LOG),
+            RarityFilterPlacementModifier.of(20), CountPlacementModifier.of(1), SquarePlacementModifier.of(),
+            PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+  }
 
   public static RegistryKey<PlacedFeature> registerKey(String name) {
     return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(EllesMobsNPlenty.MOD_ID, name));

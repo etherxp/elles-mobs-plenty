@@ -1,7 +1,17 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "decorators": [],
+    "decorators": [
+      {
+        "type": "minecraft:luci_fungus_shelf_decorator",
+        "probability": 0.1,
+        "treeHeight": 4
+      },
+      {
+        "type": "minecraft:beehive",
+        "probability": 0.05
+      }
+    ],
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
@@ -31,21 +41,10 @@
             }
           },
           "weight": 4
-        },
-        {
-          "data": {
-            "Name": "ellesmobsnplenty:blossoming_luci_leaves",
-            "Properties": {
-              "distance": "7",
-              "persistent": "false",
-              "waterlogged": "false"
-            }
-          },
-          "weight": 1
         }
       ]
     },
-    "force_dirt": false,
+    "force_dirt": true,
     "ignore_vines": true,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",

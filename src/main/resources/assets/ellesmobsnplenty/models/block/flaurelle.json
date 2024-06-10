@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "shade": false,
+  "textures": {
+    "cross": "ellesmobsnplenty:block/flaurelle"
+  }
+}

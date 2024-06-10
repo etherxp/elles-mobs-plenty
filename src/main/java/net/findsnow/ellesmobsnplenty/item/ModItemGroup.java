@@ -16,6 +16,9 @@ public class ModItemGroup {
           FabricItemGroup.builder().displayName(Text.translatable("itemGroup.elles_mobs_n_plenty_group"))
                   .icon(() -> new ItemStack(ModItems.NEPHRITE)).entries((displayContext, entries) -> {
                     // Items
+                    entries.add(ModItems.CRAB_CLAW);
+                    entries.add(ModItems.RAW_CRAB);
+                    entries.add(ModItems.COOKED_CRAB);
                     entries.add(ModItems.NEPHRITE);
                     entries.add(ModItems.RAW_NEPHRITE);
                     entries.add(ModItems.NEPHRITE_NUGGET);
@@ -39,7 +42,10 @@ public class ModItemGroup {
                     entries.add(ModBlocks.GREEN_MUSHROOM_LAMP);
                     entries.add(ModBlocks.BLUE_MUSHROOM_LAMP);
                     entries.add(ModBlocks.CHOMPER_BLOCK);
+                    entries.add(ModBlocks.ANCIENT_FURNACE);
                     entries.add(ModBlocks.LUCILLE_TULIP);
+                    entries.add(ModBlocks.FLAURELLE);
+                    entries.add(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk);
 
                     // Luci Wood
                     entries.add(ModBlocks.LUCI_PLANKS);
@@ -60,14 +66,19 @@ public class ModItemGroup {
                     entries.add(ModBlocks.STRIPPED_LUCI_WOOD);
                     entries.add(ModBlocks.LUCI_WOOD);
                     entries.add(ModBlocks.LUCI_SAPLING);
+                    entries.add(ModBlocks.BLOSSOMING_LUCI_SAPLING);
                     entries.add(ModItems.LUCI_SIGN);
                     entries.add(ModItems.LUCI_HANGING_SIGN);
+                    entries.add(ModBlocks.BLOSSOMING_LUCI_VINE);
 
                     // Music Discs
                     entries.add(ModItems.NIGHT_TIME_MUSIC_DISC);
 
                     // Frostite
                     entries.add(ModItems.FROSTITE);
+
+                    entries.add(ModItems.CRAB_SPAWN_EGG);
+                    entries.add(ModItems.TURTLE_SPAWN_EGG);
                   }).build());
 
   public static void registerItemGroups() {

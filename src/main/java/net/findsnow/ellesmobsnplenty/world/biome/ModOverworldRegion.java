@@ -5,7 +5,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 import terrablender.api.ParameterUtils;
 import terrablender.api.Region;
@@ -23,13 +22,13 @@ public class ModOverworldRegion extends Region {
   public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
     VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
     new ParameterUtils.ParameterPointListBuilder()
-            .temperature(ParameterUtils.Temperature.NEUTRAL)
-            .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.NEUTRAL, ParameterUtils.Humidity.FULL_RANGE))
-            .continentalness(ParameterUtils.Continentalness.NEAR_INLAND)
-            .erosion(ParameterUtils.Erosion.EROSION_0)
-            .depth(ParameterUtils.Depth.SURFACE)
-            .weirdness(ParameterUtils.Weirdness.PEAK_NORMAL)
-            .build().forEach(point -> builder.add(point, ModBiomes.LUCERO_BIOME));
+            .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.NEUTRAL, ParameterUtils.Temperature.WARM))
+            .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.NEUTRAL, ParameterUtils.Humidity.DRY))
+            .continentalness(ParameterUtils.Continentalness.span(ParameterUtils.Continentalness.NEAR_INLAND, ParameterUtils.Continentalness.INLAND))
+            .erosion(ParameterUtils.Erosion.span(ParameterUtils.Erosion.EROSION_1, ParameterUtils.Erosion.EROSION_4))
+            .depth(ParameterUtils.Depth.span(ParameterUtils.Depth.SURFACE, ParameterUtils.Depth.UNDERGROUND))
+            .weirdness(ParameterUtils.Weirdness.MID_SLICE_NORMAL_DESCENDING)
+            .build().forEach(point -> builder.add(point, ModBiomes.LUCI_REGION_1));
     builder.build().forEach(mapper);
   }
 }

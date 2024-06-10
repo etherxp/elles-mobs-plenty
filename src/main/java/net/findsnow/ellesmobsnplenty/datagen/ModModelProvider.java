@@ -2,17 +2,18 @@ package net.findsnow.ellesmobsnplenty.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.findsnow.ellesmobsnplenty.block.ChomperBlock;
-import net.findsnow.ellesmobsnplenty.block.HollowLuciLogBlock;
-import net.findsnow.ellesmobsnplenty.block.LuciLeavesBlock;
+import net.findsnow.ellesmobsnplenty.block.custom.BlossomingLuciVineBlock;
+import net.findsnow.ellesmobsnplenty.block.custom.ChomperBlock;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
+import net.findsnow.ellesmobsnplenty.block.custom.LuciPetals;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.BlueMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.GreenMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
-import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamilies;
 import net.minecraft.util.Identifier;
+
+import java.util.Optional;
 
 public class ModModelProvider extends FabricModelProvider {
   public ModModelProvider(FabricDataOutput output) {
@@ -25,6 +26,11 @@ public class ModModelProvider extends FabricModelProvider {
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_BLOCK);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_NEPHRITE_BLOCK);
     blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.LUCILLE_TULIP, ModBlocks.POTTED_LUCILLE_TULIP, BlockStateModelGenerator.TintType.NOT_TINTED);
+    //blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.FLAURELLE, ModBlocks.POTTED_FLAURELLE, BlockStateModelGenerator.TintType.NOT_TINTED);
+    blockStateModelGenerator.registerCooker(ModBlocks.ANCIENT_FURNACE, TexturedModel.ORIENTABLE);
+    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk);
+    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.BLOSSOMING_LUCI_VINE);
+    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_PETAL);
 
     // Custom Blocks
     registerChomper(blockStateModelGenerator);
@@ -37,27 +43,28 @@ public class ModModelProvider extends FabricModelProvider {
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_ORE);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_FROSTITE_ORE);
 
-    // Lucero Wood
-    BlockStateModelGenerator.BlockTexturePool luceroTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LUCI_PLANKS);
-    luceroTexturePool.stairs(ModBlocks.LUCI_STAIRS);
-    luceroTexturePool.slab(ModBlocks.LUCI_SLABS);
-    luceroTexturePool.button(ModBlocks.LUCI_BUTTON);
-    luceroTexturePool.pressurePlate(ModBlocks.LUCI_PRESSURE_PLATE);
-    luceroTexturePool.fence(ModBlocks.LUCI_FENCE);
-    luceroTexturePool.fenceGate(ModBlocks.LUCI_FENCE_GATE);
-    luceroTexturePool.wall(ModBlocks.LUCI_WALL);
+    // Luci Wood
+    BlockStateModelGenerator.BlockTexturePool luciTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LUCI_PLANKS);
+    luciTexturePool.stairs(ModBlocks.LUCI_STAIRS);
+    luciTexturePool.slab(ModBlocks.LUCI_SLABS);
+    luciTexturePool.button(ModBlocks.LUCI_BUTTON);
+    luciTexturePool.pressurePlate(ModBlocks.LUCI_PRESSURE_PLATE);
+    luciTexturePool.fence(ModBlocks.LUCI_FENCE);
+    luciTexturePool.fenceGate(ModBlocks.LUCI_FENCE_GATE);
+    luciTexturePool.wall(ModBlocks.LUCI_WALL);
 
     blockStateModelGenerator.registerDoor(ModBlocks.LUCI_DOOR);
-    blockStateModelGenerator.registerTrapdoor(ModBlocks.LUCI_TRAPDOOR);
-    luceroTexturePool.family(BlockFamilies.register(ModBlocks.LUCI_PLANKS).sign(ModBlocks.LUCI_SIGN, ModBlocks.LUCI_WALL_SIGN).build());
+    blockStateModelGenerator.registerOrientableTrapdoor(ModBlocks.LUCI_TRAPDOOR);
+    luciTexturePool.family(BlockFamilies.register(ModBlocks.LUCI_PLANKS).sign(ModBlocks.LUCI_SIGN, ModBlocks.LUCI_WALL_SIGN).build());
     blockStateModelGenerator.registerHangingSign(ModBlocks.STRIPPED_LUCI_LOG, ModBlocks.LUCI_HANGING_SIGN, ModBlocks.LUCI_WALL_HANGING_SIGN);
 
     blockStateModelGenerator.registerLog(ModBlocks.LUCI_LOG).log(ModBlocks.LUCI_LOG).wood(ModBlocks.LUCI_WOOD);
     blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_LUCI_LOG).log(ModBlocks.STRIPPED_LUCI_LOG).wood(ModBlocks.STRIPPED_LUCI_WOOD);
-    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.LUCI_LEAVES);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOSSOMING_LUCI_LEAVES);
+    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.LUCI_LEAVES);
 
     blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.LUCI_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+    blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.BLOSSOMING_LUCI_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
   }
 
   // Custom Registers
@@ -89,6 +96,9 @@ public class ModModelProvider extends FabricModelProvider {
   // Item Models
   @Override
   public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+    itemModelGenerator.register(ModItems.CRAB_CLAW, Models.GENERATED);
+    itemModelGenerator.register(ModItems.RAW_CRAB, Models.GENERATED);
+    itemModelGenerator.register(ModItems.COOKED_CRAB, Models.GENERATED);
     itemModelGenerator.register(ModItems.FROSTITE, Models.GENERATED);
     itemModelGenerator.register(ModItems.NEPHRITE, Models.GENERATED);
     itemModelGenerator.register(ModItems.RAW_NEPHRITE, Models.GENERATED);
@@ -107,6 +117,14 @@ public class ModModelProvider extends FabricModelProvider {
     itemModelGenerator.register(ModItems.NEPHRITE_BOOTS, Models.GENERATED);
 
     itemModelGenerator.register(ModBlocks.LUCI_SAPLING.asItem(), Models.GENERATED);
+    itemModelGenerator.register(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk.asItem(), Models.GENERATED);
+    itemModelGenerator.register(ModBlocks.BLOSSOMING_LUCI_SAPLING.asItem(), Models.GENERATED);
+
+    // Spawn Eggs
+    itemModelGenerator.register(ModItems.CRAB_SPAWN_EGG,
+            new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+    itemModelGenerator.register(ModItems.TURTLE_SPAWN_EGG,
+            new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
 
   }
 }

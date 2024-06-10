@@ -7,8 +7,12 @@ import net.findsnow.ellesmobsnplenty.entity.ModEntities;
 import net.findsnow.ellesmobsnplenty.item.ModItemGroup;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
 import net.findsnow.ellesmobsnplenty.particle.ModParticles;
+import net.findsnow.ellesmobsnplenty.recipe.ModRecipes;
+import net.findsnow.ellesmobsnplenty.screen.ModScreenHandlers;
 import net.findsnow.ellesmobsnplenty.sound.ModSounds;
+import net.findsnow.ellesmobsnplenty.util.ModFeatures;
 import net.findsnow.ellesmobsnplenty.util.ModRegistries;
+import net.findsnow.ellesmobsnplenty.world.decorators.ModTreeDecorator;
 import net.findsnow.ellesmobsnplenty.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,5 +31,9 @@ public class EllesMobsNPlenty implements ModInitializer {
 		ModParticles.RegisterParticles();
 		ModSounds.registerSounds();
 		ModEntities.registerModEntities();
+		ModScreenHandlers.registerScreenHandler();
+		ModRecipes.registerRecipes();
+		ModTreeDecorator.register();
+		ModFeatures.register();
 	}
 }

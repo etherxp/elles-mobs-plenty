@@ -19,6 +19,11 @@ public class ModBlockEntities {
           FabricBlockEntityTypeBuilder.create(ModHangingSignBlockEntity::new,
                   ModBlocks.LUCI_HANGING_SIGN, ModBlocks.LUCI_WALL_HANGING_SIGN).build(null));
 
+  public static final BlockEntityType<AncientFurnaceBlockEntity> ANCIENT_FURNACE_BE =
+          Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(EllesMobsNPlenty.MOD_ID,"ancient_furnace_be"),
+          FabricBlockEntityTypeBuilder.create(AncientFurnaceBlockEntity::new,
+                  ModBlocks.ANCIENT_FURNACE).build(null));
+
 
   public static void registerBlockEntities() {
     EllesMobsNPlenty.LOGGER.info("Registering Block Entities for " + EllesMobsNPlenty.MOD_ID);

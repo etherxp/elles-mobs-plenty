@@ -77,7 +77,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
             .add(ModBlocks.LUCI_WOOD);
 
     getOrCreateTagBuilder(BlockTags.SAPLINGS)
-            .add(ModBlocks.LUCI_SAPLING);
+            .add(ModBlocks.LUCI_SAPLING)
+            .add(ModBlocks.BLOSSOMING_LUCI_SAPLING);
 
     getOrCreateTagBuilder(BlockTags.PLANKS)
             .add(ModBlocks.LUCI_PLANKS);

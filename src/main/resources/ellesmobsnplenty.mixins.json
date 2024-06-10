@@ -3,7 +3,8 @@
 	"package": "net.findsnow.ellesmobsnplenty.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"TreeDecoratorTypeMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

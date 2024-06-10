@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
+import net.findsnow.ellesmobsnplenty.entity.ModEntities;
 import net.findsnow.ellesmobsnplenty.sound.ModSounds;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -26,6 +27,22 @@ public class ModItems {
           new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.LUCI_SIGN, ModBlocks.LUCI_WALL_SIGN));
   public static final Item LUCI_HANGING_SIGN = registerItem("luci_hanging_sign",
           new HangingSignItem(ModBlocks.LUCI_HANGING_SIGN, ModBlocks.LUCI_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
+  public static final Item CRAB_CLAW = registerItem("crab_claw",
+          new Item(new FabricItemSettings()));
+
+  // Spawn Eggs
+  public static final Item CRAB_SPAWN_EGG = registerItem("crab_spawn_egg",
+          new SpawnEggItem(ModEntities.CRAB, 0x831414, 0xf24b4b, new FabricItemSettings()));
+  public static final Item TURTLE_SPAWN_EGG = registerItem("turtle_spawn_egg",
+          new SpawnEggItem(ModEntities.TURTLE, 0x16372a, 0x418651, new FabricItemSettings()));
+
+
+  // Food
+  public static final Item RAW_CRAB = registerItem("raw_crab",
+          new Item(new FabricItemSettings()));
+  public static final Item COOKED_CRAB = registerItem("cooked_crab",
+          new Item(new FabricItemSettings()));
+
 
   // Tools
   public static final Item NEPHRITE_PICKAXE = registerItem("nephrite_pickaxe",
@@ -66,6 +83,9 @@ public class ModItems {
     entries.add(FROSTITE);
     entries.add(RAW_NEPHRITE);
     entries.add(NEPHRITE_NUGGET);
+    entries.add(CRAB_CLAW);
+    entries.add(RAW_CRAB);
+    entries.add(COOKED_CRAB);
 
     // Blocks
     entries.add(ModBlocks.NEPHRITE_BLOCK);

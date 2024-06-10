@@ -25,6 +25,8 @@
   "block.ellesmobsnplenty.green_mushroom_lamp": "Green Mushroom Lamp",
   "block.ellesmobsnplenty.blue_mushroom_lamp": "Blue Mushroom Lamp",
   "block.ellesmobsnplenty.chomper_block": "Chomper",
+  "block.ellesmobsnplenty.ancient_furnace": "Ancient Furnace",
+  "block.ellesmobsnplenty.luci_fungus_shelf_block": "Luci Fungus",
 
   "block.ellesmobsnplenty.luci_planks": "Luci Planks",
   "block.ellesmobsnplenty.luci_stairs": "Luci Stairs",
@@ -44,12 +46,23 @@
   "block.ellesmobsnplenty.luci_leaves": "Luci Leaves",
   "block.ellesmobsnplenty.blossoming_luci_leaves": "Blossoming Luci Leaves",
   "block.ellesmobsnplenty.luci_sapling": "Luci Sapling",
+  "block.ellesmobsnplenty.blossoming_luci_sapling": "Blossoming Luci Sapling",
   "block.ellesmobsnplenty.luci_sign": "Luci Sign",
   "block.ellesmobsnplenty.luci_hanging_sign": "Luci Hanging Sign",
   "block.ellesmobsnplenty.luci_wall_hanging_sign": "Luci Wall Hanging Sign",
+  "block.ellesmobsnplenty.blossoming_luci_vine": "Blossoming Luci Vine",
+  "block.ellesmobsnplenty.blossoming_luci_vine_plant": "Blossoming Luci Vine Plant",
+  "block.ellesmobsnplenty.luci_petals": "Luci Petals",
 
   "entity.ellesmobsnplenty.firefly": "Firefly",
   "item.ellesmobsnplenty.firefly_spawn_egg": "Firefly Spawn Egg",
+
+  "item.ellesmobsnplenty.crab_spawn_egg": "Crab Spawn Egg",
+  "item.ellesmobsnplenty.raw_crab": "Raw Crab",
+  "item.ellesmobsnplenty.cooked_crab": "Cooked Crab",
+  "item.ellesmobsnplenty.crab_claw": "Crab Claw",
+
+  "item.ellesmobsnplenty.turtle_spawn_egg": "Turtle Spawn Egg",
 
   "block.ellesmobsnplenty.lucille_tulip": "Lucille Tulip",
 

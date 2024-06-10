@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
+import net.minecraft.item.Items;
 
 public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
   public ModBlockLootTableGenerator(FabricDataOutput dataOutput) {
@@ -27,6 +28,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
     addDrop(ModBlocks.LUCI_DOOR, doorDrops(ModBlocks.LUCI_DOOR));
     addDrop(ModBlocks.LUCI_LOG);
     addDrop(ModBlocks.LUCI_WOOD);
+    addDrop(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk, dropsWithShears(Items.BROWN_MUSHROOM_BLOCK));
     addDrop(ModBlocks.LUCI_LEAVES, leavesDrops(ModBlocks.LUCI_LEAVES, ModBlocks.LUCI_SAPLING, 0.1f));
     addDrop(ModBlocks.BLOSSOMING_LUCI_LEAVES, leavesDrops(ModBlocks.BLOSSOMING_LUCI_LEAVES, ModBlocks.LUCI_SAPLING, 0.1f));
     addDrop(ModBlocks.STRIPPED_LUCI_LOG);

@@ -10,6 +10,8 @@ import net.minecraft.util.Identifier;
 public class ModParticles {
   public static final DefaultParticleType FALLING_LEAVES_PARTICLE =
           registerParticle("falling_leaves_particle", FabricParticleTypes.simple());
+  public static final DefaultParticleType BLOSSOMING_FALLING_LEAVES =
+          registerParticle("blossoming_falling_leaves", FabricParticleTypes.simple());
 
   public static final DefaultParticleType FIREFLY =
           registerParticle("firefly", FabricParticleTypes.simple());

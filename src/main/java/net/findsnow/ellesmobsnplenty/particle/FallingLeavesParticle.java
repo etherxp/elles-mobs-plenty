@@ -13,22 +13,18 @@ public class FallingLeavesParticle
   private final float field_43370;
   private final float field_43371;
 
-  protected FallingLeavesParticle(ClientWorld world, double xCoord, double yCoord, double zCoord,
-                                      double xd, double yd, double zd, SpriteProvider spriteSet) {
-    super(world, xCoord, yCoord, zCoord, xd, yd, zd);
-    this.setSprite(spriteSet.getSprite(this.random));
-    this.gravityStrength = 0.004f;
-    this.maxAge = 120;
-    this.scale = 0.1f;
-    this.setColor(1.0f, 1.0f, 1.0f);
-    this.setBoundingBoxSpacing(0.01f, 0.01f);
-    this.collidesWithWorld = true;
-    this.velocityX = xd;
-    this.velocityY = yd;
-    this.velocityZ = zd;
+  protected FallingLeavesParticle(ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider) {
+    super(world, x, y, z);
+    float f;
+    this.setSprite(spriteProvider.getSprite(this.random.nextInt(12), 12));
     this.field_43369 = (float)Math.toRadians(this.random.nextBoolean() ? -30.0 : 30.0);
     this.field_43370 = this.random.nextFloat();
     this.field_43371 = (float)Math.toRadians(this.random.nextBoolean() ? -5.0 : 5.0);
+    this.maxAge = 300;
+    this.gravityStrength = 7.5E-4f;
+    this.scale = f = this.random.nextBoolean() ? 0.05f : 0.075f;
+    this.setBoundingBoxSpacing(f, f);
+    this.velocityMultiplier = 1.0f;
   }
 
 
@@ -77,7 +73,7 @@ public class FallingLeavesParticle
     }
     public Particle createParticle(DefaultParticleType type, ClientWorld clientWorld,
                                    double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-      return new FallingLeavesParticle(clientWorld, x, y, z, velocityX, velocityY, velocityZ, this.spriteProvider);
+      return new FallingLeavesParticle(clientWorld, x, y, z, this.spriteProvider);
     }
   }
 }
