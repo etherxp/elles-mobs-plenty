@@ -2,6 +2,8 @@ package net.findsnow.ellesmobsnplenty.world.gen;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.findsnow.ellesmobsnplenty.world.ModConfiguredFeatures;
+import net.findsnow.ellesmobsnplenty.world.ModFeatures;
 import net.findsnow.ellesmobsnplenty.world.ModPlacedFeatures;
 import net.findsnow.ellesmobsnplenty.world.biome.ModBiomes;
 import net.minecraft.world.gen.GenerationStep;

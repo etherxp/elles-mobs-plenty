@@ -1,15 +1,10 @@
 package net.findsnow.ellesmobsnplenty.world;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.findsnow.ellesmobsnplenty.world.decorators.BlossomingLuciVineTreeDecorator;
 import net.findsnow.ellesmobsnplenty.world.decorators.ModFungusTreeDecorator;
-import net.findsnow.ellesmobsnplenty.world.features.config.ModFallenTreeFeatureConfig;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.render.debug.BeeDebugRenderer;
 import net.minecraft.registry.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
@@ -20,11 +15,9 @@ import net.minecraft.util.math.intprovider.WeightedListIntProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.CherryFoliagePlacer;
-import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
-import net.minecraft.world.gen.trunk.BendingTrunkPlacer;
 import net.minecraft.world.gen.trunk.CherryTrunkPlacer;
 
 import java.util.List;
@@ -78,9 +71,6 @@ public class ModConfiguredFeatures {
             .forceDirt()
             .ignoreVines()
             .build());
-
-
-    register(context, LUCI_FALLEN_LOG, ModFeatures.FALLEN_LOG, new ModFallenTreeFeatureConfig(BlockStateProvider.of(ModBlocks.HOLLOW_LUCI_LOG), UniformIntProvider.create(2, 3), true));
 
     register(context, LUCI_PETALS, Feature.FLOWER, new RandomPatchFeatureConfig(37, 6,2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
             new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LUCI_PETAL)))));

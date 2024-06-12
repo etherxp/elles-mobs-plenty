@@ -18,7 +18,6 @@ public class ModPlacedFeatures {
   public static final RegistryKey<PlacedFeature> BLOSSOMING_LUCI_KEY = registerKey("blossoming_luci_placed");
   public static final RegistryKey<PlacedFeature> LUCI_PETAL_PLACED_KEY = registerKey("luci_petal_placed");
   public static final RegistryKey<PlacedFeature> FLAURELLE_PLACED_KEY = registerKey("flaurelle_placed");
-  public static final RegistryKey<PlacedFeature> LUCI_FALLEN_LOG = registerKey("luci_fallen_log");
 
   public static void bootstrap(Registerable<PlacedFeature> context) {
     var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -36,10 +35,6 @@ public class ModPlacedFeatures {
 
     register(context, FLAURELLE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FLAURELLE),
             RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
-
-    register(context, LUCI_FALLEN_LOG, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LUCI_FALLEN_LOG),
-            RarityFilterPlacementModifier.of(20), CountPlacementModifier.of(1), SquarePlacementModifier.of(),
-            PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
   }
 
   public static RegistryKey<PlacedFeature> registerKey(String name) {

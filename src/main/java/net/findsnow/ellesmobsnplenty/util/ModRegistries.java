@@ -7,7 +7,6 @@ import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.findsnow.ellesmobsnplenty.entity.ModEntities;
 import net.findsnow.ellesmobsnplenty.entity.custom.feature.CrabEntity;
 import net.findsnow.ellesmobsnplenty.entity.custom.feature.TurtleEntity;
-import net.findsnow.ellesmobsnplenty.world.features.config.ModFallenTreeFeatureConfig;
 
 public class ModRegistries {
   public static void RegisterModStuff() {

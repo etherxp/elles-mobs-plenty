@@ -1,6 +1,7 @@
 package net.findsnow.ellesmobsnplenty.world.biome;
 
 import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
+import net.findsnow.ellesmobsnplenty.world.ModPlacedFeatures;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
@@ -11,6 +12,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class ModBiomes {
