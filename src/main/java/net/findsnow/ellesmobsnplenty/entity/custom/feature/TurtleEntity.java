@@ -16,6 +16,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
@@ -43,6 +44,11 @@ public class TurtleEntity extends AnimalEntity implements Tameable {
   public TurtleEntity(EntityType<? extends AnimalEntity> entityType, World world) {
     super(entityType, world);
     this.setPathfindingPenalty(PathNodeType.DANGER_FIRE, 0.0F);
+  }
+
+  @Override
+  public boolean isBreedingItem(ItemStack stack) {
+    return false;
   }
 
   @Override
@@ -145,9 +151,5 @@ public class TurtleEntity extends AnimalEntity implements Tameable {
     return null;
   }
 
-  @Override
-  public EntityView method_48926() {
-    return null;
-  }
 
 }

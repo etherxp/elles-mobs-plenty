@@ -19,11 +19,11 @@ public class CrabRenderer extends MobEntityRenderer<CrabEntity, CrabModel<CrabEn
   private static final Map<CrabVariant, Identifier> LOCATION_BY_VARIANT =
           Util.make(Maps.newEnumMap(CrabVariant.class), map -> {
             map.put(CrabVariant.DEFAULT,
-                    new Identifier(EllesMobsNPlenty.MOD_ID, "textures/entity/crab/crab_texture.png"));
+                    Identifier.of(EllesMobsNPlenty.MOD_ID, "textures/entity/crab/crab_texture.png"));
             map.put(CrabVariant.GREEN,
-                    new Identifier(EllesMobsNPlenty.MOD_ID, "textures/entity/crab/crab_texture_green.png"));
+                    Identifier.of(EllesMobsNPlenty.MOD_ID, "textures/entity/crab/crab_texture_green.png"));
             map.put(CrabVariant.BLUE,
-                    new Identifier(EllesMobsNPlenty.MOD_ID, "textures/entity/crab/crab_texture_blue.png"));
+                    Identifier.of(EllesMobsNPlenty.MOD_ID, "textures/entity/crab/crab_texture_blue.png"));
           });
 
   public CrabRenderer(EntityRendererFactory.Context ctx) {

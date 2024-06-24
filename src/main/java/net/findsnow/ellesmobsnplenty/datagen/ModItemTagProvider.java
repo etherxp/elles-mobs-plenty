@@ -22,8 +22,5 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     getOrCreateTagBuilder(ItemTags.PLANKS)
             .add(ModBlocks.LUCI_PLANKS.asItem());
-
-    getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
-            .add(ModItems.NIGHT_TIME_MUSIC_DISC);
   }
 }

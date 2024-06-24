@@ -4,7 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -46,7 +46,7 @@ public class FireflyParticle extends SpriteBillboardParticle {
   }
 
   @Environment(value= EnvType.CLIENT)
-  public static class Factory implements ParticleFactory<DefaultParticleType> {
+  public static class Factory implements ParticleFactory<SimpleParticleType> {
     private final SpriteProvider spriteProvider;
 
     public Factory(SpriteProvider spriteProvider) {
@@ -54,7 +54,7 @@ public class FireflyParticle extends SpriteBillboardParticle {
     }
 
     @Override
-    public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z,
+    public Particle createParticle(SimpleParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z,
                                    double velocityX, double velocityY, double velocityZ) {
       FireflyParticle fireflyParticle = new FireflyParticle(clientWorld, x, y, z, velocityX, velocityY, velocityZ, spriteProvider);
       fireflyParticle.setSprite(this.spriteProvider);

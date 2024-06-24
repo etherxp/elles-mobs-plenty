@@ -1,6 +1,7 @@
 package net.findsnow.ellesmobsnplenty.world.decorators;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.findsnow.ellesmobsnplenty.block.custom.LuciFungusShelfBlock;
@@ -14,10 +15,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ModFungusTreeDecorator extends TreeDecorator {
-  public static final Codec<ModFungusTreeDecorator> CODEC = RecordCodecBuilder.create(instance ->
+  public static final MapCodec<ModFungusTreeDecorator> MAP_CODEC = RecordCodecBuilder.mapCodec(instance ->
           instance.group(
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((treeDecorator) -> treeDecorator.probability),
-                  Codec.intRange(0, 15).fieldOf("treeHeight").forGetter(p -> p.treeHeight))
+                          Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((treeDecorator) -> treeDecorator.probability),
+                          Codec.intRange(0, 15).fieldOf("treeHeight").forGetter(p -> p.treeHeight))
                   .apply(instance, ModFungusTreeDecorator::new));
   private final float probability;
   private final int treeHeight;

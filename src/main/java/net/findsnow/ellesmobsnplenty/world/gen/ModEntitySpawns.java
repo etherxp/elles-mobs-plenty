@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.findsnow.ellesmobsnplenty.entity.ModEntities;
 import net.findsnow.ellesmobsnplenty.util.ModBiomeTags;
+import net.findsnow.ellesmobsnplenty.world.biome.ModBiomes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -20,5 +21,6 @@ import java.util.Random;
 public class ModEntitySpawns {
 
   public static void addSpawns() {
+
   }
 }

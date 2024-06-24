@@ -83,6 +83,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     getOrCreateTagBuilder(BlockTags.PLANKS)
             .add(ModBlocks.LUCI_PLANKS);
 
-    getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "needs_tool_level_5")));
+    getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, Identifier.of("fabric", "needs_tool_level_5")));
   }
 }

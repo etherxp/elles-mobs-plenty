@@ -5,10 +5,13 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
 import net.minecraft.item.Items;
+import net.minecraft.registry.RegistryWrapper;
+
+import java.util.concurrent.CompletableFuture;
 
 public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
-  public ModBlockLootTableGenerator(FabricDataOutput dataOutput) {
-    super(dataOutput);
+  public ModBlockLootTableGenerator(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+    super(dataOutput, registryLookup);
   }
 
   @Override
@@ -34,6 +37,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
     addDrop(ModBlocks.STRIPPED_LUCI_LOG);
     addDrop(ModBlocks.STRIPPED_LUCI_WOOD);
     addDrop(ModBlocks.CHOMPER_BLOCK);
+    addDrop(ModBlocks.LUCI_MUSHROOM);
 
     addDrop(ModBlocks.NEPHRITE_ORE, oreDrops(ModBlocks.NEPHRITE_ORE, ModItems.RAW_NEPHRITE));
     addDrop(ModBlocks.DEEPSLATE_NEPHRITE_ORE, oreDrops(ModBlocks.NEPHRITE_ORE, ModItems.RAW_NEPHRITE));

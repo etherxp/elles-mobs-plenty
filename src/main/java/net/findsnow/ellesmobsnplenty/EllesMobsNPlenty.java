@@ -3,6 +3,7 @@ package net.findsnow.ellesmobsnplenty;
 import net.fabricmc.api.ModInitializer;
 
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
+import net.findsnow.ellesmobsnplenty.entity.ModBoats;
 import net.findsnow.ellesmobsnplenty.entity.ModEntities;
 import net.findsnow.ellesmobsnplenty.item.ModItemGroup;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
@@ -12,7 +13,6 @@ import net.findsnow.ellesmobsnplenty.screen.ModScreenHandlers;
 import net.findsnow.ellesmobsnplenty.sound.ModSounds;
 import net.findsnow.ellesmobsnplenty.util.ModRegistries;
 import net.findsnow.ellesmobsnplenty.world.ModFeatures;
-import net.findsnow.ellesmobsnplenty.world.biome.ModBiomeModifiers;
 import net.findsnow.ellesmobsnplenty.world.decorators.ModTreeDecorator;
 import net.findsnow.ellesmobsnplenty.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
@@ -35,7 +35,7 @@ public class EllesMobsNPlenty implements ModInitializer {
 		ModScreenHandlers.registerScreenHandler();
 		ModRecipes.registerRecipes();
 		ModTreeDecorator.register();
-		ModBiomeModifiers.register();
 		ModFeatures.register();
+		ModBoats.registerBoats();
 	}
 }

@@ -59,10 +59,10 @@ public class TurtleModel<T extends TurtleEntity> extends SinglePartEntityModel<T
       this.head.pitch = headPitch * ((float) Math.PI / 180);
   }
 
-  @Override
-  public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-    bone.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-  }
+//  @Override
+//  public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
+//    bone.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+//  }
 
   @Override
   public ModelPart getPart() {

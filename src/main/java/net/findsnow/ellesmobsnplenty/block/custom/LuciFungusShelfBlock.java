@@ -1,15 +1,18 @@
 package net.findsnow.ellesmobsnplenty.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -36,16 +39,21 @@ public class LuciFungusShelfBlock extends HorizontalFacingBlock {
   }
 
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-    ItemStack itemStack = player.getStackInHand(hand);
-    if (itemStack.getItem() == Items.SHEARS) {
+  protected MapCodec<? extends HorizontalFacingBlock> getCodec() {
+    return null;
+  }
+
+  @Override
+  protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    Item item = stack.getItem();
+    if (stack.isOf(Items.SHEARS)) {
       if (!world.isClient) {
         dropStack(world, pos, new ItemStack(this));
         world.removeBlock(pos, false);
       }
-      return ActionResult.SUCCESS;
+      return ItemActionResult.SUCCESS;
     }
-    return super.onUse(state, world, pos, player, hand, hit);
+    return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
   }
 
   @Override

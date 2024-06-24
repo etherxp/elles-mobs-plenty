@@ -1,10 +1,11 @@
 {
 	"required": true,
 	"package": "net.findsnow.ellesmobsnplenty.mixin",
-	"compatibilityLevel": "JAVA_17",
+	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"ExampleMixin",
-		"TreeDecoratorTypeMixin"
+		"TreeDecoratorTypeMixin",
+		"TrunkPlacerTypeInvoker"
 	],
 	"injectors": {
 		"defaultRequire": 1

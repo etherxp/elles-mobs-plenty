@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -14,6 +15,7 @@ import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
@@ -32,15 +34,14 @@ public class BlueMushroomLampBlock extends Block {
   }
 
   @Override
-  public ActionResult onUse(BlockState state, World world, BlockPos pos,
-                            PlayerEntity player, Hand hand, BlockHitResult hit) {
+  protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (!world.isClient() && hand == Hand.MAIN_HAND) {
       boolean clicked = state.get(CLICKED);
       world.setBlockState(pos, state.with(CLICKED, !clicked));
       SoundEvent soundEvent = clicked ? SoundEvents.BLOCK_CHERRY_WOOD_BUTTON_CLICK_ON : SoundEvents.BLOCK_CHERRY_WOOD_BUTTON_CLICK_OFF;
       world.playSound(null, pos, soundEvent, SoundCategory.BLOCKS);
     }
-    return ActionResult.SUCCESS;
+    return ItemActionResult.SUCCESS;
   }
 
   @Override

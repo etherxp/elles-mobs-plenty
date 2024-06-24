@@ -14,7 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
 
 public class TurtleRenderer extends MobEntityRenderer<TurtleEntity, TurtleModel<TurtleEntity>> {
-  private static final Identifier TEXTURE = new Identifier(EllesMobsNPlenty.MOD_ID, "textures/entity/turtle/turtle_texture.png");
+  private static final Identifier TEXTURE = Identifier.of(EllesMobsNPlenty.MOD_ID, "textures/entity/turtle/turtle_texture.png");
 
   public TurtleRenderer(EntityRendererFactory.Context context) {
     super(context, new TurtleModel<>(context.getPart(ModModelLayers.TURTLE)), 0.2f);
@@ -27,7 +27,7 @@ public class TurtleRenderer extends MobEntityRenderer<TurtleEntity, TurtleModel<
 
   @Override
   public void render(TurtleEntity livingEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-    if(livingEntity.isBaby()) {
+    if (livingEntity.isBaby()) {
       matrixStack.scale(0.5f, 0.5f, 0.5f);
     } else {
       matrixStack.scale(1.0f, 1.0f, 1.0f);

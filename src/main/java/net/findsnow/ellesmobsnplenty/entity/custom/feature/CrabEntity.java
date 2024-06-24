@@ -20,6 +20,7 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.FrogVariant;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
@@ -201,12 +202,6 @@ public class CrabEntity extends AnimalEntity {
     return ModEntities.CRAB.create(world);
   }
 
-  @Override
-  protected void initDataTracker() {
-    super.initDataTracker();
-    this.dataTracker.startTracking(DATA_ID_TYPE_VARIANT, 0);
-  }
-
   // Variants
 
   public CrabVariant getVariant() {
@@ -239,6 +234,11 @@ public class CrabEntity extends AnimalEntity {
   public void readCustomDataFromNbt(NbtCompound nbt) {
     super.readCustomDataFromNbt(nbt);
     this.dataTracker.set(DATA_ID_TYPE_VARIANT, nbt.getInt("Variant"));
+  }
+
+  @Override
+  public boolean isBreedingItem(ItemStack stack) {
+    return false;
   }
 
   @Override

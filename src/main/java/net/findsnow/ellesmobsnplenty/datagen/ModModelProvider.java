@@ -9,8 +9,10 @@ import net.findsnow.ellesmobsnplenty.block.custom.LuciPetals;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.BlueMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.GreenMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
+import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamilies;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 import java.util.Optional;
@@ -23,11 +25,10 @@ public class ModModelProvider extends FabricModelProvider {
   @Override
   public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
     // Blocks
+    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_MUSHROOM);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_BLOCK);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_NEPHRITE_BLOCK);
     blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.LUCILLE_TULIP, ModBlocks.POTTED_LUCILLE_TULIP, BlockStateModelGenerator.TintType.NOT_TINTED);
-    //blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.FLAURELLE, ModBlocks.POTTED_FLAURELLE, BlockStateModelGenerator.TintType.NOT_TINTED);
-    blockStateModelGenerator.registerCooker(ModBlocks.ANCIENT_FURNACE, TexturedModel.ORIENTABLE);
     blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk);
     blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.BLOSSOMING_LUCI_VINE);
     blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_PETAL);
@@ -55,8 +56,6 @@ public class ModModelProvider extends FabricModelProvider {
 
     blockStateModelGenerator.registerDoor(ModBlocks.LUCI_DOOR);
     blockStateModelGenerator.registerOrientableTrapdoor(ModBlocks.LUCI_TRAPDOOR);
-    luciTexturePool.family(BlockFamilies.register(ModBlocks.LUCI_PLANKS).sign(ModBlocks.LUCI_SIGN, ModBlocks.LUCI_WALL_SIGN).build());
-    blockStateModelGenerator.registerHangingSign(ModBlocks.STRIPPED_LUCI_LOG, ModBlocks.LUCI_HANGING_SIGN, ModBlocks.LUCI_WALL_HANGING_SIGN);
 
     blockStateModelGenerator.registerLog(ModBlocks.LUCI_LOG).log(ModBlocks.LUCI_LOG).wood(ModBlocks.LUCI_WOOD);
     blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_LUCI_LOG).log(ModBlocks.STRIPPED_LUCI_LOG).wood(ModBlocks.STRIPPED_LUCI_WOOD);
@@ -103,28 +102,25 @@ public class ModModelProvider extends FabricModelProvider {
     itemModelGenerator.register(ModItems.NEPHRITE, Models.GENERATED);
     itemModelGenerator.register(ModItems.RAW_NEPHRITE, Models.GENERATED);
     itemModelGenerator.register(ModItems.NEPHRITE_NUGGET, Models.GENERATED);
-    itemModelGenerator.register(ModItems.NIGHT_TIME_MUSIC_DISC, Models.GENERATED);
-
-    itemModelGenerator.register(ModItems.NEPHRITE_PICKAXE, Models.HANDHELD);
-    itemModelGenerator.register(ModItems.NEPHRITE_SWORD, Models.HANDHELD);
-    itemModelGenerator.register(ModItems.NEPHRITE_AXE, Models.HANDHELD);
-    itemModelGenerator.register(ModItems.NEPHRITE_SHOVEL, Models.HANDHELD);
-    itemModelGenerator.register(ModItems.NEPHRITE_HOE, Models.HANDHELD);
-
-    itemModelGenerator.register(ModItems.NEPHRITE_HELMET, Models.GENERATED);
-    itemModelGenerator.register(ModItems.NEPHRITE_CHESTPLATE, Models.GENERATED);
-    itemModelGenerator.register(ModItems.NEPHRITE_LEGGINGS, Models.GENERATED);
-    itemModelGenerator.register(ModItems.NEPHRITE_BOOTS, Models.GENERATED);
 
     itemModelGenerator.register(ModBlocks.LUCI_SAPLING.asItem(), Models.GENERATED);
+    itemModelGenerator.register(ModBlocks.CHRYSALIS_BLOCK.asItem(), Models.GENERATED);
     itemModelGenerator.register(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk.asItem(), Models.GENERATED);
     itemModelGenerator.register(ModBlocks.BLOSSOMING_LUCI_SAPLING.asItem(), Models.GENERATED);
+    itemModelGenerator.register(ModBlocks.LUCI_MUSHROOM.asItem(), Models.GENERATED);
+
+    itemModelGenerator.register(ModItems.LUCI_BOAT, Models.GENERATED);
+    itemModelGenerator.register(ModItems.LUCI_CHEST_BOAT, Models.GENERATED);
 
     // Spawn Eggs
     itemModelGenerator.register(ModItems.CRAB_SPAWN_EGG,
-            new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
     itemModelGenerator.register(ModItems.TURTLE_SPAWN_EGG,
-            new Model(Optional.of(new Identifier("item/template_spawn_egg")), Optional.empty()));
+            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+    itemModelGenerator.register(ModItems.BUTTERFLY_SPAWN_EGG,
+            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+    itemModelGenerator.register(ModItems.CATERPILLAR_SPAWN_EGG,
+            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
 
   }
 }

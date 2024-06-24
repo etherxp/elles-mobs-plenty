@@ -1,6 +1,7 @@
 package net.findsnow.ellesmobsnplenty.world.decorators;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -9,11 +10,12 @@ import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
 public class BlossomingLuciVineTreeDecorator extends TreeDecorator {
-  public static final Codec<BlossomingLuciVineTreeDecorator> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-          Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((treeDecorator) -> treeDecorator.probability),
-          BlockStateProvider.TYPE_CODEC.fieldOf("block_provider").forGetter((treeDecorator) -> treeDecorator.blockProvider),
-          Codec.intRange(0, 10).fieldOf("number").forGetter((treeDecorator) -> treeDecorator.number)
-  ).apply(instance, BlossomingLuciVineTreeDecorator::new));
+  public static final MapCodec<BlossomingLuciVineTreeDecorator> MAP_CODEC = RecordCodecBuilder.mapCodec(instance ->
+          instance.group(
+                          Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((treeDecorator) -> treeDecorator.probability),
+                          BlockStateProvider.TYPE_CODEC.fieldOf("block_provider").forGetter((treeDecorator) -> treeDecorator.blockProvider),
+                          Codec.intRange(0, 10).fieldOf("number").forGetter((treeDecorator) -> treeDecorator.number))
+                  .apply(instance, BlossomingLuciVineTreeDecorator::new));
 
   protected final BlockStateProvider blockProvider;
   private final float probability;

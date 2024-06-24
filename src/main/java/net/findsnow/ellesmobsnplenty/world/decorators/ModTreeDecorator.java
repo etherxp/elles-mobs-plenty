@@ -6,9 +6,9 @@ import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
 public class ModTreeDecorator {
   public static final TreeDecoratorType<?> LUCI_FUNGUS_SHELF = TreeDecoratorTypeMixin.callRegister
-          ("luci_fungus_shelf_decorator", ModFungusTreeDecorator.CODEC);
+          ("luci_fungus_shelf_decorator", ModFungusTreeDecorator.MAP_CODEC);
   public static final TreeDecoratorType<?> BLOSSOMING_LUCI_VINES = TreeDecoratorTypeMixin.callRegister
-          ("blossoming_luci_vines", BlossomingLuciVineTreeDecorator.CODEC);
+          ("blossoming_luci_vines", BlossomingLuciVineTreeDecorator.MAP_CODEC);
 
   public static void register() {
     EllesMobsNPlenty.LOGGER.info("Registering Tree Decorators for" + EllesMobsNPlenty.MOD_ID);
