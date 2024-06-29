@@ -7,7 +7,6 @@ import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.findsnow.ellesmobsnplenty.entity.ModBoats;
 import net.findsnow.ellesmobsnplenty.entity.ModEntities;
-import net.findsnow.ellesmobsnplenty.sound.ModSounds;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -19,9 +18,6 @@ public class ModItems {
   public static final Item FROSTITE = registerItem("frostite",
           new Item(new Item.Settings()));
 
-  public static final Item LUCI_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.LUCI_BOAT_ID, ModBoats.LUCI_BOAT_KEY, false);
-  public static final Item LUCI_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.LUCI_CHEST_BOAT_ID, ModBoats.LUCI_BOAT_KEY, true);
-
   public static final Item NEPHRITE = registerItem("nephrite",
           new Item(new Item.Settings()));
   public static final Item RAW_NEPHRITE = registerItem("raw_nephrite",
@@ -30,6 +26,23 @@ public class ModItems {
           new Item(new Item.Settings()));
   public static final Item CRAB_CLAW = registerItem("crab_claw",
           new Item(new Item.Settings()));
+
+  // Luci Wood
+  public static final Item LUCI_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.LUCI_BOAT_ID, ModBoats.LUCI_BOAT_KEY, false);
+
+  public static final Item LUCI_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.LUCI_CHEST_BOAT_ID, ModBoats.LUCI_BOAT_KEY, true);
+
+  public static final Item LUCI_SIGN = registerItem("luci_sign", new SignItem(
+          new Item.Settings()
+                  .maxCount(16),
+          ModBlocks.LUCI_SIGN,
+          ModBlocks.LUCI_WALL_SIGN));
+
+  public static final Item LUCI_HANGING_SIGN = registerItem("luci_hanging_sign", new HangingSignItem(
+          ModBlocks.LUCI_HANGING_SIGN, ModBlocks.LUCI_WALL_HANGING_SIGN, new Item.Settings()
+          .maxCount(16)));
+
+
 
   // Spawn Eggs
   public static final Item CRAB_SPAWN_EGG = registerItem("crab_spawn_egg",

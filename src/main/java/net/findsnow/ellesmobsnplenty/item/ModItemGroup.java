@@ -77,6 +77,5 @@ public class ModItemGroup {
 
   public static void registerItemGroups() {
     // I don't know what this does
-
   }
 }

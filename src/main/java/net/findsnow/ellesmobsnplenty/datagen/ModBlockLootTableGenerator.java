@@ -10,8 +10,8 @@ import net.minecraft.registry.RegistryWrapper;
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
-  public ModBlockLootTableGenerator(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
-    super(dataOutput, registryLookup);
+  public ModBlockLootTableGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+    super(output, registryLookup);
   }
 
   @Override

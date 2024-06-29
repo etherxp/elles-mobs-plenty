@@ -28,6 +28,7 @@ import javax.swing.*;
 public class LuciFungusShelfBlock extends HorizontalFacingBlock {
   // keep working on this, not working
 
+  public static final MapCodec<LuciFungusShelfBlock> CODEC = createCodec(LuciFungusShelfBlock::new);
   public static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(0D, 0D, 0D, 16D, 16D, 3D);
   public static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(0D, 0D, 13D, 16D, 16D, 16D);
   public static final VoxelShape SHAPE_WEST = Block.createCuboidShape(13D, 0D, 0D, 16D, 16D, 16D);
@@ -40,7 +41,7 @@ public class LuciFungusShelfBlock extends HorizontalFacingBlock {
 
   @Override
   protected MapCodec<? extends HorizontalFacingBlock> getCodec() {
-    return null;
+    return CODEC;
   }
 
   @Override

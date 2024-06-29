@@ -19,11 +19,7 @@ import net.findsnow.ellesmobsnplenty.entity.render.renderer.CaterpillarRenderer;
 import net.findsnow.ellesmobsnplenty.entity.render.renderer.CrabRenderer;
 import net.findsnow.ellesmobsnplenty.entity.render.renderer.TurtleRenderer;
 import net.findsnow.ellesmobsnplenty.particle.*;
-import net.findsnow.ellesmobsnplenty.screen.ModScreenHandlers;
-import net.findsnow.ellesmobsnplenty.util.ModWoodTypes;
-import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.TexturedRenderLayers;
 
 public class EllesMobsNPlentyClient implements ClientModInitializer {
   @Override

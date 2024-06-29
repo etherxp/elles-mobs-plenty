@@ -53,6 +53,7 @@ public class ModModelProvider extends FabricModelProvider {
     luciTexturePool.fence(ModBlocks.LUCI_FENCE);
     luciTexturePool.fenceGate(ModBlocks.LUCI_FENCE_GATE);
     luciTexturePool.wall(ModBlocks.LUCI_WALL);
+    luciTexturePool.sign(ModBlocks.LUCI_SIGN);
 
     blockStateModelGenerator.registerDoor(ModBlocks.LUCI_DOOR);
     blockStateModelGenerator.registerOrientableTrapdoor(ModBlocks.LUCI_TRAPDOOR);

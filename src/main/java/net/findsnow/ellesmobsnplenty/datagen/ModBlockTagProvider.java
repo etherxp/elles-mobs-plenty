@@ -19,6 +19,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
   @Override
   protected void configure(RegistryWrapper.WrapperLookup arg) {
+
     getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
             .add(ModBlocks.LUCI_PLANKS)
             .add(ModBlocks.LUCI_STAIRS)
