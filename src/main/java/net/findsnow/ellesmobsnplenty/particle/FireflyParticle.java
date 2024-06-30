@@ -10,7 +10,7 @@ import net.minecraft.util.math.MathHelper;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class FireflyParticle extends SpriteBillboardParticle {
-  private SpriteProvider spriteProvider;
+  private final SpriteProvider spriteProvider;
 
   protected FireflyParticle(ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
     super(clientWorld, x, y, z, velocityX, velocityY, velocityZ);

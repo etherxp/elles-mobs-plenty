@@ -14,6 +14,8 @@ import net.findsnow.ellesmobsnplenty.world.tree.ModSaplingGenerators;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.data.family.BlockFamilies;
+import net.minecraft.data.family.BlockFamily;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -116,6 +118,19 @@ public class ModBlocks {
 
 
   // Wood Blocks
+  public static final BlockFamily LUCI_FAMILY = BlockFamilies.register(ModBlocks.LUCI_PLANKS)
+          .sign(ModBlocks.LUCI_SIGN, ModBlocks.LUCI_WALL_SIGN)
+          .fence(ModBlocks.LUCI_FENCE)
+          .fenceGate(ModBlocks.LUCI_FENCE_GATE)
+          .door(ModBlocks.LUCI_DOOR)
+          .slab(ModBlocks.LUCI_SLABS)
+          .stairs(ModBlocks.LUCI_STAIRS)
+          .trapdoor(ModBlocks.LUCI_TRAPDOOR)
+          .pressurePlate(ModBlocks.LUCI_PRESSURE_PLATE)
+          .button(ModBlocks.LUCI_BUTTON)
+          .group("wooden")
+          .unlockCriterionName("has_planks")
+          .build();
 
   public static final Block LUCI_LOG = registerBlock("luci_log",
           new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, AbstractBlock.Settings.copy(Blocks.CHERRY_LOG)));
@@ -146,6 +161,7 @@ public class ModBlocks {
                   .strength(2.0F, 3.0F)
                   .sounds(BlockSoundGroup.CHERRY_WOOD)
                   .burnable()));
+
 
   public static final Block LUCI_STAIRS = registerBlock("luci_stairs",
           new StairsBlock(ModBlocks.LUCI_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CHERRY_STAIRS)));
@@ -226,7 +242,7 @@ public class ModBlocks {
 
   private static Block registerBlock(String name, Block block) {
     registerBlockItem(name, block);
-    return Registry.register(Registries.BLOCK, Identifier.of(EllesMobsNPlenty.MOD_ID, name), block);
+    return Registry.register(Registries.BLOCK, name, block);
   }
 
   private static Item registerBlockItem(String name, Block block) {

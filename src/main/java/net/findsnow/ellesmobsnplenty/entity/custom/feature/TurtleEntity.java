@@ -36,7 +36,7 @@ public class TurtleEntity extends AnimalEntity implements Tameable {
   public final AnimationState checkingAnimationState = new AnimationState();
   public final AnimationState revealAnimationState = new AnimationState();
   public final AnimationState idleAnimationState = new AnimationState();
-  private long currentStateTicks = 0L;
+  private final long currentStateTicks = 0L;
   private int idleAnimationTimeout = 0;
   private int hideAnimationTimeout = 0;
   private int checkingAnimationTimeout = 0;

@@ -79,7 +79,7 @@ public class HollowLuciLogBlock extends PillarBlock {
     final String name;
     Cover(String name) {
       this.name = name;
-    };
+    }
 
     @Override
     public String asString() {

@@ -81,9 +81,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
             .add(ModBlocks.LUCI_SAPLING)
             .add(ModBlocks.BLOSSOMING_LUCI_SAPLING);
 
-    getOrCreateTagBuilder(BlockTags.PLANKS)
-            .add(ModBlocks.LUCI_PLANKS);
-
     getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, Identifier.of("fabric", "needs_tool_level_5")));
   }
 }

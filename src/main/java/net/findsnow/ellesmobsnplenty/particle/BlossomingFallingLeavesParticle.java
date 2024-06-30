@@ -13,7 +13,7 @@ import net.minecraft.util.math.Vec3d;
 
 @Environment(value= EnvType.CLIENT)
 public class BlossomingFallingLeavesParticle
-        extends SpriteBillboardParticle { ;
+        extends SpriteBillboardParticle {
   private float field_43369;
   private final float field_43370;
   private final float field_43371;

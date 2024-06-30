@@ -45,19 +45,11 @@ public class ModModelProvider extends FabricModelProvider {
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_FROSTITE_ORE);
 
     // Luci Wood
-    BlockStateModelGenerator.BlockTexturePool luciTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LUCI_PLANKS);
-    luciTexturePool.stairs(ModBlocks.LUCI_STAIRS);
-    luciTexturePool.slab(ModBlocks.LUCI_SLABS);
-    luciTexturePool.button(ModBlocks.LUCI_BUTTON);
-    luciTexturePool.pressurePlate(ModBlocks.LUCI_PRESSURE_PLATE);
-    luciTexturePool.fence(ModBlocks.LUCI_FENCE);
-    luciTexturePool.fenceGate(ModBlocks.LUCI_FENCE_GATE);
-    luciTexturePool.wall(ModBlocks.LUCI_WALL);
-    luciTexturePool.sign(ModBlocks.LUCI_SIGN);
+    BlockStateModelGenerator.BlockTexturePool luciPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LUCI_PLANKS);
+    luciPool.family(ModBlocks.LUCI_FAMILY);
 
     blockStateModelGenerator.registerDoor(ModBlocks.LUCI_DOOR);
     blockStateModelGenerator.registerOrientableTrapdoor(ModBlocks.LUCI_TRAPDOOR);
-
     blockStateModelGenerator.registerLog(ModBlocks.LUCI_LOG).log(ModBlocks.LUCI_LOG).wood(ModBlocks.LUCI_WOOD);
     blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_LUCI_LOG).log(ModBlocks.STRIPPED_LUCI_LOG).wood(ModBlocks.STRIPPED_LUCI_WOOD);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOSSOMING_LUCI_LEAVES);

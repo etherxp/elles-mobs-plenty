@@ -55,7 +55,7 @@ public class ChrysalisBlock extends Block {
   public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
     if (!this.isReadyToHatch(state)) {
       world.playSound(null, pos, SoundEvents.BLOCK_SNIFFER_EGG_CRACK, SoundCategory.BLOCKS, 0.7f, 0.9f + random.nextFloat() * 0.2f);
-      world.setBlockState(pos, (BlockState) state.with(HATCH, this.getHatchStage(state) + 1), Block.NOTIFY_LISTENERS);
+      world.setBlockState(pos, state.with(HATCH, this.getHatchStage(state) + 1), Block.NOTIFY_LISTENERS);
       return;
     }
     world.playSound(null, pos, SoundEvents.BLOCK_SNIFFER_EGG_HATCH, SoundCategory.BLOCKS, 0.7f, 0.9f + random.nextFloat() * 0.2f);
