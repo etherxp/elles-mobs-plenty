@@ -15,7 +15,7 @@ public class EllesMobsNPlentyDataGenerator implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(ModBiomeTagProvider::new);
 		pack.addProvider(ModBlockTagProvider::new);
-		pack.addProvider(ModBlockLootTableGenerator::new);
+		pack.addProvider(ModLootTableGenerator::new);
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModRecipeGenerator::new);

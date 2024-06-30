@@ -11,7 +11,6 @@ import net.findsnow.ellesmobsnplenty.particle.ModParticles;
 import net.findsnow.ellesmobsnplenty.recipe.ModRecipes;
 import net.findsnow.ellesmobsnplenty.screen.ModScreenHandlers;
 import net.findsnow.ellesmobsnplenty.sound.ModSounds;
-import net.findsnow.ellesmobsnplenty.util.ModBlockFamilies;
 import net.findsnow.ellesmobsnplenty.util.ModRegistries;
 import net.findsnow.ellesmobsnplenty.world.ModFeatures;
 import net.findsnow.ellesmobsnplenty.world.decorators.ModTreeDecorator;

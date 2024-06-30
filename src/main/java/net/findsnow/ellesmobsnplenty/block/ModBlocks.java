@@ -228,6 +228,7 @@ public class ModBlocks {
     registerBlockItem(name, block);
     return Registry.register(Registries.BLOCK, Identifier.of(EllesMobsNPlenty.MOD_ID, name), block);
   }
+
   private static Item registerBlockItem(String name, Block block) {
     return Registry.register(Registries.ITEM, Identifier.of(EllesMobsNPlenty.MOD_ID, name),
             new BlockItem(block, new Item.Settings()));
@@ -248,20 +249,20 @@ public class ModBlocks {
   }
 
   private static TerraformSignBlock registerSignBlock(String name, TerraformSignBlock block) {
-    return Registry.register(Registries.BLOCK, id(name), block);
+    return Registry.register(Registries.BLOCK, Identifier.of(EllesMobsNPlenty.MOD_ID, name), block);
   }
 
   private static TerraformWallSignBlock registerWallSignBlock(String name, TerraformWallSignBlock block) {
-    return Registry.register(Registries.BLOCK, id(name), block);
+    return Registry.register(Registries.BLOCK, Identifier.of(EllesMobsNPlenty.MOD_ID, name), block);
   }
 
   private static TerraformHangingSignBlock registerHangingSignBlock(String name, TerraformHangingSignBlock block) {
-    return Registry.register(Registries.BLOCK, id(name), block);
+    return Registry.register(Registries.BLOCK, Identifier.of(EllesMobsNPlenty.MOD_ID, name), block);
   }
 
   private static TerraformWallHangingSignBlock registerWallHangingSignBlock(String name,
                                                                             TerraformWallHangingSignBlock block) {
-    return Registry.register(Registries.BLOCK, id(name), block);
+    return Registry.register(Registries.BLOCK, Identifier.of(EllesMobsNPlenty.MOD_ID, name), block);
   }
 
   private static Identifier id(String path) {
