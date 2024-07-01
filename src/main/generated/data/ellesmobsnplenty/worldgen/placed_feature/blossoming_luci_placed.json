@@ -36,7 +36,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "ellesmobsnplenty:blossoming_luci_sapling",
+          "Name": "minecraft:blossoming_luci_sapling",
           "Properties": {
             "stage": "0"
           }

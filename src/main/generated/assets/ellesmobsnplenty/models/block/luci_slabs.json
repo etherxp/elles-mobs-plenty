@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "ellesmobsnplenty:block/luci_planks",
-    "side": "ellesmobsnplenty:block/luci_planks",
-    "top": "ellesmobsnplenty:block/luci_planks"
-  }
-}

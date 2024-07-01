@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top_right",
-  "textures": {
-    "bottom": "ellesmobsnplenty:block/luci_door_bottom",
-    "top": "ellesmobsnplenty:block/luci_door_top"
-  }
-}

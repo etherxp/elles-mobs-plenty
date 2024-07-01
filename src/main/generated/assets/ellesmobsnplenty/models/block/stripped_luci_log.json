@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "ellesmobsnplenty:block/stripped_luci_log_top",
-    "side": "ellesmobsnplenty:block/stripped_luci_log"
-  }
-}

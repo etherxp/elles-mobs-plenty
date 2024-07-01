@@ -12,6 +12,7 @@ import net.findsnow.ellesmobsnplenty.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamilies;
+import net.minecraft.data.family.BlockFamily;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
@@ -46,7 +47,15 @@ public class ModModelProvider extends FabricModelProvider {
 
     // Luci Wood
     BlockStateModelGenerator.BlockTexturePool luciPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LUCI_PLANKS);
-    luciPool.family(ModBlocks.LUCI_FAMILY);
+    luciPool.family(BlockFamilies.register(ModBlocks.LUCI_PLANKS)
+            .stairs(ModBlocks.LUCI_STAIRS)
+            .sign(ModBlocks.LUCI_SIGN, ModBlocks.LUCI_WALL_SIGN)
+            .slab(ModBlocks.LUCI_SLABS)
+            .pressurePlate(ModBlocks.LUCI_PRESSURE_PLATE)
+            .fenceGate(ModBlocks.LUCI_FENCE_GATE)
+            .fence(ModBlocks.LUCI_FENCE)
+            .button(ModBlocks.LUCI_BUTTON)
+            .build());
 
     blockStateModelGenerator.registerDoor(ModBlocks.LUCI_DOOR);
     blockStateModelGenerator.registerOrientableTrapdoor(ModBlocks.LUCI_TRAPDOOR);
@@ -59,10 +68,12 @@ public class ModModelProvider extends FabricModelProvider {
     blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.BLOSSOMING_LUCI_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
   }
 
+
   // Custom Registers
   private void registerChomper(BlockStateModelGenerator blockStateModelGenerator) {
-    Identifier identifier = ModelIds.getBlockModelId(ModBlocks.CHOMPER_BLOCK);
-    Identifier identifier2 = ModelIds.getBlockSubModelId(ModBlocks.CHOMPER_BLOCK, "_open");
+    Block block = ModBlocks.CHOMPER_BLOCK;
+    Identifier identifier = ModelIds.getBlockModelId(block);
+    Identifier identifier2 = ModelIds.getBlockSubModelId(block, "_open");
     blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.CHOMPER_BLOCK)
             .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
             .coordinate(BlockStateModelGenerator.createBooleanModelMap(ChomperBlock.OPEN, identifier2, identifier)));

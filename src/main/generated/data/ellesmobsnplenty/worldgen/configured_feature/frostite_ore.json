@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "ellesmobsnplenty:frostite_ore"
+          "Name": "minecraft:frostite_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "ellesmobsnplenty:deepslate_frostite_ore"
+          "Name": "minecraft:deepslate_frostite_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

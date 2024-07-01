@@ -33,7 +33,7 @@
       "entries": [
         {
           "data": {
-            "Name": "ellesmobsnplenty:luci_leaves",
+            "Name": "minecraft:luci_leaves",
             "Properties": {
               "distance": "7",
               "persistent": "false",
@@ -74,17 +74,13 @@
       },
       "branch_end_offset_from_top": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 0,
-          "min_inclusive": -1
-        }
+        "max_inclusive": 0,
+        "min_inclusive": -1
       },
       "branch_horizontal_length": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 4,
-          "min_inclusive": 2
-        }
+        "max_inclusive": 4,
+        "min_inclusive": 2
       },
       "branch_start_offset_from_top": {
         "max_inclusive": -3,
@@ -96,7 +92,7 @@
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "ellesmobsnplenty:luci_log",
+        "Name": "minecraft:luci_log",
         "Properties": {
           "axis": "y",
           "leaf": "false",

@@ -21,30 +21,30 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 
   @Override
   public void generate() {
-    addDrop(ModBlocks.NEPHRITE_BLOCK);
-    addDrop(ModBlocks.RAW_NEPHRITE_BLOCK);
-    addDrop(ModBlocks.GREEN_MUSHROOM_LAMP);
-    addDrop(ModBlocks.BLUE_MUSHROOM_LAMP);
-    addDrop(ModBlocks.LUCI_PLANKS);
-    addDrop(ModBlocks.LUCI_BUTTON);
-    addDrop(ModBlocks.LUCI_PRESSURE_PLATE);
-    addDrop(ModBlocks.LUCI_FENCE);
-    addDrop(ModBlocks.LUCI_FENCE_GATE);
-    addDrop(ModBlocks.LUCI_WALL);
-    addDrop(ModBlocks.LUCI_SLABS, slabDrops(ModBlocks.LUCI_PLANKS));
-    addDrop(ModBlocks.LUCI_TRAPDOOR);
-    addDrop(ModBlocks.LUCI_DOOR, doorDrops(ModBlocks.LUCI_DOOR));
-    addDrop(ModBlocks.LUCI_LOG);
-    addDrop(ModBlocks.LUCI_WOOD);
-    addDrop(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk, dropsWithShears(Items.BROWN_MUSHROOM_BLOCK));
-    addDrop(ModBlocks.LUCI_LEAVES, leavesDrops(ModBlocks.LUCI_LEAVES, ModBlocks.LUCI_SAPLING, 0.1f));
-    addDrop(ModBlocks.BLOSSOMING_LUCI_LEAVES, leavesDrops(ModBlocks.BLOSSOMING_LUCI_LEAVES, ModBlocks.LUCI_SAPLING, 0.1f));
-    addDrop(ModBlocks.STRIPPED_LUCI_LOG);
-    addDrop(ModBlocks.STRIPPED_LUCI_WOOD);
-    addDrop(ModBlocks.CHOMPER_BLOCK);
-    addDrop(ModBlocks.LUCI_MUSHROOM);
+    this.addDrop(ModBlocks.NEPHRITE_BLOCK);
+    this.addDrop(ModBlocks.RAW_NEPHRITE_BLOCK);
+    this.addDrop(ModBlocks.GREEN_MUSHROOM_LAMP);
+    this.addDrop(ModBlocks.BLUE_MUSHROOM_LAMP);
+    this.addDrop(ModBlocks.LUCI_PLANKS);
+    this.addDrop(ModBlocks.LUCI_BUTTON);
+    this.addDrop(ModBlocks.LUCI_PRESSURE_PLATE);
+    this.addDrop(ModBlocks.LUCI_FENCE);
+    this.addDrop(ModBlocks.LUCI_FENCE_GATE);
+    this.addDrop(ModBlocks.LUCI_WALL);
+    this.addDrop(ModBlocks.LUCI_SLABS, slabDrops(ModBlocks.LUCI_SLABS));
+    this.addDrop(ModBlocks.LUCI_TRAPDOOR);
+    this.addDrop(ModBlocks.LUCI_DOOR, doorDrops(ModBlocks.LUCI_DOOR));
+    this.addDrop(ModBlocks.LUCI_LOG);
+    this.addDrop(ModBlocks.LUCI_WOOD);
+    this.addDrop(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk, dropsWithShears(Items.BROWN_MUSHROOM_BLOCK));
+    this.addDrop(ModBlocks.LUCI_LEAVES, leavesDrops(ModBlocks.LUCI_LEAVES, ModBlocks.LUCI_SAPLING, 0.1f));
+    this.addDrop(ModBlocks.BLOSSOMING_LUCI_LEAVES, leavesDrops(ModBlocks.BLOSSOMING_LUCI_LEAVES, ModBlocks.LUCI_SAPLING, 0.1f));
+    this.addDrop(ModBlocks.STRIPPED_LUCI_LOG);
+    this.addDrop(ModBlocks.STRIPPED_LUCI_WOOD);
+    this.addDrop(ModBlocks.CHOMPER_BLOCK);
+    this.addDrop(ModBlocks.LUCI_MUSHROOM);
 
-    addDrop(ModBlocks.NEPHRITE_ORE, oreDrops(ModBlocks.NEPHRITE_ORE, ModItems.RAW_NEPHRITE));
-    addDrop(ModBlocks.DEEPSLATE_NEPHRITE_ORE, oreDrops(ModBlocks.NEPHRITE_ORE, ModItems.RAW_NEPHRITE));
+    this.addDrop(ModBlocks.NEPHRITE_ORE, oreDrops(ModBlocks.NEPHRITE_ORE, ModItems.RAW_NEPHRITE));
+    this.addDrop(ModBlocks.DEEPSLATE_NEPHRITE_ORE, oreDrops(ModBlocks.NEPHRITE_ORE, ModItems.RAW_NEPHRITE));
   }
 }

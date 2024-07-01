@@ -118,19 +118,8 @@ public class ModBlocks {
 
 
   // Wood Blocks
-  public static final BlockFamily LUCI_FAMILY = BlockFamilies.register(ModBlocks.LUCI_PLANKS)
-          .sign(ModBlocks.LUCI_SIGN, ModBlocks.LUCI_WALL_SIGN)
-          .fence(ModBlocks.LUCI_FENCE)
-          .fenceGate(ModBlocks.LUCI_FENCE_GATE)
-          .door(ModBlocks.LUCI_DOOR)
-          .slab(ModBlocks.LUCI_SLABS)
-          .stairs(ModBlocks.LUCI_STAIRS)
-          .trapdoor(ModBlocks.LUCI_TRAPDOOR)
-          .pressurePlate(ModBlocks.LUCI_PRESSURE_PLATE)
-          .button(ModBlocks.LUCI_BUTTON)
-          .group("wooden")
-          .unlockCriterionName("has_planks")
-          .build();
+  public static final BlockSetType LUCI = new BlockSetType("luci");
+  public static final WoodType LUCI_TYPE = new WoodType("luci", LUCI);
 
   public static final Block LUCI_LOG = registerBlock("luci_log",
           new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, AbstractBlock.Settings.copy(Blocks.CHERRY_LOG)));
@@ -167,28 +156,29 @@ public class ModBlocks {
           new StairsBlock(ModBlocks.LUCI_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CHERRY_STAIRS)));
 
   public static final Block LUCI_SLABS = registerBlock("luci_slabs",
-          new SlabBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_SLAB)));
+          new SlabBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_SLAB)
+                  .mapColor(MapColor.GREEN)));
 
   public static final Block LUCI_BUTTON = registerBlock("luci_button",
-          new ButtonBlock(BlockSetType.OAK, 10, AbstractBlock.Settings.copy(Blocks.CHERRY_BUTTON)));
+          new ButtonBlock(LUCI, 10, AbstractBlock.Settings.copy(Blocks.CHERRY_BUTTON)));
 
   public static final Block LUCI_FENCE = registerBlock("luci_fence",
           new FenceBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_FENCE)));
 
   public static final Block LUCI_FENCE_GATE = registerBlock("luci_fence_gate",
-          new FenceGateBlock(WoodType.OAK, AbstractBlock.Settings.copy(Blocks.CHERRY_FENCE_GATE)));
+          new FenceGateBlock(LUCI_TYPE, AbstractBlock.Settings.copy(Blocks.CHERRY_FENCE_GATE)));
 
   public static final Block LUCI_WALL = registerBlock("luci_wall",
           new WallBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
 
   public static final Block LUCI_DOOR = registerBlock("luci_door",
-          new DoorBlock(BlockSetType.OAK, AbstractBlock.Settings.copy(Blocks.CHERRY_DOOR)));
+          new DoorBlock(LUCI, AbstractBlock.Settings.copy(Blocks.CHERRY_DOOR)));
 
   public static final Block LUCI_TRAPDOOR = registerBlock("luci_trapdoor",
-          new TrapdoorBlock(BlockSetType.OAK, AbstractBlock.Settings.copy(Blocks.CHERRY_TRAPDOOR)));
+          new TrapdoorBlock(LUCI, AbstractBlock.Settings.copy(Blocks.CHERRY_TRAPDOOR)));
 
   public static final Block LUCI_PRESSURE_PLATE = registerBlock("luci_pressure_plate",
-          new PressurePlateBlock(BlockSetType.OAK, AbstractBlock.Settings.copy(Blocks.CHERRY_PRESSURE_PLATE)));
+          new PressurePlateBlock(LUCI, AbstractBlock.Settings.copy(Blocks.CHERRY_PRESSURE_PLATE)));
 
 
 

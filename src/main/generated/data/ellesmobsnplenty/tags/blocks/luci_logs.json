@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "ellesmobsnplenty:luci_log",
-    "ellesmobsnplenty:stripped_luci_log",
-    "ellesmobsnplenty:stripped_luci_wood",
-    "ellesmobsnplenty:luci_wood"
-  ]
-}
