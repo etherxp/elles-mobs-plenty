@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "minecraft:block/lucille_tulip"
+    "layer0": "ellesmobsnplenty:block/lucille_tulip"
   }
 }

@@ -1,11 +1,9 @@
 package net.findsnow.ellesmobsnplenty.entity.custom.feature;
 
 import net.findsnow.ellesmobsnplenty.entity.ModEntities;
+import net.findsnow.ellesmobsnplenty.entity.variant.butterflies.ButterflyVariant;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.AnimationState;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Flutterer;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.AboveGroundTargeting;
 import net.minecraft.entity.ai.NoPenaltySolidTargeting;
 import net.minecraft.entity.ai.control.FlightMoveControl;
@@ -20,6 +18,9 @@ import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -29,8 +30,11 @@ import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
@@ -41,6 +45,8 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
   public final AnimationState butterflyAnimationState = new AnimationState();
   public final AnimationState idleAnimationState = new AnimationState();
   private int idleAnimationTimeout = 0;
+  private static final TrackedData<Integer> DATA_ID_TYPE_VARIANT =
+          DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
   public ButterflyEntity(EntityType<? extends AnimalEntity> entityType, World world) {
     super(entityType, world);
@@ -58,6 +64,12 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
   @Override
   protected void initGoals() {
     this.initCustomGoals();
+  }
+
+  @Override
+  protected void initDataTracker(DataTracker.Builder builder) {
+    super.initDataTracker(builder);
+    builder.add(DATA_ID_TYPE_VARIANT, 0);
   }
 
   protected void initCustomGoals() {
@@ -156,7 +168,7 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
   }
 
 
-  // Shoutout to Jaiz for this
+
   static class ButterflyLookControl extends LookControl {
     ButterflyLookControl(MobEntity mobEntity) {
       super(mobEntity);
@@ -198,5 +210,26 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
       if (vec3d3 != null) {
         return vec3d3;
       }return NoPenaltySolidTargeting.find(ButterflyEntity.this, 4, 8, -2, vec3d2.x, vec3d2.z, 1.5707963705062866);}
+  }
+
+  // Variants
+  private void setVariant(ButterflyVariant variant) {
+    this.dataTracker.set(DATA_ID_TYPE_VARIANT, variant.getId() | this.getTypeVariant() & -256);
+  }
+
+  private int getTypeVariant() {
+    return this.dataTracker.get(DATA_ID_TYPE_VARIANT);
+  }
+
+  public ButterflyVariant getVariant() {
+    return ButterflyVariant.byId(this.getTypeVariant() & 0xFF);
+  }
+
+  @Override
+  public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason,
+                               @Nullable EntityData entityData) {
+    ButterflyVariant variant = Util.getRandom(ButterflyVariant.values(), this.random);
+    setVariant(variant);
+    return super.initialize(world, difficulty, spawnReason, entityData);
   }
 }

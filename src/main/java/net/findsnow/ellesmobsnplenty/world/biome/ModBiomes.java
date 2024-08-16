@@ -41,23 +41,22 @@ public class ModBiomes {
 
   public static Biome luciForest(Registerable<Biome> context) {
 
-    // Mobs
-    SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
-    spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.BUTTERFLY, 7, 5, 10));
-
-    // DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
-    DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
-
     // Biome Features
     GenerationSettings.LookupBackedBuilder biomeBuilder =
             new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                     context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
+    // Mobs
+    SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+    spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.BUTTERFLY, 6, 7, 15));
+
+    DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
+    DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
+
     globalOverworldGeneration(biomeBuilder);
     DefaultBiomeFeatures.addForestFlowers(biomeBuilder);
-    //DefaultBiomeFeatures.addExtraDefaultFlowers(biomeBuilder);
-    DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
     DefaultBiomeFeatures.addForestGrass(biomeBuilder);
+    DefaultBiomeFeatures.addPlainsTallGrass(biomeBuilder);
     DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
     DefaultBiomeFeatures.addMossyRocks(biomeBuilder);
     DefaultBiomeFeatures.addGrassAndClayDisks(biomeBuilder);
@@ -70,11 +69,11 @@ public class ModBiomes {
             .generationSettings(biomeBuilder.build())
             .spawnSettings(spawnBuilder.build())
             .effects((new BiomeEffects.Builder())
-                    .waterColor(0x2e6ce8)
+                    .waterColor(0x3F76E4)
                     .waterFogColor(0x618ee8)
-                    .skyColor(0x87ceeb)
-                    .grassColor(0x316033)
-                    .foliageColor(0x56944e)
+                    .skyColor(0x7BA4FF)
+                    .grassColor(0x548b4c)
+                    .foliageColor(0x548b4c)
                     .fogColor(0x9ABD95)
                     .moodSound(BiomeMoodSound.CAVE)
                     .music(MusicType.GAME)

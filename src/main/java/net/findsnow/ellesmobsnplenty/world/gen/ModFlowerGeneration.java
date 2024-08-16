@@ -17,7 +17,9 @@ public class ModFlowerGeneration {
     BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.LUCI_REGION_1),
             GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.TALL_CLOVER_PLACED_KEY);
     BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.LUCI_REGION_1),
-            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.LUCI_LEAF_PILE_PLACED_KEY);
+            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.FLAURELLE_PLACED_KEY);
+    BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.LUCI_REGION_1),
+            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.ROCKS_PLACED_KEY);
 
 
     // Plains

@@ -49,10 +49,10 @@ public class CaterpillarModel <T extends CaterpillarEntity> extends SinglePartEn
     this.animateMovement(ModAnimations.caterpillar_walk, limbSwing, limbSwingAmount, 8f, 100f);
   }
 
-//  @Override
-//  public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-//    caterpillar.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-//  }
+  @Override
+  public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
+    caterpillar.render(matrices, vertices, light, overlay, color);
+  }
 
   @Override
   public ModelPart getPart() {

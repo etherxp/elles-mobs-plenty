@@ -21,6 +21,7 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
 
   @Override
   public void generate() {
+    this.addDrop(ModBlocks.JAR_BLOCK);
     this.addDrop(ModBlocks.NEPHRITE_BLOCK);
     this.addDrop(ModBlocks.RAW_NEPHRITE_BLOCK);
     this.addDrop(ModBlocks.GREEN_MUSHROOM_LAMP);
@@ -30,7 +31,6 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
     this.addDrop(ModBlocks.LUCI_PRESSURE_PLATE);
     this.addDrop(ModBlocks.LUCI_FENCE);
     this.addDrop(ModBlocks.LUCI_FENCE_GATE);
-    this.addDrop(ModBlocks.LUCI_WALL);
     this.addDrop(ModBlocks.LUCI_SLABS, slabDrops(ModBlocks.LUCI_SLABS));
     this.addDrop(ModBlocks.LUCI_TRAPDOOR);
     this.addDrop(ModBlocks.LUCI_DOOR, doorDrops(ModBlocks.LUCI_DOOR));
@@ -43,6 +43,10 @@ public class ModLootTableGenerator extends FabricBlockLootTableProvider {
     this.addDrop(ModBlocks.STRIPPED_LUCI_WOOD);
     this.addDrop(ModBlocks.CHOMPER_BLOCK);
     this.addDrop(ModBlocks.LUCI_MUSHROOM);
+    this.addDrop(ModBlocks.PEBBLE_BLOCK);
+    this.addDrop(ModBlocks.ROCK_BLOCK);
+    this.addDrop(ModBlocks.CLOVER);
+    this.addDrop(ModBlocks.TALL_CLOVER);
 
     this.addDrop(ModBlocks.NEPHRITE_ORE, oreDrops(ModBlocks.NEPHRITE_ORE, ModItems.RAW_NEPHRITE));
     this.addDrop(ModBlocks.DEEPSLATE_NEPHRITE_ORE, oreDrops(ModBlocks.NEPHRITE_ORE, ModItems.RAW_NEPHRITE));

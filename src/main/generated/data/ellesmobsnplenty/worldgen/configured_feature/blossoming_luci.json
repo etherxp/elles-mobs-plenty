@@ -5,25 +5,16 @@
       {
         "type": "minecraft:luci_fungus_shelf_decorator",
         "probability": 0.1,
-        "treeHeight": 5
+        "treeHeight": 2
       },
       {
         "type": "minecraft:beehive",
         "probability": 0.05
       },
       {
-        "type": "minecraft:blossoming_luci_vines",
-        "block_provider": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "minecraft:blossoming_luci_vine",
-            "Properties": {
-              "facing": "north"
-            }
-          }
-        },
-        "number": 1,
-        "probability": 0.1
+        "type": "minecraft:luci_branch",
+        "probability": 0.08,
+        "treeHeight": 8
       }
     ],
     "dirt_provider": {
@@ -33,28 +24,36 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:cherry_foliage_placer",
-      "corner_hole_chance": 0.3,
-      "hanging_leaves_chance": 0.36666667,
-      "hanging_leaves_extension_chance": 0.43333337,
-      "height": 5,
-      "offset": 0,
-      "radius": 4,
-      "wide_bottom_layer_hole_chance": 0.3
+      "type": "minecraft:spruce_foliage_placer",
+      "offset": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 2,
+        "min_inclusive": 0
+      },
+      "radius": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 3,
+        "min_inclusive": 2
+      },
+      "trunk_height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 2,
+        "min_inclusive": 1
+      }
     },
     "foliage_provider": {
       "type": "minecraft:weighted_state_provider",
       "entries": [
         {
           "data": {
-            "Name": "minecraft:blossoming_luci_leaves",
+            "Name": "ellesmobsnplenty:luci_leaves",
             "Properties": {
               "distance": "7",
               "persistent": "false",
               "waterlogged": "false"
             }
           },
-          "weight": 1
+          "weight": 4
         }
       ]
     },
@@ -62,51 +61,20 @@
     "ignore_vines": true,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",
-      "limit": 1,
+      "limit": 2,
       "lower_size": 0,
       "upper_size": 2
     },
     "trunk_placer": {
-      "type": "minecraft:cherry_trunk_placer",
-      "base_height": 14,
-      "branch_count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          {
-            "data": 1,
-            "weight": 1
-          },
-          {
-            "data": 2,
-            "weight": 1
-          },
-          {
-            "data": 3,
-            "weight": 1
-          }
-        ]
-      },
-      "branch_end_offset_from_top": {
-        "type": "minecraft:uniform",
-        "max_inclusive": 0,
-        "min_inclusive": -1
-      },
-      "branch_horizontal_length": {
-        "type": "minecraft:uniform",
-        "max_inclusive": 4,
-        "min_inclusive": 2
-      },
-      "branch_start_offset_from_top": {
-        "max_inclusive": -3,
-        "min_inclusive": -4
-      },
-      "height_rand_a": 3,
-      "height_rand_b": 0
+      "type": "minecraft:straight_trunk_placer",
+      "base_height": 16,
+      "height_rand_a": 2,
+      "height_rand_b": 1
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:luci_log",
+        "Name": "ellesmobsnplenty:luci_log",
         "Properties": {
           "axis": "y",
           "leaf": "false",

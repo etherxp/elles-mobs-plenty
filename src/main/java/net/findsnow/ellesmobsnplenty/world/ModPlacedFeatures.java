@@ -5,6 +5,7 @@ import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
@@ -12,6 +13,7 @@ import net.minecraft.world.gen.placementmodifier.*;
 import java.util.List;
 
 public class ModPlacedFeatures {
+  public static final RegistryKey<PlacedFeature> FALLEN_LUCI_KEY = registerKey("fallen_luci");
   public static final RegistryKey<PlacedFeature> LUCERO_PLACED_KEY = registerKey("lucero_placed");
   public static final RegistryKey<PlacedFeature> NEPHRITE_ORE_PLACED_KEY = registerKey("nephrite_placed");
   public static final RegistryKey<PlacedFeature> FROSTITE_ORE_PLACED_KEY = registerKey("frostite_placed");
@@ -21,6 +23,8 @@ public class ModPlacedFeatures {
   public static final RegistryKey<PlacedFeature> LUCI_LEAF_PILE_PLACED_KEY = registerKey("luci_pile_placed");
   public static final RegistryKey<PlacedFeature> LUCI_MUSHROOM_PLACED_KEY = registerKey("luci_mushroom_placed");
   public static final RegistryKey<PlacedFeature> CLOVER_PLACED_KEY = registerKey("clover_placed");
+  public static final RegistryKey<PlacedFeature> PEBBLES_PLACED_KEY = registerKey("pebbles_placed");
+  public static final RegistryKey<PlacedFeature> ROCKS_PLACED_KEY = registerKey("rocks_placed");
   public static final RegistryKey<PlacedFeature> TALL_CLOVER_PLACED_KEY = registerKey("tall_clover_placed");
 
   public static void bootstrap(Registerable<PlacedFeature> context) {
@@ -30,23 +34,73 @@ public class ModPlacedFeatures {
             VegetationPlacedFeatures.treeModifiersWithWouldSurvive(
                     PlacedFeatures.createCountExtraModifier(1, 0.5f, 1), ModBlocks.LUCI_SAPLING));
 
+
     register(context, BLOSSOMING_LUCI_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLOSSOMING_LUCI_KEY),
             VegetationPlacedFeatures.treeModifiersWithWouldSurvive(
                     PlacedFeatures.createCountExtraModifier(1, 0.5f, 1), ModBlocks.BLOSSOMING_LUCI_SAPLING));
 
-    register(context, LUCI_PETAL_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LUCI_PETALS),
-            RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
-    register(context, LUCI_LEAF_PILE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LUCI_LEAF_PILE),
-            RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+    register(context, FALLEN_LUCI_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
+            ModConfiguredFeatures.FALLEN_LUCI_KEY),
+            CountPlacementModifier.of(1),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
+            BiomePlacementModifier.of());
 
-    register(context, FLAURELLE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FLAURELLE),
-            RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
-    register(context, LUCI_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LUCI_MUSHROOM),
-            RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
-    register(context, CLOVER_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CLOVER),
-            RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
-    register(context, TALL_CLOVER_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.TALL_CLOVER),
-            RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+    register(context, LUCI_PETAL_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
+            ModConfiguredFeatures.LUCI_PETALS),
+            RarityFilterPlacementModifier.of(1),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+            BiomePlacementModifier.of());
+
+    register(context, LUCI_LEAF_PILE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
+            ModConfiguredFeatures.LUCI_LEAF_PILE),
+            RarityFilterPlacementModifier.of(1),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+            BiomePlacementModifier.of());
+
+    register(context, FLAURELLE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
+            ModConfiguredFeatures.FLAURELLE),
+            RarityFilterPlacementModifier.of(1),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+            BiomePlacementModifier.of());
+
+    register(context, LUCI_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
+            ModConfiguredFeatures.LUCI_MUSHROOM),
+            RarityFilterPlacementModifier.of(1),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+            BiomePlacementModifier.of());
+
+    register(context, CLOVER_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
+            ModConfiguredFeatures.CLOVER),
+            RarityFilterPlacementModifier.of(1),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+            BiomePlacementModifier.of());
+
+    register(context, TALL_CLOVER_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
+            ModConfiguredFeatures.TALL_CLOVER),
+            RarityFilterPlacementModifier.of(1),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+            BiomePlacementModifier.of());
+
+    register(context, PEBBLES_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
+            ModConfiguredFeatures.PEBBLES),
+            RarityFilterPlacementModifier.of(1),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+            BiomePlacementModifier.of());
+
+    register(context, ROCKS_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
+            ModConfiguredFeatures.ROCKS),
+            RarityFilterPlacementModifier.of(1),
+            SquarePlacementModifier.of(),
+            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+            BiomePlacementModifier.of());
 
     register(context, NEPHRITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NEPHRITE_ORE_KEY),
             ModOrePlacement.modifiersWithCount(6, HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));

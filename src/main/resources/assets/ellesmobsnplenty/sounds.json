@@ -1,10 +1,48 @@
 {
-  "night_time": {
+  "luci_wood_break": {
+    "subtitle": "ellesmobsnplenty.luci_wood_break",
     "sounds": [
-      {
-        "name": "ellesmobsnplenty:night_time",
-        "stream": true
-      }
+      "ellesmobsnplenty:luci_wood_break1",
+      "ellesmobsnplenty:luci_wood_break2",
+      "ellesmobsnplenty:luci_wood_break3",
+      "ellesmobsnplenty:luci_wood_break4",
+      "ellesmobsnplenty:luci_wood_break5"
+    ]
+  },  "luci_wood_step": {
+    "subtitle": "ellesmobsnplenty.luci_wood_step",
+    "sounds": [
+      "ellesmobsnplenty:luci_wood_step1",
+      "ellesmobsnplenty:luci_wood_step2",
+      "ellesmobsnplenty:luci_wood_step3",
+      "ellesmobsnplenty:luci_wood_step4",
+      "ellesmobsnplenty:luci_wood_step5",
+      "ellesmobsnplenty:luci_wood_step6"
+    ]
+  },  "luci_wood_place": {
+    "subtitle": "ellesmobsnplenty.luci_wood_place",
+    "sounds": [
+      "ellesmobsnplenty:luci_wood_place1",
+      "ellesmobsnplenty:luci_wood_place2",
+      "ellesmobsnplenty:luci_wood_place3",
+      "ellesmobsnplenty:luci_wood_place4"
+    ]
+  },  "luci_wood_hit": {
+    "subtitle": "ellesmobsnplenty.luci_wood_hit",
+    "sounds": [
+      "ellesmobsnplenty:luci_wood_hit1",
+      "ellesmobsnplenty:luci_wood_hit2",
+      "ellesmobsnplenty:luci_wood_hit3",
+      "ellesmobsnplenty:luci_wood_hit4",
+      "ellesmobsnplenty:luci_wood_hit5",
+      "ellesmobsnplenty:luci_wood_hit6"
+    ]
+  },  "luci_wood_fall": {
+    "subtitle": "ellesmobsnplenty.luci_wood_fall",
+    "sounds": [
+      "ellesmobsnplenty:luci_wood_fall1",
+      "ellesmobsnplenty:luci_wood_fall2",
+      "ellesmobsnplenty:luci_wood_fall3",
+      "ellesmobsnplenty:luci_wood_fall4"
     ]
   }
 }

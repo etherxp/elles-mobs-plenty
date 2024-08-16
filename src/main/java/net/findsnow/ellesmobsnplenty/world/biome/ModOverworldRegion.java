@@ -23,11 +23,11 @@ public class ModOverworldRegion extends Region {
     VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
     new ParameterUtils.ParameterPointListBuilder()
             .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.NEUTRAL, ParameterUtils.Temperature.WARM))
-            .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.NEUTRAL, ParameterUtils.Humidity.DRY))
+            .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.NEUTRAL, ParameterUtils.Humidity.WET))
             .continentalness(ParameterUtils.Continentalness.span(ParameterUtils.Continentalness.NEAR_INLAND, ParameterUtils.Continentalness.INLAND))
-            .erosion(ParameterUtils.Erosion.span(ParameterUtils.Erosion.EROSION_1, ParameterUtils.Erosion.EROSION_4))
-            .depth(ParameterUtils.Depth.span(ParameterUtils.Depth.SURFACE, ParameterUtils.Depth.UNDERGROUND))
-            .weirdness(ParameterUtils.Weirdness.MID_SLICE_NORMAL_DESCENDING)
+            .erosion(ParameterUtils.Erosion.span(ParameterUtils.Erosion.EROSION_2, ParameterUtils.Erosion.EROSION_4))
+            .depth(ParameterUtils.Depth.SURFACE)
+            .weirdness(ParameterUtils.Weirdness.MID_SLICE_NORMAL_ASCENDING)
             .build().forEach(point -> builder.add(point, ModBiomes.LUCI_REGION_1));
     builder.build().forEach(mapper);
   }

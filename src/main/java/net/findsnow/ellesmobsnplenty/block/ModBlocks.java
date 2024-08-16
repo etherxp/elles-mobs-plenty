@@ -10,18 +10,18 @@ import net.findsnow.ellesmobsnplenty.block.hollow.HollowLuciLogBlock;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.BlueMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.GreenMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.LuciMushroomBlock;
+import net.findsnow.ellesmobsnplenty.sound.ModSounds;
 import net.findsnow.ellesmobsnplenty.world.tree.ModSaplingGenerators;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.data.family.BlockFamilies;
-import net.minecraft.data.family.BlockFamily;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.Identifier;
 
 import java.util.function.ToIntFunction;
@@ -29,6 +29,20 @@ import java.util.function.ToIntFunction;
 public class ModBlocks {
 
   // Blocks
+  public static final Block PEBBLE_BLOCK = registerBlock("pebbles_block",
+          new PebblesBlock(AbstractBlock.Settings.create()
+                  .sounds(BlockSoundGroup.DRIPSTONE_BLOCK)
+                  .noCollision()
+                  .strength(0.3f)
+                  .mapColor(MapColor.IRON_GRAY)));
+
+  public static final Block ROCK_BLOCK = registerBlock("rock_block",
+          new PebblesBlock(AbstractBlock.Settings.create()
+                  .sounds(BlockSoundGroup.DRIPSTONE_BLOCK)
+                  .noCollision()
+                  .strength(0.5f)
+                  .mapColor(MapColor.IRON_GRAY)));
+
   public static final Block NEPHRITE_BLOCK = registerBlock("nephrite_block",
           new Block(AbstractBlock.Settings.copy(Blocks.EMERALD_BLOCK)
                   .sounds(BlockSoundGroup.NETHERITE)));
@@ -46,6 +60,9 @@ public class ModBlocks {
 
   public static final Block LUCI_FUNGUS_SHELF_BLOCk = registerBlock("luci_fungus_shelf_block",
           new LuciFungusShelfBlock(AbstractBlock.Settings.copy(Blocks.MUSHROOM_STEM)
+                  .sounds(BlockSoundGroup.COBWEB)
+                  .luminance(state -> 2)
+                  .breakInstantly()
                   .nonOpaque()));
 
   public static final Block CHOMPER_BLOCK = registerBlock("chomper_block",
@@ -55,6 +72,13 @@ public class ModBlocks {
           new ChrysalisBlock(AbstractBlock.Settings.copy(Blocks.HONEY_BLOCK)
                   .sounds(BlockSoundGroup.HONEY)));
 
+  public static final Block JAR_BLOCK = registerBlock("firebug_jar_block",
+          new JarBlock(AbstractBlock.Settings.create()
+                  .mapColor(MapColor.IRON_GRAY)
+                  .luminance(state -> 12)
+                  .sounds(BlockSoundGroup.COPPER_BULB)
+                  .nonOpaque()
+                  .strength(0.1F, 0.1F)));
 
   // Foliage
   public static final Block LUCILLE_TULIP = registerBlock("lucille_tulip",
@@ -110,9 +134,12 @@ public class ModBlocks {
                   .luminance(createBlueMushroomLightFromClickedBlockstate(7))));
 
   public static final Block LUCI_MUSHROOM = registerBlock("luci_mushroom_block",
-          new LuciMushroomBlock(AbstractBlock.Settings.copy(Blocks.OAK_LEAVES)
-                  .sounds(BlockSoundGroup.FUNGUS)
+          new LuciMushroomBlock(AbstractBlock.Settings.copy(Blocks.BROWN_MUSHROOM_BLOCK)
+                  .sounds(BlockSoundGroup.COBWEB)
                   .nonOpaque()
+                  .mapColor(MapColor.GREEN)
+                  .luminance(state -> 7)
+                  .strength(0.2f, 0.2f)
                   .pistonBehavior(PistonBehavior.DESTROY)
                   .noCollision()));
 
@@ -122,20 +149,24 @@ public class ModBlocks {
   public static final WoodType LUCI_TYPE = new WoodType("luci", LUCI);
 
   public static final Block LUCI_LOG = registerBlock("luci_log",
-          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, AbstractBlock.Settings.copy(Blocks.CHERRY_LOG)));
+          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, AbstractBlock.Settings.copy(Blocks.CHERRY_LOG)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block HOLLOW_LUCI_LOG = registerBlock("hollow_luci_log",
           new HollowLuciLogBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_LOG)
                   .nonOpaque()));
 
   public static final Block LUCI_WOOD = registerBlock("luci_wood",
-          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, AbstractBlock.Settings.copy(Blocks.CHERRY_WOOD)));
+          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, AbstractBlock.Settings.copy(Blocks.CHERRY_WOOD)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block STRIPPED_LUCI_LOG = registerBlock("stripped_luci_log",
-          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, AbstractBlock.Settings.copy(Blocks.STRIPPED_CHERRY_LOG)));
+          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, AbstractBlock.Settings.copy(Blocks.STRIPPED_CHERRY_LOG)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block STRIPPED_LUCI_WOOD = registerBlock("stripped_luci_wood",
-          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, AbstractBlock.Settings.copy(Blocks.STRIPPED_CHERRY_WOOD)));
+          new LuciLogBlock(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES, AbstractBlock.Settings.copy(Blocks.STRIPPED_CHERRY_WOOD)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block LUCI_SAPLING = registerBlock("luci_sapling",
           new SaplingBlock(ModSaplingGenerators.LUCI, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING)));
@@ -148,37 +179,42 @@ public class ModBlocks {
                   .mapColor(MapColor.GREEN)
                   .instrument(NoteBlockInstrument.BASS)
                   .strength(2.0F, 3.0F)
-                  .sounds(BlockSoundGroup.CHERRY_WOOD)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)
                   .burnable()));
 
 
   public static final Block LUCI_STAIRS = registerBlock("luci_stairs",
-          new StairsBlock(ModBlocks.LUCI_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CHERRY_STAIRS)));
+          new StairsBlock(ModBlocks.LUCI_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.CHERRY_STAIRS)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block LUCI_SLABS = registerBlock("luci_slabs",
           new SlabBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_SLAB)
-                  .mapColor(MapColor.GREEN)));
+                  .mapColor(MapColor.GREEN)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block LUCI_BUTTON = registerBlock("luci_button",
-          new ButtonBlock(LUCI, 10, AbstractBlock.Settings.copy(Blocks.CHERRY_BUTTON)));
+          new ButtonBlock(LUCI, 10, AbstractBlock.Settings.copy(Blocks.CHERRY_BUTTON)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block LUCI_FENCE = registerBlock("luci_fence",
-          new FenceBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_FENCE)));
+          new FenceBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_FENCE)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block LUCI_FENCE_GATE = registerBlock("luci_fence_gate",
-          new FenceGateBlock(LUCI_TYPE, AbstractBlock.Settings.copy(Blocks.CHERRY_FENCE_GATE)));
-
-  public static final Block LUCI_WALL = registerBlock("luci_wall",
-          new WallBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
+          new FenceGateBlock(LUCI_TYPE, AbstractBlock.Settings.copy(Blocks.CHERRY_FENCE_GATE)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block LUCI_DOOR = registerBlock("luci_door",
-          new DoorBlock(LUCI, AbstractBlock.Settings.copy(Blocks.CHERRY_DOOR)));
+          new DoorBlock(LUCI, AbstractBlock.Settings.copy(Blocks.CHERRY_DOOR)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block LUCI_TRAPDOOR = registerBlock("luci_trapdoor",
-          new TrapdoorBlock(LUCI, AbstractBlock.Settings.copy(Blocks.CHERRY_TRAPDOOR)));
+          new TrapdoorBlock(LUCI, AbstractBlock.Settings.copy(Blocks.CHERRY_TRAPDOOR)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
   public static final Block LUCI_PRESSURE_PLATE = registerBlock("luci_pressure_plate",
-          new PressurePlateBlock(LUCI, AbstractBlock.Settings.copy(Blocks.CHERRY_PRESSURE_PLATE)));
+          new PressurePlateBlock(LUCI, AbstractBlock.Settings.copy(Blocks.CHERRY_PRESSURE_PLATE)
+                  .sounds(ModSounds.LUCI_WOOD_SOUNDS)));
 
 
 
@@ -232,7 +268,7 @@ public class ModBlocks {
 
   private static Block registerBlock(String name, Block block) {
     registerBlockItem(name, block);
-    return Registry.register(Registries.BLOCK, name, block);
+    return Registry.register(Registries.BLOCK, Identifier.of(EllesMobsNPlenty.MOD_ID, name), block);
   }
 
   private static Item registerBlockItem(String name, Block block) {

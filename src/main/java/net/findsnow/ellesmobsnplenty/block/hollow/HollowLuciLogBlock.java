@@ -17,7 +17,6 @@ import net.minecraft.world.WorldAccess;
 
 public class HollowLuciLogBlock extends PillarBlock {
   public static final EnumProperty<Direction.Axis> AXIS = Properties.AXIS;
-  public static final EnumProperty<Cover> COVER = EnumProperty.of("cover", Cover.class);
   private static final VoxelShape SHAPE_BOTTOM = Block.createCuboidShape(0F, 0F, 0F, 16F, 2F, 16F);
   private static final VoxelShape SHAPE_TOP = Block.createCuboidShape(0F, 14F, 0F, 16F, 16F, 16F);
   private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(0F, 0F, 0F, 2F, 16F, 16F);
@@ -30,19 +29,12 @@ public class HollowLuciLogBlock extends PillarBlock {
 
   public HollowLuciLogBlock(Settings settings) {
     super(settings);
-    this.setDefaultState(this.getDefaultState().with(AXIS, Direction.Axis.Y).with(COVER, Cover.NONE));
-  }
-
-  @Override
-  public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-    return direction == Direction.UP ?
-            state.with(COVER, getCover(neighborState)) :
-            super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    this.setDefaultState(this.getDefaultState().with(AXIS, Direction.Axis.Y));
   }
 
   @Override
   protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    builder.add(AXIS, COVER);
+    builder.add(AXIS);
   }
 
   @Override
@@ -56,35 +48,9 @@ public class HollowLuciLogBlock extends PillarBlock {
 
   @Override
   public BlockState getPlacementState(ItemPlacementContext ctx) {
-    BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos().up());
     Direction.Axis axis = ctx.getHorizontalPlayerFacing().getOpposite().getAxis();
 
     return this.getDefaultState()
-            .with(AXIS, axis)
-            .with(COVER, getCover(blockState));
+            .with(AXIS, axis);
   }
-
-  public static Cover getCover(BlockState state){
-    if (state.isIn(ModTags.MOSS)) {
-      return Cover.MOSSY;
-    } else {
-      return Cover.NONE;
-    }
-  }
-
-
-  public enum Cover implements StringIdentifiable {
-    NONE("none"),
-    MOSSY("mossy");
-    final String name;
-    Cover(String name) {
-      this.name = name;
-    }
-
-    @Override
-    public String asString() {
-      return this.name;
-    }
-  }
-  // credit: quark!!
 }

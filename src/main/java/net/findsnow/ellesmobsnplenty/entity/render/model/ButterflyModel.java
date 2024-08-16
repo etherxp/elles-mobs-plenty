@@ -35,10 +35,10 @@ public class ButterflyModel <T extends ButterflyEntity> extends SinglePartEntity
     return TexturedModelData.of(modelData, 32, 32);
   }
 
-//  @Override
-//  public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-//    butterfly.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-//  }
+  @Override
+  public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
+    butterfly.render(matrices, vertices, light, overlay, color);
+  }
 
   @Override
   public ModelPart getPart() {
@@ -49,7 +49,7 @@ public class ButterflyModel <T extends ButterflyEntity> extends SinglePartEntity
   public void setAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
     this.getPart().traverse().forEach(ModelPart::resetTransform);
 
-    this.updateAnimation(entity.idleAnimationState, ModAnimations.butterfly_idle, ageInTicks, 1f);
+    this.updateAnimation(entity.idleAnimationState, ModAnimations.flying, ageInTicks, 1f);
     this.animateMovement(ModAnimations.flying, limbSwing, limbSwingAmount, 3f, 3f);
   }
 }

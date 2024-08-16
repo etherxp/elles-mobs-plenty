@@ -9,6 +9,8 @@ public class ModTreeDecorator {
           ("luci_fungus_shelf_decorator", ModFungusTreeDecorator.MAP_CODEC);
   public static final TreeDecoratorType<?> BLOSSOMING_LUCI_VINES = TreeDecoratorTypeMixin.callRegister
           ("blossoming_luci_vines", BlossomingLuciVineTreeDecorator.MAP_CODEC);
+  public static final TreeDecoratorType<?> LUCI_BRANCH = TreeDecoratorTypeMixin.callRegister
+          ("luci_branch", LuciBranchTreeDecorator.MAP_CODEC);
 
   public static void register() {
     EllesMobsNPlenty.LOGGER.info("Registering Tree Decorators for" + EllesMobsNPlenty.MOD_ID);

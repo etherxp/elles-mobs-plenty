@@ -20,12 +20,19 @@ public class ModItems {
 
   public static final Item NEPHRITE = registerItem("nephrite",
           new Item(new Item.Settings()));
+
   public static final Item RAW_NEPHRITE = registerItem("raw_nephrite",
           new Item(new Item.Settings()));
+
   public static final Item NEPHRITE_NUGGET = registerItem("nephrite_nugget",
           new Item(new Item.Settings()));
+
   public static final Item CRAB_CLAW = registerItem("crab_claw",
           new Item(new Item.Settings()));
+
+  public static final Item JAR = registerItem("jar",
+          new Item(new Item.Settings()
+                  .maxCount(16)));
 
   // Luci Wood
   public static final Item LUCI_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.LUCI_BOAT_ID, ModBoats.LUCI_BOAT_KEY, false);
@@ -42,8 +49,6 @@ public class ModItems {
           ModBlocks.LUCI_HANGING_SIGN, ModBlocks.LUCI_WALL_HANGING_SIGN, new Item.Settings()
           .maxCount(16)));
 
-
-
   // Spawn Eggs
   public static final Item CRAB_SPAWN_EGG = registerItem("crab_spawn_egg",
           new SpawnEggItem(ModEntities.CRAB, 0x831414, 0xf24b4b, new Item.Settings()));
@@ -53,6 +58,10 @@ public class ModItems {
           new SpawnEggItem(ModEntities.BUTTERFLY, 0x3b8827, 0x462f2f, new Item.Settings()));
   public static final Item CATERPILLAR_SPAWN_EGG = registerItem("caterpillar_spawn_egg",
           new SpawnEggItem(ModEntities.CATERPILLAR, 0x185d25, 0x65992e, new Item.Settings()));
+  public static final Item SHARK_SPAWN_EGG = registerItem("shark_spawn_egg",
+          new SpawnEggItem(ModEntities.SHARK, 0x363237, 0x363237, new Item.Settings()));
+  public static final Item RABBIT_SPAWN_EGG = registerItem("rabbit_spawn_egg",
+          new SpawnEggItem(ModEntities.RABBIT, 0x7b6c54, 0x4e4134, new Item.Settings()));
 
 
   // Food
@@ -82,6 +91,7 @@ public class ModItems {
     entries.add(RAW_NEPHRITE);
     entries.add(NEPHRITE_NUGGET);
     entries.add(CRAB_CLAW);
+    entries.add(JAR);
     entries.add(RAW_CRAB);
     entries.add(COOKED_CRAB);
 
@@ -95,7 +105,6 @@ public class ModItems {
     entries.add(ModBlocks.CHOMPER_BLOCK);
     entries.add(ModBlocks.LUCI_PLANKS);
     entries.add(ModBlocks.LUCI_STAIRS);
-    entries.add(ModBlocks.LUCI_WALL);
   }
 
 

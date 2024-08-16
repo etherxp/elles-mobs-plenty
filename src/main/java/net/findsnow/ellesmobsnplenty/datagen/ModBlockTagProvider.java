@@ -31,7 +31,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
             .add(ModBlocks.LUCI_PRESSURE_PLATE)
             .add(ModBlocks.LUCI_FENCE)
             .add(ModBlocks.LUCI_FENCE_GATE)
-            .add(ModBlocks.LUCI_WALL)
             .add(ModBlocks.LUCI_TRAPDOOR)
             .add(ModBlocks.LUCI_DOOR)
             .add(ModBlocks.LUCI_SLABS)
@@ -47,9 +46,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
             .add(ModBlocks.RAW_NEPHRITE_BLOCK)
             .add(ModBlocks.DEEPSLATE_NEPHRITE_ORE);
 
-    getOrCreateTagBuilder(BlockTags.WALLS)
-            .add(ModBlocks.LUCI_WALL);
-
     getOrCreateTagBuilder(BlockTags.FENCES)
             .add(ModBlocks.LUCI_FENCE);
 
@@ -63,10 +59,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
             .add(ModBlocks.LUCI_LOG);
 
     getOrCreateTagBuilder(BlockTags.FLOWERS)
+            .add(ModBlocks.FLAURELLE)
             .add(ModBlocks.BLOSSOMING_LUCI_LEAVES);
 
     getOrCreateTagBuilder(BlockTags.LEAVES)
-            .addTag(ModBlockTags.LUCI_LEAVES);
+            .add(ModBlocks.LUCI_LEAVES);
 
     getOrCreateTagBuilder(ModBlockTags.LUCI_LEAVES)
             .add(ModBlocks.LUCI_LEAVES, ModBlocks.BLOSSOMING_LUCI_LEAVES);

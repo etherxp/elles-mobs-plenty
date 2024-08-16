@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "minecraft:nephrite_ore"
+          "Name": "ellesmobsnplenty:nephrite_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "minecraft:deepslate_nephrite_ore"
+          "Name": "ellesmobsnplenty:deepslate_nephrite_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

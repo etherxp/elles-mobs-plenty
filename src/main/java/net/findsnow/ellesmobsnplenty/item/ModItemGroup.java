@@ -22,6 +22,7 @@ public class ModItemGroup {
                     entries.add(ModItems.NEPHRITE);
                     entries.add(ModItems.RAW_NEPHRITE);
                     entries.add(ModItems.NEPHRITE_NUGGET);
+                    entries.add(ModItems.JAR);
 
                     // Blocks
                     entries.add(ModBlocks.NEPHRITE_BLOCK);
@@ -36,8 +37,13 @@ public class ModItemGroup {
                     entries.add(ModBlocks.LUCILLE_TULIP);
                     entries.add(ModBlocks.FLAURELLE);
                     entries.add(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk);
+                    entries.add(ModBlocks.CLOVER);
+                    entries.add(ModBlocks.TALL_CLOVER);
+                    entries.add(ModBlocks.ROCK_BLOCK);
+                    entries.add(ModBlocks.PEBBLE_BLOCK);
                     entries.add(ModBlocks.LUCI_MUSHROOM);
                     entries.add(ModBlocks.CHRYSALIS_BLOCK);
+                    entries.add(ModBlocks.JAR_BLOCK);
 
                     // Luci Wood
                     entries.add(ModBlocks.LUCI_PLANKS);
@@ -47,10 +53,11 @@ public class ModItemGroup {
                     entries.add(ModBlocks.LUCI_PRESSURE_PLATE);
                     entries.add(ModBlocks.LUCI_FENCE);
                     entries.add(ModBlocks.LUCI_FENCE_GATE);
-                    entries.add(ModBlocks.LUCI_WALL);
                     entries.add(ModBlocks.LUCI_DOOR);
                     entries.add(ModBlocks.LUCI_TRAPDOOR);
                     entries.add(ModBlocks.LUCI_LOG);
+                    entries.add(ModItems.LUCI_SIGN);
+                    entries.add(ModItems.LUCI_HANGING_SIGN);
                     entries.add(ModBlocks.HOLLOW_LUCI_LOG);
                     entries.add(ModBlocks.STRIPPED_LUCI_LOG);
                     entries.add(ModBlocks.LUCI_LEAVES);
@@ -73,6 +80,8 @@ public class ModItemGroup {
                     entries.add(ModItems.TURTLE_SPAWN_EGG);
                     entries.add(ModItems.BUTTERFLY_SPAWN_EGG);
                     entries.add(ModItems.CATERPILLAR_SPAWN_EGG);
+                    entries.add(ModItems.SHARK_SPAWN_EGG);
+                    entries.add(ModItems.RABBIT_SPAWN_EGG);
                   }).build());
 
   public static void registerItemGroups() {

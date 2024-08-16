@@ -13,5 +13,9 @@ public static final EntityModelLayer CRAB =
           new EntityModelLayer(Identifier.of(EllesMobsNPlenty.MOD_ID, "butterfly"), "main");
   public static final EntityModelLayer CATERPILLAR =
           new EntityModelLayer(Identifier.of(EllesMobsNPlenty.MOD_ID, "caterpillar"), "main");
+  public static final EntityModelLayer SHARK =
+          new EntityModelLayer(Identifier.of(EllesMobsNPlenty.MOD_ID, "shark"), "main");
+  public static final EntityModelLayer RABBIT =
+          new EntityModelLayer(Identifier.of(EllesMobsNPlenty.MOD_ID, "rabbit"), "main");
 
 }

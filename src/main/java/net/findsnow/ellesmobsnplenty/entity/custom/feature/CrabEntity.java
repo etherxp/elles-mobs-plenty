@@ -2,56 +2,32 @@ package net.findsnow.ellesmobsnplenty.entity.custom.feature;
 
 import net.findsnow.ellesmobsnplenty.entity.ModEntities;
 import net.findsnow.ellesmobsnplenty.entity.ai.crab.WaveAtPlayerGoal;
-import net.findsnow.ellesmobsnplenty.entity.variant.CrabVariant;
-import net.findsnow.ellesmobsnplenty.util.ModBiomeTags;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.passive.FrogVariant;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.BiomeTags;
-import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 public class CrabEntity extends AnimalEntity {
-  public static final TrackedData<Integer> DATA_ID_TYPE_VARIANT =
-          DataTracker.registerData(CrabEntity.class, TrackedDataHandlerRegistry.INTEGER);
   public final AnimationState waveAnimationState = new AnimationState();
   public final AnimationState idleAnimationState = new AnimationState();
   public final AnimationState snipAnimationState = new AnimationState();
@@ -65,6 +41,11 @@ public class CrabEntity extends AnimalEntity {
     super(entityType, world);
     this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
     this.setPathfindingPenalty(PathNodeType.WATER_BORDER, 0.0F);
+  }
+
+  @Override
+  public boolean isBreedingItem(ItemStack stack) {
+    return true;
   }
 
   @Override
@@ -156,11 +137,16 @@ public class CrabEntity extends AnimalEntity {
         if (movementInput.y > 0) {
           this.setVelocity(this.getVelocity().add(0.0, this.getMovementSpeed() * 0.15, 0.0));
         }
+        this.turnBodySideways();
       } else {
         this.resetBodyRotation();
       }
     }
     super.travel(movementInput);
+  }
+
+  private void turnBodySideways() {
+    this.setPitch(90.0F);
   }
 
 
@@ -173,6 +159,9 @@ public class CrabEntity extends AnimalEntity {
     super.tick();
     if (this.getWorld().isClient()) {
       this.setupAnimationStates();
+    }
+    if (!this.isClimbing()) {
+      this.resetBodyRotation();
     }
   }
 
@@ -191,6 +180,11 @@ public class CrabEntity extends AnimalEntity {
   }
 
   @Override
+  protected void playStepSound(BlockPos pos, BlockState state) {
+    this.playSound(SoundEvents.ENTITY_SPIDER_STEP, 0.15F, 1.0F);
+  }
+
+  @Override
   protected SoundEvent getDeathSound() {
     return SoundEvents.ENTITY_TURTLE_DEATH;
   }
@@ -201,49 +195,5 @@ public class CrabEntity extends AnimalEntity {
   public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
     return ModEntities.CRAB.create(world);
   }
-
-  // Variants
-
-  public CrabVariant getVariant() {
-    return CrabVariant.byId(this.getTypeVariant() & 255);
-  }
-
-  private int getTypeVariant () {
-    return this.dataTracker.get(DATA_ID_TYPE_VARIANT);
-  }
-
-  private void setVariant(CrabVariant variant) {
-    this.dataTracker.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
-  }
-
- // @Override
- /// public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason,
-   //                            @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-   // RegistryEntry<Biome> registryEntry = world.getBiome(this.getBlockPos());
-    //if (registryEntry.isIn(ModBiomeTags.SPAWNS_RED_CRAB)) {
-     // this.setVariant(CrabVariant.DEFAULT);
-    //} else if (registryEntry.isIn(ModBiomeTags.SPAWNS_BLUE_CRAB)) {
-     // this.setVariant(CrabVariant.BLUE);
-    //} else if (registryEntry.isIn(ModBiomeTags.SPAWNS_GREEN_CRAB)) {
-    //  this.setVariant(CrabVariant.GREEN);
-   // }
-    //return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
-  //}
-
-  @Override
-  public void readCustomDataFromNbt(NbtCompound nbt) {
-    super.readCustomDataFromNbt(nbt);
-    this.dataTracker.set(DATA_ID_TYPE_VARIANT, nbt.getInt("Variant"));
-  }
-
-  @Override
-  public boolean isBreedingItem(ItemStack stack) {
-    return false;
-  }
-
-  @Override
-  public void writeCustomDataToNbt(NbtCompound nbt) {
-    super.writeCustomDataToNbt(nbt);
-    nbt.putInt("Variant", this.getTypeVariant());
-  }
 }
+

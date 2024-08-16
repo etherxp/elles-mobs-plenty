@@ -1,30 +1,18 @@
 package net.findsnow.ellesmobsnplenty.entity.render.renderer;
 
-import com.google.common.collect.Maps;
 import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
 import net.findsnow.ellesmobsnplenty.entity.custom.feature.CrabEntity;
 import net.findsnow.ellesmobsnplenty.entity.render.layer.ModModelLayers;
 import net.findsnow.ellesmobsnplenty.entity.render.model.CrabModel;
-import net.findsnow.ellesmobsnplenty.entity.variant.CrabVariant;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Util;
-
-import java.util.Map;
 
 public class CrabRenderer extends MobEntityRenderer<CrabEntity, CrabModel<CrabEntity>> {
-  private static final Map<CrabVariant, Identifier> LOCATION_BY_VARIANT =
-          Util.make(Maps.newEnumMap(CrabVariant.class), map -> {
-            map.put(CrabVariant.DEFAULT,
-                    Identifier.of(EllesMobsNPlenty.MOD_ID, "textures/entity/crab/crab_texture.png"));
-            map.put(CrabVariant.GREEN,
-                    Identifier.of(EllesMobsNPlenty.MOD_ID, "textures/entity/crab/crab_texture_green.png"));
-            map.put(CrabVariant.BLUE,
-                    Identifier.of(EllesMobsNPlenty.MOD_ID, "textures/entity/crab/crab_texture_blue.png"));
-          });
+  private static final Identifier TEXTURE = Identifier.of(EllesMobsNPlenty.MOD_ID, "textures/entity/crab/crab_texture.png");
+
 
   public CrabRenderer(EntityRendererFactory.Context ctx) {
     super(ctx, new CrabModel<>(ctx.getPart(ModModelLayers.CRAB)), 0.4f);
@@ -32,7 +20,7 @@ public class CrabRenderer extends MobEntityRenderer<CrabEntity, CrabModel<CrabEn
 
   @Override
   public Identifier getTexture(CrabEntity entity) {
-    return LOCATION_BY_VARIANT.get(entity.getVariant());
+    return TEXTURE;
   }
 
   @Override

@@ -5,7 +5,8 @@
 	"mixins": [
 		"ExampleMixin",
 		"TreeDecoratorTypeMixin",
-		"TrunkPlacerTypeInvoker"
+		"TrunkPlacerTypeInvoker",
+		"FoliagePlacerTypeInvoker"
 	],
 	"injectors": {
 		"defaultRequire": 1

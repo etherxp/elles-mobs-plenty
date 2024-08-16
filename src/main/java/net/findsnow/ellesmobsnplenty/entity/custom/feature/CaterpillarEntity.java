@@ -1,6 +1,5 @@
 package net.findsnow.ellesmobsnplenty.entity.custom.feature;
 
-import com.mojang.datafixers.kinds.IdF;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -96,22 +95,19 @@ public class CaterpillarEntity extends AnimalEntity {
     if (!this.getWorld().isClient && this.isAlive() && --this.chrysalisTime <= 0) {
       World world = this.getWorld();
       BlockPos blockPos = this.findNearestLog();
+      this.playSound(SoundEvents.ENTITY_TURTLE_EGG_CRACK, 1.0f, (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
+      this.emitGameEvent(GameEvent.BLOCK_PLACE);
       if (blockPos != null) {
-        this.playSound(SoundEvents.ENTITY_TURTLE_EGG_CRACK, 1.0f, (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
-        this.emitGameEvent(GameEvent.BLOCK_PLACE);
         BlockState blockState = ModBlocks.CHRYSALIS_BLOCK.getDefaultState();
         world.setBlockState(blockPos, blockState, Block.NOTIFY_ALL);
         world.emitGameEvent(GameEvent.BLOCK_PLACE, blockPos, GameEvent.Emitter.of(this, blockState));
-        this.discard();
       } else {
-        this.playSound(SoundEvents.ENTITY_TURTLE_EGG_CRACK, 1.0f, (this.random.nextFloat() - this.random.nextFloat()) * 0.2f + 1.0f);
-        this.emitGameEvent(GameEvent.BLOCK_PLACE);
         BlockPos blockPos2 = this.getBlockPos();
         BlockState blockState = ModBlocks.CHRYSALIS_BLOCK.getDefaultState();
         world.setBlockState(blockPos2, blockState, Block.NOTIFY_ALL);
         world.emitGameEvent(GameEvent.BLOCK_PLACE, blockPos2, GameEvent.Emitter.of(this, blockState));
-        this.discard();
       }
+      this.discard();
     }
     super.tick();
     if (this.getWorld().isClient()) {

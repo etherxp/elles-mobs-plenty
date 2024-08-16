@@ -44,6 +44,7 @@ public class FallingLeavesParticle
     return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
   }
 
+
   @Override
   public void tick() {
     this.prevPosX = this.x;
@@ -75,8 +76,8 @@ public class FallingLeavesParticle
 
     float f = 300 - this.maxAge;
     float g = Math.min(f / 300.0f, 1.0f);
-    double d = Math.cos(Math.toRadians(this.field_43370 * 60.0f)) * 2.0 * Math.pow(g, 1.25);
-    double e = Math.sin(Math.toRadians(this.field_43370 * 60.0f)) * 2.0 * Math.pow(g, 1.25);
+    double d = Math.cos(Math.toRadians(this.field_43370 * 60.0f)) * 2.0 * Math.pow(g, 1.15);
+    double e = Math.sin(Math.toRadians(this.field_43370 * 60.0f)) * 2.0 * Math.pow(g, 1.15);
     this.velocityX += d * (double)0.0025f;
     this.velocityZ += e * (double)0.0025f;
     this.velocityY -= this.gravityStrength;

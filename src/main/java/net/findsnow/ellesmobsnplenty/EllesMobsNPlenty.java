@@ -15,6 +15,8 @@ import net.findsnow.ellesmobsnplenty.util.ModRegistries;
 import net.findsnow.ellesmobsnplenty.world.ModFeatures;
 import net.findsnow.ellesmobsnplenty.world.decorators.ModTreeDecorator;
 import net.findsnow.ellesmobsnplenty.world.gen.ModWorldGeneration;
+import net.findsnow.ellesmobsnplenty.world.tree.ModFoliagePlacerTypes;
+import net.findsnow.ellesmobsnplenty.world.tree.ModTrunkPlacerTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,5 +39,8 @@ public class EllesMobsNPlenty implements ModInitializer {
 		ModTreeDecorator.register();
 		ModFeatures.register();
 		ModBoats.registerBoats();
+		ModTrunkPlacerTypes.register();
+		ModFoliagePlacerTypes.register();
+
 	}
 }
