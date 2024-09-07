@@ -8,10 +8,7 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "ellesmobsnplenty:luci_mushroom_block",
-              "Properties": {
-                "facing": "north"
-              }
+              "Name": "ellesmobsnplenty:luci_fungus"
             }
           }
         }
@@ -26,8 +23,8 @@
         }
       ]
     },
-    "tries": 15,
-    "xz_spread": 4,
-    "y_spread": 2
+    "tries": 4,
+    "xz_spread": 2,
+    "y_spread": 4
   }
 }

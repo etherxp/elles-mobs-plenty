@@ -52,7 +52,6 @@ public class ModBiomes {
 
     DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
     DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
-
     globalOverworldGeneration(biomeBuilder);
     DefaultBiomeFeatures.addForestFlowers(biomeBuilder);
     DefaultBiomeFeatures.addForestGrass(biomeBuilder);

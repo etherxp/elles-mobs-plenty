@@ -39,10 +39,16 @@ public class ModEntities {
                   .dimensions(1.3F, 1.0F)
                   .build());
 
+  public static final EntityType<ShrimpEntity> SHRIMP = Registry.register(Registries.ENTITY_TYPE,
+          Identifier.of(EllesMobsNPlenty.MOD_ID, "shrimp"),
+          EntityType.Builder.create(ShrimpEntity::new, SpawnGroup.WATER_CREATURE)
+                  .dimensions(0.40F, 0.40F)
+                  .build());
+
   public static final EntityType<RabbitReplacementEntity> RABBIT = Registry.register(Registries.ENTITY_TYPE,
           Identifier.of(EllesMobsNPlenty.MOD_ID, "rabbit"),
           EntityType.Builder.create(RabbitReplacementEntity::new, SpawnGroup.CREATURE)
-                  .dimensions(0.4F, 0.4F)
+                  .dimensions(0.50F, 0.50F)
                   .build());
 
 

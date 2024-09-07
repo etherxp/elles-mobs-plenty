@@ -1,12 +1,16 @@
 package net.findsnow.ellesmobsnplenty.entity.render.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.findsnow.ellesmobsnplenty.entity.custom.feature.RabbitReplacementEntity;
 import net.findsnow.ellesmobsnplenty.entity.render.animations.ModAnimations;
 import net.findsnow.ellesmobsnplenty.entity.render.animations.RabbitAnimations;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.model.ParrotEntityModel;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.util.math.MathHelper;
 
 public class RabbitModel <T extends RabbitReplacementEntity> extends SinglePartEntityModel<T> {
@@ -82,9 +86,10 @@ public class RabbitModel <T extends RabbitReplacementEntity> extends SinglePartE
     this.leftBackLeg.pitch = this.jumpProgress * 70.0F * (float) (Math.PI / 180.0);
     this.rightBackLeg.pitch = this.jumpProgress * 70.0F * (float) (Math.PI / 180.0);
     this.leftFrontLeg.pitch = (this.jumpProgress * -30.0F - 11.0F) * (float) (Math.PI / 180.0);
-    this.rightFrontLeg.pitch = (this.jumpProgress * -30.0F - 11.0F) * (float) (Math.PI / 180.0);
+    this.rightFrontLeg.pitch = (this.jumpProgress * -40.0F - 11.0F) * (float) (Math.PI / 180.0);
 
     this.updateAnimation(entity.idleAnimationState, RabbitAnimations.rabbit_idle, ageInTicks, 1f);
+    this.updateAnimation(entity.sniffingAnimationState, RabbitAnimations.rabbit_sniff, ageInTicks, 1f);
   }
 
   private void setHeadAngles(RabbitReplacementEntity entity, float headYaw, float headPitch, float animationProgress) {
@@ -107,5 +112,22 @@ public class RabbitModel <T extends RabbitReplacementEntity> extends SinglePartE
   @Override
   public ModelPart getPart() {
     return bunny;
+  }
+
+  private static RabbitModel.Pose getPose(RabbitReplacementEntity rabbitReplacementEntity) {
+    if (rabbitReplacementEntity.sniffingAnimationState.isRunning()) {
+      return Pose.SNIFFING;
+    }
+
+    return RabbitModel.Pose.STANDING;
+  }
+
+  @Environment(value= EnvType.CLIENT)
+  public static enum Pose {
+    JUMPING,
+    STANDING,
+    SITTING,
+    PARTY,
+    SNIFFING;
   }
 }

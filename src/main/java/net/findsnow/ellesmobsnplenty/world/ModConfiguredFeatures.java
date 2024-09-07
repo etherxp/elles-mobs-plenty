@@ -41,8 +41,6 @@ public class ModConfiguredFeatures {
   public static final RegistryKey<ConfiguredFeature<?, ?>> LUCI_MUSHROOM = registryKey("luci_mushroom");
   public static final RegistryKey<ConfiguredFeature<?, ?>> LUCI_LEAF_PILE = registryKey("luci_leaf_pile");
   public static final RegistryKey<ConfiguredFeature<?, ?>> CLOVER = registryKey("clover");
-  public static final RegistryKey<ConfiguredFeature<?, ?>> PEBBLES = registryKey("pebbles");
-  public static final RegistryKey<ConfiguredFeature<?, ?>> ROCKS = registryKey("rocks");
   public static final RegistryKey<ConfiguredFeature<?, ?>> TALL_CLOVER = registryKey("tall_clover");
 
   public ModConfiguredFeatures(BlockStateProvider stateProvider) {
@@ -61,7 +59,7 @@ public class ModConfiguredFeatures {
                     OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.DEEPSLATE_FROSTITE_ORE.getDefaultState()));
 
     register(context, FALLEN_LUCI_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-            BlockStateProvider.of(ModBlocks.HOLLOW_LUCI_LOG),
+            BlockStateProvider.of(ModBlocks.LUCI_LOG),
             new HollowLuciTrunkPlacer(2, 1, 2),
             BlockStateProvider.of(Blocks.MOSS_CARPET),
             new BushFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 3),
@@ -110,14 +108,10 @@ public class ModConfiguredFeatures {
             new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LUCI_LEAF_PILE)))));
     register(context, FLAURELLE, Feature.FLOWER, new RandomPatchFeatureConfig(10, 7,4, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
             new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.FLAURELLE)))));
-    register(context, LUCI_MUSHROOM, Feature.FLOWER, new RandomPatchFeatureConfig(15, 4,2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-            new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LUCI_MUSHROOM)))));
+    register(context, LUCI_MUSHROOM, Feature.FLOWER, new RandomPatchFeatureConfig(4, 2,4, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+            new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LUCI_FUNGUS)))));
     register(context, CLOVER, Feature.FLOWER, new RandomPatchFeatureConfig(96, 2,3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
             new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.CLOVER)))));
-    register(context, PEBBLES, Feature.FLOWER, new RandomPatchFeatureConfig(17, 5,3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-            new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PEBBLE_BLOCK)))));
-    register(context, ROCKS, Feature.FLOWER, new RandomPatchFeatureConfig(13, 2,3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-            new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.ROCK_BLOCK)))));
     register(context, TALL_CLOVER, Feature.FLOWER, new RandomPatchFeatureConfig(96, 3,3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
             new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.TALL_CLOVER)))));
   }

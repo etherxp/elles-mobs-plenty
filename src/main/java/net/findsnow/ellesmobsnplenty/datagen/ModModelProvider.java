@@ -27,14 +27,12 @@ public class ModModelProvider extends FabricModelProvider {
   public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
     // Blocks
 
-    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PEBBLE_BLOCK);
     blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk);
-    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.ROCK_BLOCK);
     blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.JAR_BLOCK);
-    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_MUSHROOM);
     blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_BLOCK);
-    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_NEPHRITE_BLOCK);
-    blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.LUCILLE_TULIP, ModBlocks.POTTED_LUCILLE_TULIP, BlockStateModelGenerator.TintType.NOT_TINTED);
+    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.LUCI_FUNGAL_BOCK);
+    blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.FLAURELLE, ModBlocks.POTTED_FLAURELLE, BlockStateModelGenerator.TintType.NOT_TINTED);
+    blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.LUCI_FUNGUS, ModBlocks.POTTED_LUCI_FUNGUS, BlockStateModelGenerator.TintType.NOT_TINTED);
     blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.BLOSSOMING_LUCI_VINE);
     blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_PETAL);
 
@@ -106,21 +104,23 @@ public class ModModelProvider extends FabricModelProvider {
   @Override
   public void generateItemModels(ItemModelGenerator itemModelGenerator) {
     itemModelGenerator.register(ModItems.CRAB_CLAW, Models.GENERATED);
+    itemModelGenerator.register(ModItems.CRAB_BUCKET, Models.GENERATED);
+    itemModelGenerator.register(ModItems.RAW_SHARK_MEAT, Models.GENERATED);
+    itemModelGenerator.register(ModItems.COOKED_SHARK_MEAT, Models.GENERATED);
     itemModelGenerator.register(ModItems.JAR, Models.GENERATED);
-    itemModelGenerator.register(ModBlocks.PEBBLE_BLOCK.asItem(), Models.GENERATED);
-    itemModelGenerator.register(ModBlocks.ROCK_BLOCK.asItem(), Models.GENERATED);
     itemModelGenerator.register(ModItems.RAW_CRAB, Models.GENERATED);
     itemModelGenerator.register(ModItems.COOKED_CRAB, Models.GENERATED);
+    itemModelGenerator.register(ModItems.SHRIMP, Models.GENERATED);
+    itemModelGenerator.register(ModItems.RAW_SHRIMP, Models.GENERATED);
+    itemModelGenerator.register(ModItems.COOKED_SHRIMP, Models.GENERATED);
     itemModelGenerator.register(ModItems.FROSTITE, Models.GENERATED);
     itemModelGenerator.register(ModItems.NEPHRITE, Models.GENERATED);
-    itemModelGenerator.register(ModItems.RAW_NEPHRITE, Models.GENERATED);
     itemModelGenerator.register(ModItems.NEPHRITE_NUGGET, Models.GENERATED);
 
     itemModelGenerator.register(ModBlocks.LUCI_SAPLING.asItem(), Models.GENERATED);
     itemModelGenerator.register(ModBlocks.CHRYSALIS_BLOCK.asItem(), Models.GENERATED);
     itemModelGenerator.register(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk.asItem(), Models.GENERATED);
     itemModelGenerator.register(ModBlocks.BLOSSOMING_LUCI_SAPLING.asItem(), Models.GENERATED);
-    itemModelGenerator.register(ModBlocks.LUCI_MUSHROOM.asItem(), Models.GENERATED);
     itemModelGenerator.register(ModBlocks.CLOVER.asItem(), Models.GENERATED);
     itemModelGenerator.register(ModBlocks.TALL_CLOVER.asItem(), Models.GENERATED);
 
@@ -139,6 +139,8 @@ public class ModModelProvider extends FabricModelProvider {
     itemModelGenerator.register(ModItems.SHARK_SPAWN_EGG,
             new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
     itemModelGenerator.register(ModItems.RABBIT_SPAWN_EGG,
+            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+    itemModelGenerator.register(ModItems.SHRIMP_SPAWN_EGG,
             new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
 
   }

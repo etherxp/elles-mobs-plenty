@@ -3,7 +3,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"1": "ellesmobsnplenty:block/chomper_block",
-		"particle": "ellesmobsnplenty:block/chomper_block"
+		"particle": "ellesmobsnplenty:block/chomper_break_particle"
 	},
 	"elements": [
 		{

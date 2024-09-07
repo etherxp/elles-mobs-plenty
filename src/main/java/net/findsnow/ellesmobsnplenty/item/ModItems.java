@@ -7,9 +7,14 @@ import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.findsnow.ellesmobsnplenty.entity.ModBoats;
 import net.findsnow.ellesmobsnplenty.entity.ModEntities;
+import net.findsnow.ellesmobsnplenty.util.ModFoodComponents;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
@@ -21,14 +26,18 @@ public class ModItems {
   public static final Item NEPHRITE = registerItem("nephrite",
           new Item(new Item.Settings()));
 
-  public static final Item RAW_NEPHRITE = registerItem("raw_nephrite",
-          new Item(new Item.Settings()));
-
   public static final Item NEPHRITE_NUGGET = registerItem("nephrite_nugget",
           new Item(new Item.Settings()));
 
   public static final Item CRAB_CLAW = registerItem("crab_claw",
           new Item(new Item.Settings()));
+
+  public static final Item SHRIMP = registerItem("shrimp",
+          new Item(new Item.Settings()));
+
+  public static final Item CRAB_BUCKET = registerItem("crab_bucket",
+          new EntityBucketItem(ModEntities.CRAB, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_AXOLOTL,
+                  new Item.Settings().maxCount(1).component(DataComponentTypes.BUCKET_ENTITY_DATA, NbtComponent.DEFAULT)));
 
   public static final Item JAR = registerItem("jar",
           new Item(new Item.Settings()
@@ -62,13 +71,29 @@ public class ModItems {
           new SpawnEggItem(ModEntities.SHARK, 0x363237, 0x363237, new Item.Settings()));
   public static final Item RABBIT_SPAWN_EGG = registerItem("rabbit_spawn_egg",
           new SpawnEggItem(ModEntities.RABBIT, 0x7b6c54, 0x4e4134, new Item.Settings()));
+  public static final Item SHRIMP_SPAWN_EGG = registerItem("shrimp_spawn_egg",
+          new SpawnEggItem(ModEntities.SHRIMP, 0xe97562, 0xd55956, new Item.Settings()));
 
 
   // Food
   public static final Item RAW_CRAB = registerItem("raw_crab",
-          new Item(new Item.Settings()));
+          new Item(new Item.Settings()
+                  .food(ModFoodComponents.CRAB_MEAT)));
   public static final Item COOKED_CRAB = registerItem("cooked_crab",
-          new Item(new Item.Settings()));
+          new Item(new Item.Settings()
+                  .food(ModFoodComponents.COOKED_CRAB_MEAT)));
+  public static final Item RAW_SHRIMP = registerItem("raw_shrimp",
+          new Item(new Item.Settings()
+                    .food(ModFoodComponents.RAW_SHRIMP)));
+  public static final Item COOKED_SHRIMP = registerItem("cooked_shrimp",
+          new Item(new Item.Settings()
+                  .food(ModFoodComponents.COOKED_SHRIMP)));
+  public static final Item RAW_SHARK_MEAT = registerItem("raw_shark_meat",
+          new Item(new Item.Settings()
+                  .food(ModFoodComponents.SHARK_MEAT)));
+  public static final Item COOKED_SHARK_MEAT = registerItem("cooked_shark_meat",
+          new Item(new Item.Settings()
+                  .food(ModFoodComponents.COOKED_SHARK_MEAT)));
 
 
   // Tools
@@ -88,7 +113,6 @@ public class ModItems {
     // Items
     entries.add(NEPHRITE);
     entries.add(FROSTITE);
-    entries.add(RAW_NEPHRITE);
     entries.add(NEPHRITE_NUGGET);
     entries.add(CRAB_CLAW);
     entries.add(JAR);
@@ -97,7 +121,6 @@ public class ModItems {
 
     // Blocks
     entries.add(ModBlocks.NEPHRITE_BLOCK);
-    entries.add(ModBlocks.RAW_NEPHRITE_BLOCK);
     entries.add(ModBlocks.FROSTITE_ORE);
     entries.add(ModBlocks.DEEPSLATE_FROSTITE_ORE);
     entries.add(ModBlocks.NEPHRITE_ORE);

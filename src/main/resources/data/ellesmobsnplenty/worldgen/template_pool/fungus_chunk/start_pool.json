@@ -1,0 +1,15 @@
+{
+  "name": "ellesmobsnplenty:fungus_chunk/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "ellesmobsnplenty:fungus_chunk",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

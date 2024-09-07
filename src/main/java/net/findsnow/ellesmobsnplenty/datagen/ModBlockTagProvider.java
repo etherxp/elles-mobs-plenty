@@ -43,7 +43,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
             .add(ModBlocks.NEPHRITE_ORE)
             .add(ModBlocks.NEPHRITE_BLOCK)
-            .add(ModBlocks.RAW_NEPHRITE_BLOCK)
             .add(ModBlocks.DEEPSLATE_NEPHRITE_ORE);
 
     getOrCreateTagBuilder(BlockTags.FENCES)

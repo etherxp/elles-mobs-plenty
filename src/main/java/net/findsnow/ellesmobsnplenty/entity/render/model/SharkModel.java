@@ -1,7 +1,7 @@
 package net.findsnow.ellesmobsnplenty.entity.render.model;
 
 import net.findsnow.ellesmobsnplenty.entity.custom.feature.SharkEntity;
-import net.findsnow.ellesmobsnplenty.entity.render.animations.ModAnimations;
+import net.findsnow.ellesmobsnplenty.entity.render.animations.SharkAnimations;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
@@ -16,9 +16,11 @@ public class SharkModel <T extends SharkEntity> extends SinglePartEntityModel<T>
   private final ModelPart leftFin;
   private final ModelPart rightFin;
   private final ModelPart back;
+  private final ModelPart body;
 
   public SharkModel(ModelPart root) {
     this.shark = root.getChild("shark");
+    this.body = shark.getChild("body");
     this.head = shark.getChild("body").getChild("head");
     this.chest = shark.getChild("body");
     this.torso = shark.getChild("body").getChild("torso").getChild("chest");
@@ -51,7 +53,7 @@ public class SharkModel <T extends SharkEntity> extends SinglePartEntityModel<T>
 
     ModelPartData right_fin = torso_fins.addChild("right_fin", ModelPartBuilder.create().uv(47, 49).cuboid(-0.0376F, -2.1219F, -3.8523F, 13.0F, 2.0F, 8.0F, new Dilation(0.0F)), ModelTransform.of(4.7876F, -1.8781F, -1.1477F, 0.0F, 0.0F, 1.5708F));
 
-    ModelPartData back_fin = torso_fins.addChild("back_fin", ModelPartBuilder.create().uv(58, 60).cuboid(-1.0F, -6.5F, -3.5F, 2.0F, 13.0F, 7.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -10.5F, 2.5F));
+    ModelPartData back_fin = torso_fins.addChild("back_fin", ModelPartBuilder.create().uv(58, 60).cuboid(-1.0F, -6.5F, -3.5F, 2.0F, 13.0F, 7.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -9.0F, 1.5F));
 
     ModelPartData back = torso.addChild("back", ModelPartBuilder.create(), ModelTransform.pivot(-0.6855F, 0.0F, 17.2206F));
 
@@ -67,17 +69,31 @@ public class SharkModel <T extends SharkEntity> extends SinglePartEntityModel<T>
   @Override
   public void setAngles(SharkEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
     this.getPart().traverse().forEach(ModelPart::resetTransform);
-    this.setHeadAngles(netHeadYaw, headPitch, ageInTicks);
 
-    this.animateMovement(ModAnimations.shark_swim, limbSwing, limbSwingAmount, 4f, 5f);
-    this.updateAnimation(entity.idleAnimationState, ModAnimations.shark_idle, ageInTicks, 1f);
+    if (entity.isInsideWaterOrBubbleColumn()) {
+      this.setBodyAngles(netHeadYaw, headPitch, ageInTicks);
+      this.animateMovement(SharkAnimations.shark_swim, limbSwing, limbSwingAmount, 4f, 5f);
+      this.updateAnimation(entity.idleAnimationState, SharkAnimations.shark_idle, ageInTicks, 1f);
+      this.updateAnimation(entity.attackAnimationState, SharkAnimations.shark_attack, ageInTicks, 1f);
+    } else {
+      this.setHeadAngles(netHeadYaw, headPitch, ageInTicks);
+      this.updateAnimation(entity.idleAnimationState, SharkAnimations.shark_crawl_idle, ageInTicks, 1f);
+      this.animateMovement(SharkAnimations.shark_crawl, limbSwing, limbSwingAmount, 5f, 7f);
+    }
   }
 
   private void setHeadAngles(float headYaw, float headPitch, float animationProgress) {
     headYaw = MathHelper.clamp(headYaw, -30.0F, 30.0F);
+    this.body.yaw = headYaw * (float) (Math.PI / 180.0);
+    this.back.yaw = headYaw * (float) (Math.PI / 180.0) / 3;
+    this.head.yaw = headYaw * (float) (Math.PI / 180.0);
+  }
+
+  private void setBodyAngles(float headYaw, float headPitch, float animationProgress) {
+    headYaw = MathHelper.clamp(headYaw, -30.0F, 30.0F);
     headPitch = MathHelper.clamp(headPitch, -25.0F, 45.0F);
-    this.shark.yaw = headYaw * (float) (Math.PI / 180.0);
-    this.shark.pitch = headPitch * (float) (Math.PI / 180.0);
+    this.body.yaw = headYaw * (float) (Math.PI / 180.0);
+    this.body.pitch = headPitch * (float) (Math.PI / 180.0);
     this.back.yaw = headYaw * (float) (Math.PI / 180.0) / 3;
     this.back.pitch = headPitch * (float) (Math.PI / 180.0) / 3;
     this.head.yaw = headYaw * (float) (Math.PI / 180.0);

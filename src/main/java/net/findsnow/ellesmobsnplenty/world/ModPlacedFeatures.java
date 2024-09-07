@@ -23,8 +23,6 @@ public class ModPlacedFeatures {
   public static final RegistryKey<PlacedFeature> LUCI_LEAF_PILE_PLACED_KEY = registerKey("luci_pile_placed");
   public static final RegistryKey<PlacedFeature> LUCI_MUSHROOM_PLACED_KEY = registerKey("luci_mushroom_placed");
   public static final RegistryKey<PlacedFeature> CLOVER_PLACED_KEY = registerKey("clover_placed");
-  public static final RegistryKey<PlacedFeature> PEBBLES_PLACED_KEY = registerKey("pebbles_placed");
-  public static final RegistryKey<PlacedFeature> ROCKS_PLACED_KEY = registerKey("rocks_placed");
   public static final RegistryKey<PlacedFeature> TALL_CLOVER_PLACED_KEY = registerKey("tall_clover_placed");
 
   public static void bootstrap(Registerable<PlacedFeature> context) {
@@ -83,20 +81,6 @@ public class ModPlacedFeatures {
 
     register(context, TALL_CLOVER_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
             ModConfiguredFeatures.TALL_CLOVER),
-            RarityFilterPlacementModifier.of(1),
-            SquarePlacementModifier.of(),
-            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
-            BiomePlacementModifier.of());
-
-    register(context, PEBBLES_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
-            ModConfiguredFeatures.PEBBLES),
-            RarityFilterPlacementModifier.of(1),
-            SquarePlacementModifier.of(),
-            PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
-            BiomePlacementModifier.of());
-
-    register(context, ROCKS_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(
-            ModConfiguredFeatures.ROCKS),
             RarityFilterPlacementModifier.of(1),
             SquarePlacementModifier.of(),
             PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,

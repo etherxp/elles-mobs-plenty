@@ -28,10 +28,11 @@
   "block.ellesmobsnplenty.firebug_jar_block": "Jar of Firebugs",
   "block.ellesmobsnplenty.chomper_block": "Chomper",
   "block.ellesmobsnplenty.ancient_furnace": "Ancient Furnace",
-  "block.ellesmobsnplenty.luci_fungus_shelf_block": "Luci Fungus",
+  "block.ellesmobsnplenty.luci_fungus_shelf_block": "Luci Fungus Shelf",
   "block.ellesmobsnplenty.flaurelle": "Flaurelle",
 
   "block.ellesmobsnplenty.luci_planks": "Luci Planks",
+  "block.ellesmobsnplenty.luci_fungal_block": "Luci Fungal Block",
   "block.ellesmobsnplenty.chrysalis_block": "Chrysalis",
   "block.ellesmobsnplenty.luci_stairs": "Luci Stairs",
   "block.ellesmobsnplenty.luci_slabs": "Luci Slab",
@@ -67,6 +68,10 @@
   "item.ellesmobsnplenty.raw_crab": "Raw Crab",
   "item.ellesmobsnplenty.cooked_crab": "Cooked Crab",
   "item.ellesmobsnplenty.crab_claw": "Crab Claw",
+  "item.ellesmobsnplenty.crab_bucket": "Crab Bucket",
+
+  "item.ellesmobsnplenty.raw_shark_meat": "Raw Shark Meat",
+  "item.ellesmobsnplenty.cooked_shark_meat": "Cooked Shark Meat",
 
   "item.ellesmobsnplenty.turtle_spawn_egg": "Turtle Spawn Egg",
   "item.ellesmobsnplenty.butterfly_spawn_egg": "Butterfly Spawn Egg",
@@ -77,6 +82,8 @@
   "block.ellesmobsnplenty.lucille_tulip": "Lucille Tulip",
   "block.ellesmobsnplenty.clover_block": "Clover",
   "block.ellesmobsnplenty.tall_clover_block": "Tall Clover",
+
+  "block.ellesmobsnplenty.luci_fungus": "Luci Fungus",
 
   "itemGroup.elles_mobs_n_plenty_group": "Elles Mobs N' Plenty"
 }

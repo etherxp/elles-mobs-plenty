@@ -19,14 +19,19 @@ public class ModItemGroup {
                     entries.add(ModItems.CRAB_CLAW);
                     entries.add(ModItems.RAW_CRAB);
                     entries.add(ModItems.COOKED_CRAB);
+                    entries.add(ModItems.SHRIMP);
+                    entries.add(ModItems.RAW_SHRIMP);
+                    entries.add(ModItems.COOKED_SHRIMP);
+                    entries.add(ModItems.RAW_SHARK_MEAT);
+                    entries.add(ModItems.COOKED_SHARK_MEAT);
                     entries.add(ModItems.NEPHRITE);
-                    entries.add(ModItems.RAW_NEPHRITE);
                     entries.add(ModItems.NEPHRITE_NUGGET);
                     entries.add(ModItems.JAR);
+                    entries.add(ModItems.CRAB_BUCKET);
 
                     // Blocks
                     entries.add(ModBlocks.NEPHRITE_BLOCK);
-                    entries.add(ModBlocks.RAW_NEPHRITE_BLOCK);
+                    entries.add(ModBlocks.LUCI_FUNGAL_BOCK);
                     entries.add(ModBlocks.FROSTITE_ORE);
                     entries.add(ModBlocks.DEEPSLATE_FROSTITE_ORE);
                     entries.add(ModBlocks.NEPHRITE_ORE);
@@ -34,14 +39,11 @@ public class ModItemGroup {
                     entries.add(ModBlocks.GREEN_MUSHROOM_LAMP);
                     entries.add(ModBlocks.BLUE_MUSHROOM_LAMP);
                     entries.add(ModBlocks.CHOMPER_BLOCK);
-                    entries.add(ModBlocks.LUCILLE_TULIP);
                     entries.add(ModBlocks.FLAURELLE);
                     entries.add(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk);
                     entries.add(ModBlocks.CLOVER);
                     entries.add(ModBlocks.TALL_CLOVER);
-                    entries.add(ModBlocks.ROCK_BLOCK);
-                    entries.add(ModBlocks.PEBBLE_BLOCK);
-                    entries.add(ModBlocks.LUCI_MUSHROOM);
+                    entries.add(ModBlocks.LUCI_FUNGUS);
                     entries.add(ModBlocks.CHRYSALIS_BLOCK);
                     entries.add(ModBlocks.JAR_BLOCK);
 
@@ -58,7 +60,6 @@ public class ModItemGroup {
                     entries.add(ModBlocks.LUCI_LOG);
                     entries.add(ModItems.LUCI_SIGN);
                     entries.add(ModItems.LUCI_HANGING_SIGN);
-                    entries.add(ModBlocks.HOLLOW_LUCI_LOG);
                     entries.add(ModBlocks.STRIPPED_LUCI_LOG);
                     entries.add(ModBlocks.LUCI_LEAVES);
                     entries.add(ModBlocks.BLOSSOMING_LUCI_LEAVES);
@@ -82,7 +83,9 @@ public class ModItemGroup {
                     entries.add(ModItems.CATERPILLAR_SPAWN_EGG);
                     entries.add(ModItems.SHARK_SPAWN_EGG);
                     entries.add(ModItems.RABBIT_SPAWN_EGG);
-                  }).build());
+                    entries.add(ModItems.SHRIMP_SPAWN_EGG);
+                  }
+                  ).build());
 
   public static void registerItemGroups() {
     // I don't know what this does

@@ -1,17 +1,18 @@
 package net.findsnow.ellesmobsnplenty.entity.custom.feature;
 
 import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
 import net.findsnow.ellesmobsnplenty.entity.ModEntities;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.CarrotsBlock;
+import net.minecraft.block.*;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.FuzzyTargeting;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.ai.control.JumpControl;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.Path;
+import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -23,10 +24,15 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.passive.SnifferEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.codec.PacketCodec;
+import net.minecraft.network.codec.PacketCodecs;
+import net.minecraft.particle.BlockStateParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.registry.tag.BlockTags;
@@ -36,11 +42,10 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.StringIdentifiable;
-import net.minecraft.util.Util;
+import net.minecraft.util.*;
 import net.minecraft.util.function.ValueLists;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.GlobalPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
@@ -49,28 +54,48 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.*;
 import java.util.function.IntFunction;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public class RabbitReplacementEntity extends AnimalEntity implements VariantHolder<RabbitReplacementEntity.RabbitType> {
-  public static final double ESCAPE_DANGER_SPEED = 2.2;
-  public static final double MELEE_ATTACK_SPEED = 1.4;
+public class RabbitReplacementEntity extends AnimalEntity implements VariantHolder<RabbitReplacementEntity.RabbitType>, Tameable {
+
+  // This class is super old
+  // Lots of else-if statements flooded with that crap
+
   private static final TrackedData<Integer> RABBIT_TYPE =
+          DataTracker.registerData(RabbitReplacementEntity.class, TrackedDataHandlerRegistry.INTEGER);
+  private static final TrackedData<Integer> FINISH_DIG_TIME =
           DataTracker.registerData(RabbitReplacementEntity.class, TrackedDataHandlerRegistry.INTEGER);
   private static final Identifier KILLER_BUNNY = Identifier.of(EllesMobsNPlenty.MOD_ID, "killer_bunny");
   private static final Identifier KILLER_BUNNY_ATTACK_DAMAGE_MODIFIER_ID = Identifier.of(EllesMobsNPlenty.MOD_ID, "evil");
 
   public final AnimationState idleAnimationState = new AnimationState();
   public final AnimationState jumpingAnimationState = new AnimationState();
+  public final AnimationState sniffingAnimationState = new AnimationState();
   private int idleAnimationTimeout = 0;
-  private int jumpingAnimationTimeout = 0;
+  private int sniffingAnimationTimeout = 0;
   private int jumpTicks;
   private int jumpDuration;
+
+
+  private boolean rabbitFed;
   private boolean lastOnGround;
   private int ticksUntilJump;
+  private boolean isSniffing;
+
+  private int cooldownDuration = 2400; // Sniffing Cooldown 2 Minutes
+  private int sniffingCooldown = 0;
   int moreCarrotTicks;
 
   public RabbitReplacementEntity(EntityType<? extends AnimalEntity> entityType, World world) {
     super(entityType, world);
+    this.isSniffing = false;
+    this.getNavigation().setCanSwim(true);
+    this.setPathfindingPenalty(PathNodeType.WATER, -1.0F);
+    this.setPathfindingPenalty(PathNodeType.DAMAGE_CAUTIOUS, -1.0F);
     this.jumpControl = new RabbitReplacementEntity.RabbitJumpControl(this);
     this.moveControl = new RabbitReplacementEntity.RabbitMoveControl(this);
     this.setSpeed(0.0);
@@ -80,6 +105,7 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
   protected void initDataTracker(DataTracker.Builder builder) {
     super.initDataTracker(builder);
     builder.add(RABBIT_TYPE, RabbitType.BROWN.id);
+    builder.add(FINISH_DIG_TIME, 0);
   }
 
   @Override
@@ -98,8 +124,37 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
   }
 
   @Override
+  public void onStartPathfinding() {
+    super.onStartPathfinding();
+    if (this.isOnFire() || this.isTouchingWater()) {
+      this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
+    }
+  }
+
+  @Override
+  public void onFinishPathfinding() {
+    this.setPathfindingPenalty(PathNodeType.WATER, -1.0F);
+  }
+
+  @Override
   public boolean isBreedingItem(ItemStack stack) {
     return stack.isIn(ItemTags.RABBIT_FOOD);
+  }
+
+  public boolean isFeedingItem(ItemStack stack) {
+    return stack.isIn(ItemTags.FLOWERS);
+  }
+
+  public void rabbitWasFed(RabbitReplacementEntity entity, ItemStack itemStack) {
+    if (entity.rabbitFed) {
+      entity.setVariant(entity.getVariant());
+      this.disableJump();
+    }
+  }
+
+  @Override
+  public float getStepHeight() {
+    return 1f;
   }
 
   @Nullable
@@ -167,14 +222,49 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
     return RabbitReplacementEntity.RabbitType.byId(this.dataTracker.get(RABBIT_TYPE));
   }
 
+  @Override
+  public ActionResult interactMob(PlayerEntity player, Hand hand) {
+    ItemStack itemStack = player.getStackInHand(hand);
+    if (isFeedingItem(itemStack)) {
+      this.rabbitFed = true;
+      itemStack.decrement(1);
+      return ActionResult.SUCCESS;
+    }
+    return ActionResult.PASS;
+  }
+
   // Tick Methods
 
   public void setupAnimationStates() {
+    if (this.sniffingCooldown > 0) {
+      --this.sniffingCooldown;
+    }
     if (this.idleAnimationTimeout <= 0) {
       this.idleAnimationTimeout = this.random.nextInt(40) + 80;
       this.idleAnimationState.start(this.age);
     } else {
       --this.idleAnimationTimeout;
+    }
+    if (this.rabbitFed && this.sniffingCooldown <=0) {
+      if (this.sniffingAnimationTimeout <= 0) {
+        this.disableJump();
+
+        this.sniffingAnimationTimeout = 100;
+        this.sniffingAnimationState.start(this.age);
+        this.isSniffing = true;
+        this.sniffingCooldown = cooldownDuration;
+      } else {
+        --this.sniffingAnimationTimeout;
+      }
+        } else {
+      if (!this.isSniffing) {
+        this.enableJump();
+        this.jump();
+        this.sniffingAnimationState.stop();
+      }
+    }
+    if (this.sniffingAnimationTimeout <= 0 && this.isSniffing) {
+      this.isSniffing = false;
     }
   }
 
@@ -236,7 +326,7 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
     if (d > 0.0) {
       double e = this.getVelocity().horizontalLengthSquared();
       if (e < 0.01) {
-        this.updateVelocity(0.1F, new Vec3d(0.0, 0.0, 2.0));
+        this.updateVelocity(0.1F, new Vec3d(0.0, 0.0, 1.0));
       }
     }
 
@@ -294,8 +384,15 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
   }
 
   public void startJump() {
-    this.setJumping(true);
-    this.jumpDuration = 10;
+    if (!this.isSniffing) {
+      this.enableJump();
+      this.setJumping(true);
+      this.jumpDuration = 10;
+    } else {
+      this.disableJump();
+      this.setJumping(false);
+      this.jumpDuration = 0;
+    }
     this.jumpTicks = 0;
   }
 
@@ -319,7 +416,9 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
     if (this.ticksUntilJump > 0) {
       --this.ticksUntilJump;
     }
-
+    if (this.horizontalCollision) {
+      this.setJumping(true);
+    }
     if (this.moreCarrotTicks > 0) {
       this.moreCarrotTicks -= this.random.nextInt(3);
       if (this.moreCarrotTicks < 0) {
@@ -327,13 +426,41 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
       }
     }
 
+    if (sniffingAnimationState.isRunning()) {
+
+      this.ticksUntilJump = 800;
+      this.sniffingCooldown = 140;
+      this.isSniffing = true;
+      this.navigation.stop();
+
+      if (this.sniffingAnimationTimeout <= 0) {
+        this.sniffingAnimationTimeout = 140;
+      }
+      this.sniffingAnimationTimeout--;
+      if (this.sniffingAnimationTimeout <= 0) {
+        this.isSniffing = false;
+        this.sniffingCooldown = 2400;
+      }
+    }
+
+    // Stop Rabbit Movement
+    if (this.isSniffing) {
+      this.jumpTicks = 500;
+      this.ticksUntilJump = 800;
+      this.getNavigation().stop();
+      this.setAiDisabled(true);
+      return;
+    } else {
+      this.setAiDisabled(false);
+    }
+
+    // This Continues Movement
     if (this.isOnGround()) {
       if (!this.lastOnGround) {
         this.setJumping(false);
         this.jumpingAnimationState.stop();
         this.scheduleJump();
       }
-
       if (this.getVariant() == RabbitReplacementEntity.RabbitType.EVIL && this.ticksUntilJump == 0) {
         LivingEntity livingEntity = this.getTarget();
         if (livingEntity != null && this.squaredDistanceTo(livingEntity) < 16.0) {
@@ -343,8 +470,7 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
           this.lastOnGround = true;
         }
       }
-
-      RabbitReplacementEntity.RabbitJumpControl rabbitJumpControl = (RabbitReplacementEntity.RabbitJumpControl)this.jumpControl;
+      RabbitReplacementEntity.RabbitJumpControl rabbitJumpControl = (RabbitReplacementEntity.RabbitJumpControl) this.jumpControl;
       if (!rabbitJumpControl.isActive()) {
         if (this.moveControl.isMoving() && this.ticksUntilJump == 0) {
           Path path = this.navigation.getCurrentPath();
@@ -352,7 +478,6 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
           if (path != null && !path.isFinished()) {
             vec3d = path.getNodePosition(this);
           }
-
           this.lookTowards(vec3d.x, vec3d.z);
           this.startJump();
         }
@@ -360,7 +485,9 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
         this.enableJump();
       }
     }
-
+    if (!this.sniffingAnimationState.isRunning() && sniffingAnimationTimeout > 0) {
+      --sniffingAnimationTimeout;
+    }
     this.lastOnGround = this.isOnGround();
   }
 
@@ -414,8 +541,8 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
 
   public static DefaultAttributeContainer.Builder createRabbitAttributes() {
     return MobEntity.createMobAttributes()
-            .add(EntityAttributes.GENERIC_MAX_HEALTH, 3.0)
-            .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3F)
+            .add(EntityAttributes.GENERIC_MAX_HEALTH, 5.0)
+            .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5F)
             .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0);
   }
 
@@ -433,9 +560,15 @@ public class RabbitReplacementEntity extends AnimalEntity implements VariantHold
     this.moreCarrotTicks = nbt.getInt("MoreCarrotTicks");
   }
 
+  @Nullable
+  @Override
+  public UUID getOwnerUuid() {
+    return null;
+  }
 
 
-  // Rabbit Goals
+  // Rabbit Goal
+
 
   static class EatCarrotCropGoal extends MoveToTargetPosGoal {
     private final RabbitReplacementEntity rabbit;

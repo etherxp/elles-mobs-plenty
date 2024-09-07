@@ -19,6 +19,8 @@ public class ModRegistries {
 
   }
 
+
+
   private static void registerAttributes() {
     FabricDefaultAttributeRegistry.register(ModEntities.CRAB, CrabEntity.createCrabAttributes());
     FabricDefaultAttributeRegistry.register(ModEntities.TURTLE, TurtleEntity.createTurtleAttributes());
@@ -26,6 +28,7 @@ public class ModRegistries {
     FabricDefaultAttributeRegistry.register(ModEntities.CATERPILLAR, CaterpillarEntity.createCaterpillarAttributes());
     FabricDefaultAttributeRegistry.register(ModEntities.SHARK, SharkEntity.createSharkAttributes());
     FabricDefaultAttributeRegistry.register(ModEntities.RABBIT, RabbitReplacementEntity.createRabbitAttributes());
+    FabricDefaultAttributeRegistry.register(ModEntities.SHRIMP, ShrimpEntity.createShrimpAttributes());
   }
 
   private static void registerStrippable() {

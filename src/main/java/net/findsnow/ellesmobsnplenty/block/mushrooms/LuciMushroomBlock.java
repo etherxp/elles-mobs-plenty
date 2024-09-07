@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class LuciMushroomBlock extends PlantBlock {
   public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-  private static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 16, 14, 16);
+  private static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 16, 13, 16);
 
   public LuciMushroomBlock(Settings settings) {
     super(settings);

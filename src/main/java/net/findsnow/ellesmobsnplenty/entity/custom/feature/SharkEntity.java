@@ -1,35 +1,40 @@
 package net.findsnow.ellesmobsnplenty.entity.custom.feature;
 
-import net.minecraft.block.BlockState;
+import net.findsnow.ellesmobsnplenty.entity.ai.shark.SharkFleeGoal;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MovementType;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.ai.pathing.AmphibiousPathNodeMaker;
 import net.minecraft.entity.ai.pathing.AmphibiousSwimNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
+import net.minecraft.entity.passive.DolphinEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
 public class SharkEntity extends WaterCreatureEntity implements Angerable {
-  public final AnimationState swimAnimationState = new AnimationState();
-  private int swimAnimationTimeout = 0;
+  private static final TrackedData<Boolean> ATTACKING =
+          DataTracker.registerData(SharkEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+
+  public final AnimationState crawlAnimationState = new AnimationState();
+  private int crawlAnimationTimeout = 0;
   public final AnimationState idleAnimationState = new AnimationState();
   private int idleAnimationTimeout = 0;
+  public final AnimationState attackAnimationState = new AnimationState();
+  private int attackAnimationTimeout = 0;
 
   public SharkEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
     super(entityType, world);
@@ -43,13 +48,20 @@ public class SharkEntity extends WaterCreatureEntity implements Angerable {
     this.goalSelector.add(1, new SwimAroundGoal(this, 3.0, 10));
     this.goalSelector.add(2, new RevengeGoal(this));
     this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
+    this.goalSelector.add(3, new FleeEntityGoal<>(this, DolphinEntity.class, 4.0F, 3.3, 3.3));
+  }
+
+  @Override
+  protected void initDataTracker(DataTracker.Builder builder) {
+    super.initDataTracker(builder);
+    builder.add(ATTACKING, false);
   }
 
   public static DefaultAttributeContainer.Builder createSharkAttributes() {
     return MobEntity.createMobAttributes()
-            .add(EntityAttributes.GENERIC_MAX_HEALTH, 30.0)
-            .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2)
-            .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.2F);
+            .add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0)
+            .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5)
+            .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.4F);
   }
 
   @Override
@@ -69,6 +81,24 @@ public class SharkEntity extends WaterCreatureEntity implements Angerable {
     } else {
       --this.idleAnimationTimeout;
     }
+     if (this.isAttacking() && attackAnimationTimeout <= 0) {
+       attackAnimationTimeout = 20;
+       attackAnimationState.start(this.age);
+     } else {
+       --this.attackAnimationTimeout;
+     }
+     if (!this.isAttacking()) {
+       attackAnimationState.stop();
+     }
+     if (!this.isInsideWaterOrBubbleColumn()) {
+       this.crawlAnimationTimeout = this.random.nextInt(10);
+       this.crawlAnimationState.start(this.age);
+     } else {
+       --this.crawlAnimationTimeout;
+     }
+     if (this.isInsideWaterOrBubbleColumn()) {
+       crawlAnimationState.stop();
+     }
   }
 
   @Override
@@ -110,6 +140,14 @@ public class SharkEntity extends WaterCreatureEntity implements Angerable {
   @Override
   public void setAngerTime(int angerTime) {
 
+  }
+
+  public void setAttacking(boolean attacking) {
+    this.dataTracker.set(ATTACKING, attacking);
+  }
+
+  public boolean isAttacking() {
+    return this.dataTracker.get(ATTACKING);
   }
 
   @Nullable

@@ -14,9 +14,13 @@ import net.findsnow.ellesmobsnplenty.entity.render.layer.ModModelLayers;
 import net.findsnow.ellesmobsnplenty.entity.render.model.*;
 import net.findsnow.ellesmobsnplenty.entity.render.renderer.*;
 import net.findsnow.ellesmobsnplenty.particle.*;
+import net.findsnow.ellesmobsnplenty.screen.ChomperBlockScreen;
+import net.findsnow.ellesmobsnplenty.screen.ModScreenHandlers;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.world.biome.FoliageColors;
@@ -31,13 +35,11 @@ public class EllesMobsNPlentyClient implements ClientModInitializer {
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.JAR_BLOCK, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLOSSOMING_LUCI_SAPLING, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_DOOR, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCILLE_TULIP, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_LUCILLE_TULIP, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLAURELLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_FLAURELLE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLOSSOMING_LUCI_VINE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_PETAL, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_MUSHROOM, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_FUNGUS, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_LEAF_PILE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CLOVER, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TALL_CLOVER, RenderLayer.getCutout());
@@ -46,6 +48,8 @@ public class EllesMobsNPlentyClient implements ClientModInitializer {
     ParticleFactoryRegistry.getInstance().register(ModParticles.LUCI_MUSHROOM_PARTICLE, LuciMushroomBlockParticle.Factory::new);
     ParticleFactoryRegistry.getInstance().register(ModParticles.BLOSSOMING_FALLING_LEAVES, BlossomingFallingLeavesParticle.Factory::new);
 
+
+    // Mobs
     EntityModelLayerRegistry.registerModelLayer(ModModelLayers.CRAB, CrabModel::getTexturedModelData);
     EntityRendererRegistry.register(ModEntities.CRAB, CrabRenderer::new);
     EntityModelLayerRegistry.registerModelLayer(ModModelLayers.TURTLE, TurtleModel::getTexturedModelData);
@@ -58,7 +62,11 @@ public class EllesMobsNPlentyClient implements ClientModInitializer {
     EntityRendererRegistry.register(ModEntities.SHARK, SharkRenderer::new);
     EntityModelLayerRegistry.registerModelLayer(ModModelLayers.RABBIT, RabbitModel::getTexturedModelData);
     EntityRendererRegistry.register(ModEntities.RABBIT, RabbitRenderer::new);
+    EntityModelLayerRegistry.registerModelLayer(ModModelLayers.SHRIMP, ShrimpModel::getTexturedModelData);
+    EntityRendererRegistry.register(ModEntities.SHRIMP, ShrimpRenderer::new);
 
     TerraformBoatClientHelper.registerModelLayers(ModBoats.LUCI_BOAT_ID, false);
+
+    HandledScreens.register(ModScreenHandlers.CHOMPER_SCREEN_HANDLER, ChomperBlockScreen::new);
     }
   }
