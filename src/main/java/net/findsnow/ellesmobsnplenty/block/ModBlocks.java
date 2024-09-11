@@ -118,13 +118,13 @@ public class ModBlocks {
           new GreenMushroomLampBlock(AbstractBlock.Settings.create()
                   .mapColor(MapColor.DIAMOND_BLUE)
                   .sounds(BlockSoundGroup.FUNGUS)
-                  .luminance(createGreenMushroomLightFromClickedBlockstate(7))));
+                  .luminance(createGreenMushroomLightFromClickedBlockstate(12))));
 
   public static final Block BLUE_MUSHROOM_LAMP = registerBlock("blue_mushroom_lamp",
           new BlueMushroomLampBlock(AbstractBlock.Settings.create()
                   .mapColor(MapColor.DIAMOND_BLUE)
                   .sounds(BlockSoundGroup.FUNGUS)
-                  .luminance(createBlueMushroomLightFromClickedBlockstate(7))));
+                  .luminance(createBlueMushroomLightFromClickedBlockstate(12))));
 
 
   // Wood Blocks

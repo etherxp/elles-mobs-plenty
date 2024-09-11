@@ -28,6 +28,7 @@ import net.minecraft.world.biome.FoliageColors;
 public class EllesMobsNPlentyClient implements ClientModInitializer {
   @Override
   public void onInitializeClient() {
+    // Transparent Stuff
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_SAPLING, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLUE_MUSHROOM_LAMP, RenderLayer.getCutout());
@@ -44,10 +45,10 @@ public class EllesMobsNPlentyClient implements ClientModInitializer {
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CLOVER, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TALL_CLOVER, RenderLayer.getCutout());
 
+    // Particles
     ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_LEAVES_PARTICLE, FallingLeavesParticle.Factory::new);
     ParticleFactoryRegistry.getInstance().register(ModParticles.LUCI_MUSHROOM_PARTICLE, LuciMushroomBlockParticle.Factory::new);
     ParticleFactoryRegistry.getInstance().register(ModParticles.BLOSSOMING_FALLING_LEAVES, BlossomingFallingLeavesParticle.Factory::new);
-
 
     // Mobs
     EntityModelLayerRegistry.registerModelLayer(ModModelLayers.CRAB, CrabModel::getTexturedModelData);
@@ -65,8 +66,10 @@ public class EllesMobsNPlentyClient implements ClientModInitializer {
     EntityModelLayerRegistry.registerModelLayer(ModModelLayers.SHRIMP, ShrimpModel::getTexturedModelData);
     EntityRendererRegistry.register(ModEntities.SHRIMP, ShrimpRenderer::new);
 
+    // Wood
     TerraformBoatClientHelper.registerModelLayers(ModBoats.LUCI_BOAT_ID, false);
 
+    // Handlers
     HandledScreens.register(ModScreenHandlers.CHOMPER_SCREEN_HANDLER, ChomperBlockScreen::new);
     }
   }

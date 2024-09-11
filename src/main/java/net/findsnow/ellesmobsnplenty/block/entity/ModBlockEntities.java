@@ -1,6 +1,5 @@
 package net.findsnow.ellesmobsnplenty.block.entity;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.findsnow.ellesmobsnplenty.EllesMobsNPlenty;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
 import net.minecraft.block.entity.BlockEntityType;

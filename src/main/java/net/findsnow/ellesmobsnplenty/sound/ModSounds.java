@@ -9,7 +9,10 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class ModSounds {
+
     public static final SoundEvent BLOCK_LUCI_WOOD_BREAK = registerSoundEvent("luci_wood_break");
+    public static final SoundEvent CHOMPER_CHOMPING = registerSoundEvent("chomper_chomping");
+    public static final SoundEvent CHOMPER_OUTPUT = registerSoundEvent("chomper_output");
     public static final SoundEvent BLOCK_LUCI_WOOD_STEP = registerSoundEvent("luci_wood_step");
     public static final SoundEvent BLOCK_LUCI_WOOD_PLACE = registerSoundEvent("luci_wood_place");
     public static final SoundEvent BLOCK_LUCI_WOOD_HIT = registerSoundEvent("luci_wood_hit");

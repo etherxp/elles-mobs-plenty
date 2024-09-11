@@ -2,18 +2,14 @@ package net.findsnow.ellesmobsnplenty.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.findsnow.ellesmobsnplenty.block.custom.BlossomingLuciVineBlock;
 import net.findsnow.ellesmobsnplenty.block.custom.ChomperBlock;
 import net.findsnow.ellesmobsnplenty.block.ModBlocks;
-import net.findsnow.ellesmobsnplenty.block.custom.LuciPetals;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.BlueMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.block.mushrooms.GreenMushroomLampBlock;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.data.family.BlockFamilies;
-import net.minecraft.data.family.BlockFamily;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 import java.util.Optional;
@@ -80,7 +76,7 @@ public class ModModelProvider extends FabricModelProvider {
     Identifier identifier2 = ModelIds.getBlockSubModelId(block, "_open");
     blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.CHOMPER_BLOCK)
             .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
-            .coordinate(BlockStateModelGenerator.createBooleanModelMap(ChomperBlock.OPEN, identifier2, identifier)));
+            .coordinate(BlockStateModelGenerator.createBooleanModelMap(ChomperBlock.CHOMPING, identifier2, identifier)));
   }
 
   private void registerGreenMushroomLamp(BlockStateModelGenerator blockStateModelGenerator) {

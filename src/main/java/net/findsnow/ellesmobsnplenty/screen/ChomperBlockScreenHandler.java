@@ -1,82 +1,80 @@
 package net.findsnow.ellesmobsnplenty.screen;
 
 import net.findsnow.ellesmobsnplenty.block.entity.ChomperBlockEntity;
+import net.findsnow.ellesmobsnplenty.block.entity.ChomperBlockEntityData;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.screen.*;
 import net.minecraft.screen.slot.Slot;
 
 public class ChomperBlockScreenHandler extends ScreenHandler {
+  private final Inventory inventory;
+  private final PropertyDelegate propertyDelegate;
+  public final ChomperBlockEntity blockEntity;
 
-  private final Inventory result = new CraftingResultInventory();
-  final Inventory input = new SimpleInventory(2) {
 
-    @Override
-    public void markDirty() {
-      super.markDirty();
-      ChomperBlockScreenHandler.this.onContentChanged(this);
-    }
-  };
-
-  private final ScreenHandlerContext context;
-
-  protected ChomperBlockScreenHandler(int syncId, PlayerInventory playerInventory) {
-    this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
+  public ChomperBlockScreenHandler(int syncId, PlayerInventory inventory, ChomperBlockEntityData data) {
+    this(syncId, inventory, inventory.player.getWorld().getBlockEntity(data.pos()), new ArrayPropertyDelegate(2));
   }
 
-  public ChomperBlockScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+  public ChomperBlockScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate propertyDelegate) {
     super(ModScreenHandlers.CHOMPER_SCREEN_HANDLER, syncId);
-    this.context = context;
+    checkSize(((Inventory) blockEntity), 2);
+    this.inventory = (Inventory) blockEntity;
+    this.propertyDelegate = propertyDelegate;
+    this.blockEntity = (ChomperBlockEntity) blockEntity;
 
-    this.addSlot(new Slot(input, 0, 46, 48));
-    this.addSlot(new Slot(input, 1, 114, 48));
+    addProperties(propertyDelegate);
+    this.addSlot(new Slot(inventory, 0, 50, 33));
+    this.addSlot(new Slot(inventory, 1, 110, 35));
 
-    addPlayerInventory(playerInventory);
     addPlayerHotbar(playerInventory);
+    addPlayerInventory(playerInventory);
   }
 
   @Override
-  public boolean canInsertIntoSlot(ItemStack stack, Slot slot) {
-    return false;
-  }
-
-  @Override
-  public ItemStack quickMove(PlayerEntity player, int slot) {
+  public ItemStack quickMove(PlayerEntity player, int invSlot) {
     ItemStack newStack = ItemStack.EMPTY;
-    Slot slot2 = this.slots.get(slot);
-    if (slot2 != null && slot2.hasStack()) {
-      ItemStack originalStack = slot2.getStack();
+    Slot slot = this.slots.get(invSlot);
+    if (slot != null && slot.hasStack()) {
+      ItemStack originalStack = slot.getStack();
       newStack = originalStack.copy();
-      if (slot < this.input.size()) {
-        if (!this.insertItem(originalStack, this.input.size(), this.slots.size(), true)) {
+      if (invSlot < this.inventory.size()) {
+        if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
           return ItemStack.EMPTY;
         }
-      } else if (!this.insertItem(originalStack, 0, this.input.size(), false)) {
+      } else if (!this.insertItem(originalStack, 0, this.inventory.size(), false)) {
         return ItemStack.EMPTY;
       }
+
       if (originalStack.isEmpty()) {
-        slot2.setStack(ItemStack.EMPTY);
+        slot.setStack(ItemStack.EMPTY);
       } else {
-        slot2.markDirty();
+        slot.markDirty();
       }
     }
+
     return newStack;
+  }
+
+  public boolean isCrafting() {
+    return propertyDelegate.get(0) > 0;
+  }
+
+  public int getScaledProgress() {
+    int progress = this.propertyDelegate.get(0);
+    int maxProgress = this.propertyDelegate.get(1);
+    int progressArrowSize = 31;
+    return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
   }
 
   @Override
   public boolean canUse(PlayerEntity player) {
-    return this.input.canPlayerUse(player);
-  }
-
-  @Override
-  public void onClosed(PlayerEntity player) {
-    super.onClosed(player);
-    this.context.run(((world, blockPos) -> this.dropInventory(player, this.input)));
+    return this.inventory.canPlayerUse(player);
   }
 
   private void addPlayerInventory(PlayerInventory playerInventory) {

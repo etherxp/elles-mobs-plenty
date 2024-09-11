@@ -1,38 +1,38 @@
 package net.findsnow.ellesmobsnplenty.recipe;
 
-
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.*;
-import net.minecraft.recipe.book.CraftingRecipeCategory;
-import net.minecraft.recipe.input.SingleStackRecipeInput;
+import net.minecraft.network.RegistryByteBuf;
+import net.minecraft.network.codec.PacketCodec;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.Recipe;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.input.RecipeInput;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-public class ChomperRecipe implements Recipe<SingleStackRecipeInput> {
-  protected final CraftingRecipeCategory category;
-  protected final String group;
-  protected final Ingredient ingredient;
-  protected final ItemStack result;
+public class ChomperRecipe implements Recipe<RecipeInput> {
+  private final ItemStack output;
+  private final Ingredient ingredient;
 
-  public ChomperRecipe(String group, CraftingRecipeCategory category, Ingredient ingredient, ItemStack result) {
-    this.category = category;
-    this.group = group;
+  public ChomperRecipe(Ingredient ingredient, ItemStack itemStack) {
+    this.output = itemStack;
     this.ingredient = ingredient;
-    this.result = result;
   }
 
   @Override
-  public boolean matches(SingleStackRecipeInput input, World world) {
-    if (world.isClient()) {
+  public boolean matches(RecipeInput input, World world) {
+    if(world.isClient()) {
       return false;
     }
-    return this.ingredient.test(input.item());
+    return ingredient.test(input.getStackInSlot(0));
   }
 
   @Override
-  public ItemStack craft(SingleStackRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
-    return this.result.copy();
+  public ItemStack craft(RecipeInput input, RegistryWrapper.WrapperLookup lookup) {
+    return this.output.copy();
   }
 
   @Override
@@ -42,36 +42,60 @@ public class ChomperRecipe implements Recipe<SingleStackRecipeInput> {
 
   @Override
   public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-    return result;
-  }
-
-  @Override
-  public DefaultedList<Ingredient> getIngredients() {
-    DefaultedList<Ingredient> defaultedList = DefaultedList.of();
-    defaultedList.add(this.ingredient);
-    return defaultedList;
+    return output;
   }
 
   @Override
   public RecipeSerializer<?> getSerializer() {
-    return ModRecipes.CHOMPER_SERIALIZER;
+    return Serializer.INSTANCE;
   }
 
   @Override
   public RecipeType<?> getType() {
-    return ModRecipes.CHOMPER;
+    return Type.INSTANCE;
   }
 
-  @Override
-  public String getGroup() {
-    return this.group;
+  public static class Type implements RecipeType<ChomperRecipe> {
+    public static final Type INSTANCE = new Type();
+    public static final String ID = "chomper_block";
   }
 
-  public CraftingRecipeCategory getCategory() {
-    return this.category;
-  }
+  public static class Serializer implements RecipeSerializer<ChomperRecipe> {
+    public static final Serializer INSTANCE = new Serializer();
+    public static final String ID = "chomper_block";
 
-  public interface RecipeFactory<T extends ChomperRecipe> {
-    T create(String group, CraftingRecipeCategory category, Ingredient ingredient, ItemStack result);
+    public static final MapCodec<ChomperRecipe> CODEC = RecordCodecBuilder.mapCodec(in -> in.group(
+            Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredients").forGetter(chomperRecipe -> chomperRecipe.ingredient),
+            ItemStack.VALIDATED_CODEC.fieldOf("result").forGetter(r -> r.output)
+    ).apply(in, ChomperRecipe::new));
+
+    public static final PacketCodec<RegistryByteBuf, ChomperRecipe> PACKET_CODEC = PacketCodec.ofStatic(Serializer::write, Serializer::read);
+
+    @Override
+    public MapCodec<ChomperRecipe> codec() {
+      return CODEC;
+    }
+
+    @Override
+    public PacketCodec<RegistryByteBuf, ChomperRecipe> packetCodec() {
+      return PACKET_CODEC;
+    }
+
+    public static ChomperRecipe read(RegistryByteBuf buf) {
+
+      Ingredient ingredient = Ingredient.PACKET_CODEC.decode(buf);
+
+      ItemStack output = ItemStack.PACKET_CODEC.decode(buf);
+
+      return new ChomperRecipe(ingredient, output);
+    }
+
+
+    public static void write(RegistryByteBuf buf, ChomperRecipe recipe) {
+
+      Ingredient.PACKET_CODEC.encode(buf, recipe.ingredient);
+
+      ItemStack.PACKET_CODEC.encode(buf, recipe.output);
+    }
   }
 }

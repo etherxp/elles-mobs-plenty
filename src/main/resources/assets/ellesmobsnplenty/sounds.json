@@ -44,5 +44,17 @@
       "ellesmobsnplenty:luci_wood_fall3",
       "ellesmobsnplenty:luci_wood_fall4"
     ]
+  },  "chomper_chomping": {
+    "subtitle": "ellesmobsnplenty.chomper_chomping",
+    "sounds": [
+      "ellesmobsnplenty:chomper_chomping"
+    ]
+  },  "chomper_output": {
+    "subtitle": "ellesmobsnplenty.chomper_output",
+    "sounds": [
+      "ellesmobsnplenty:chomper_take_1",
+      "ellesmobsnplenty:chomper_take_2",
+      "ellesmobsnplenty:chomper_take_3"
+    ]
   }
 }

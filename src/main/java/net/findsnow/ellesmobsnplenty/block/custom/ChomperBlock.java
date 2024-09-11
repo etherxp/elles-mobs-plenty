@@ -3,26 +3,24 @@ package net.findsnow.ellesmobsnplenty.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.findsnow.ellesmobsnplenty.block.entity.ChomperBlockEntity;
 import net.findsnow.ellesmobsnplenty.block.entity.ModBlockEntities;
-import net.findsnow.ellesmobsnplenty.screen.ChomperBlockScreenHandler;
+import net.findsnow.ellesmobsnplenty.sound.ModSounds;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.EnchantingTableBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.screen.EnchantmentScreenHandler;
 import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
@@ -30,12 +28,11 @@ import org.jetbrains.annotations.Nullable;
 public class ChomperBlock extends BlockWithEntity {
   public static final MapCodec<ChomperBlock> CODEC = ChomperBlock.createCodec(ChomperBlock::new);
   public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-  private static final Text TITLE = Text.literal("Chomper");
-  public static final BooleanProperty OPEN = BooleanProperty.of("open");
+  public static final BooleanProperty CHOMPING = BooleanProperty.of("chomping");
 
   public ChomperBlock(Settings settings) {
     super(settings);
-    this.setDefaultState(this.getDefaultState().with(OPEN, false));
+    this.setDefaultState(this.getDefaultState().with(CHOMPING, false));
   }
 
   @Override
@@ -63,33 +60,24 @@ public class ChomperBlock extends BlockWithEntity {
 
   @Override
   protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-    if (world.isClient) {
-      return ActionResult.SUCCESS;
+    if (!world.isClient) {
+      NamedScreenHandlerFactory screenHandlerFactory = ((ChomperBlockEntity) world.getBlockEntity(pos));
+      if (screenHandlerFactory != null) {
+        player.openHandledScreen(screenHandlerFactory);
+      }
     }
-    player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
-    return ActionResult.CONSUME;
+    return ActionResult.SUCCESS;
   }
 
   @Nullable
   @Override
   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-    return validateTicker(type, ModBlockEntities.CHOMPER_BLOCK_ENTITY, (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
-  }
-
-  @Override
-  protected NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-    BlockEntity blockEntity = world.getBlockEntity(pos);
-    if (blockEntity instanceof ChomperBlockEntity chomperBlockEntity) {
-      Text text = chomperBlockEntity.getDisplayName();
-      return new SimpleNamedScreenHandlerFactory((syncId, inventory, player) -> new ChomperBlockScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), text);
-    } else {
-      return null;
-    }
+    return validateTicker(type, ModBlockEntities.CHOMPER_BLOCK_ENTITY, (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1, blockEntity));
   }
 
   @Override
   protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    builder.add(FACING, OPEN);
+    builder.add(FACING, CHOMPING);
   }
 
   @Override

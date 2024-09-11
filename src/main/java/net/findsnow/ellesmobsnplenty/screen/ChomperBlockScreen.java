@@ -24,6 +24,13 @@ public class ChomperBlockScreen extends HandledScreen<ChomperBlockScreenHandler>
     int i = (this.width - this.backgroundWidth) / 2;
     int j = (this.height - this.backgroundHeight) / 2;
     context.drawTexture(TEXTURE, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
+    renderProgressArrow(context, x, y);
+  }
+
+  private void renderProgressArrow(DrawContext context, int x, int y) {
+    if (handler.isCrafting()) {
+      context.drawTexture(TEXTURE, x + 73, y + 29, 176, 0, 31, handler.getScaledProgress());
+    }
   }
 
   @Override

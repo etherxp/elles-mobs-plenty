@@ -9,7 +9,6 @@ import net.findsnow.ellesmobsnplenty.entity.ModEntities;
 import net.findsnow.ellesmobsnplenty.item.ModItemGroup;
 import net.findsnow.ellesmobsnplenty.item.ModItems;
 import net.findsnow.ellesmobsnplenty.particle.ModParticles;
-import net.findsnow.ellesmobsnplenty.recipe.ModRecipeSerializers;
 import net.findsnow.ellesmobsnplenty.recipe.ModRecipes;
 import net.findsnow.ellesmobsnplenty.screen.ModScreenHandlers;
 import net.findsnow.ellesmobsnplenty.sound.ModSounds;
@@ -29,7 +28,6 @@ public class EllesMobsNPlenty implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModBlockEntities.registerBlockEntities();
-		ModRecipeSerializers.registerModdedRecipeSerializers();
 		ModRecipes.registerRecipes();
 		ModItemGroup.registerItemGroups();
 		ModItems.registerModItems();

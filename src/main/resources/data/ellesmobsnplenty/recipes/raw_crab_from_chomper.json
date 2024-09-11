@@ -1,0 +1,11 @@
+{
+  "type": "ellesmobsnplenty:chomper_block",
+  "ingredients": [
+    {
+      "item": "ellesmobsnplenty:crab_claw"
+    }
+  ],
+  "result": {
+    "id": "ellesmobsnplenty:raw_crab"
+  }
+}
