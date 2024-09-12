@@ -18,43 +18,43 @@ import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public class BlossomingLuciVineBlock extends Block{
-  public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-  public BlossomingLuciVineBlock(Settings settings) {
-    super(settings);
-  }
-
-  @Nullable
-  @Override
-  public BlockState getPlacementState(ItemPlacementContext ctx) {
-    Direction[] directions = ctx.getPlacementDirections();
-
-    for (Direction direction : directions) {
-      if (direction == Direction.DOWN) {
-        BlockState blockState = this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
-        if (blockState.canPlaceAt(ctx.getWorld(), ctx.getBlockPos())) {
-          return blockState;
-        }
-      }
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public BlossomingLuciVineBlock(Settings settings) {
+        super(settings);
     }
 
-    return null;
-  }
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        Direction[] directions = ctx.getPlacementDirections();
 
-  @Override
-  protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    builder.add(FACING);
-  }
+        for (Direction direction : directions) {
+            if (direction == Direction.DOWN) {
+                BlockState blockState = this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+                if (blockState.canPlaceAt(ctx.getWorld(), ctx.getBlockPos())) {
+                    return blockState;
+                }
+            }
+        }
 
-  @Override
-  public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-    BlockPos blockPosAbove = pos.up(); // Get the position above
-    BlockState blockStateAbove = world.getBlockState(blockPosAbove);
-    return blockStateAbove.isSideSolidFullSquare(world, blockPosAbove, Direction.DOWN);
-  }
+        return null;
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        BlockPos blockPosAbove = pos.up(); // Get the position above
+        BlockState blockStateAbove = world.getBlockState(blockPosAbove);
+        return blockStateAbove.isSideSolidFullSquare(world, blockPosAbove, Direction.DOWN);
+    }
 
 
-  @Override
-  public BlockState rotate(BlockState state, BlockRotation rotation) {
-    return state.with(FACING, rotation.rotate(state.get(FACING)));
-  }
+    @Override
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
 }

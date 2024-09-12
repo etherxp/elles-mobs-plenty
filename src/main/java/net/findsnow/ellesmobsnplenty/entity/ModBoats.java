@@ -11,18 +11,18 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 
 public class ModBoats {
-  public static final Identifier LUCI_BOAT_ID = Identifier.of(EllesMobsNPlenty.MOD_ID, "luci_boat");
-  public static final Identifier LUCI_CHEST_BOAT_ID = Identifier.of(EllesMobsNPlenty.MOD_ID, "luci_chest_boat");
+    public static final Identifier LUCI_BOAT_ID = Identifier.of(EllesMobsNPlenty.MOD_ID, "luci_boat");
+    public static final Identifier LUCI_CHEST_BOAT_ID = Identifier.of(EllesMobsNPlenty.MOD_ID, "luci_chest_boat");
 
 
-  public static final RegistryKey<TerraformBoatType> LUCI_BOAT_KEY = TerraformBoatTypeRegistry.createKey(LUCI_BOAT_ID);
+    public static final RegistryKey<TerraformBoatType> LUCI_BOAT_KEY = TerraformBoatTypeRegistry.createKey(LUCI_BOAT_ID);
 
-  public static void registerBoats() {
-    TerraformBoatType luciBoat = new TerraformBoatType.Builder()
-            .item(ModItems.LUCI_BOAT)
-            .chestItem(ModItems.LUCI_CHEST_BOAT)
-            .planks(ModBlocks.LUCI_PLANKS.asItem())
-            .build();
-    Registry.register(TerraformBoatTypeRegistry.INSTANCE, LUCI_BOAT_KEY, luciBoat);
-  }
- }
+    public static void registerBoats() {
+        TerraformBoatType luciBoat = new TerraformBoatType.Builder()
+                .item(ModItems.LUCI_BOAT)
+                .chestItem(ModItems.LUCI_CHEST_BOAT)
+                .planks(ModBlocks.LUCI_PLANKS.asItem())
+                .build();
+        Registry.register(TerraformBoatTypeRegistry.INSTANCE, LUCI_BOAT_KEY, luciBoat);
+    }
+}

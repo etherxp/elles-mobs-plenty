@@ -15,129 +15,129 @@ import net.minecraft.util.Identifier;
 import java.util.Optional;
 
 public class ModModelProvider extends FabricModelProvider {
-  public ModModelProvider(FabricDataOutput output) {
-    super(output);
-  }
+    public ModModelProvider(FabricDataOutput output) {
+        super(output);
+    }
 
-  @Override
-  public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-    // Blocks
+    @Override
+    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        // Blocks
 
-    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk);
-    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.JAR_BLOCK);
-    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_BLOCK);
-    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.LUCI_FUNGAL_BOCK);
-    blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.FLAURELLE, ModBlocks.POTTED_FLAURELLE, BlockStateModelGenerator.TintType.NOT_TINTED);
-    blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.LUCI_FUNGUS, ModBlocks.POTTED_LUCI_FUNGUS, BlockStateModelGenerator.TintType.NOT_TINTED);
-    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.BLOSSOMING_LUCI_VINE);
-    blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_PETAL);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.JAR_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.LUCI_FUNGAL_BOCK);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.FLAURELLE, ModBlocks.POTTED_FLAURELLE, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.LUCI_FUNGUS, ModBlocks.POTTED_LUCI_FUNGUS, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.BLOSSOMING_LUCI_VINE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.LUCI_PETAL);
 
-    // Custom Blocks
-    registerChomper(blockStateModelGenerator);
-    registerGreenMushroomLamp(blockStateModelGenerator);
-    registerBlueMushroomLamp(blockStateModelGenerator);
+        // Custom Blocks
+        registerChomper(blockStateModelGenerator);
+        registerGreenMushroomLamp(blockStateModelGenerator);
+        registerBlueMushroomLamp(blockStateModelGenerator);
 
-    // Ores
-    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_ORE);
-    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_NEPHRITE_ORE);
-    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_ORE);
-    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_FROSTITE_ORE);
-
-
-    // Luci Wood
-    BlockStateModelGenerator.BlockTexturePool luciPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LUCI_PLANKS);
-    luciPool.family(BlockFamilies.register(ModBlocks.LUCI_PLANKS)
-            .stairs(ModBlocks.LUCI_STAIRS)
-            .sign(ModBlocks.LUCI_SIGN, ModBlocks.LUCI_WALL_SIGN)
-            .slab(ModBlocks.LUCI_SLABS)
-            .pressurePlate(ModBlocks.LUCI_PRESSURE_PLATE)
-            .fenceGate(ModBlocks.LUCI_FENCE_GATE)
-            .fence(ModBlocks.LUCI_FENCE)
-            .button(ModBlocks.LUCI_BUTTON)
-            .build());
+        // Ores
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NEPHRITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_NEPHRITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FROSTITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_FROSTITE_ORE);
 
 
-    blockStateModelGenerator.registerDoor(ModBlocks.LUCI_DOOR);
-    blockStateModelGenerator.registerOrientableTrapdoor(ModBlocks.LUCI_TRAPDOOR);
-    blockStateModelGenerator.registerLog(ModBlocks.LUCI_LOG).log(ModBlocks.LUCI_LOG).wood(ModBlocks.LUCI_WOOD);
-    blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_LUCI_LOG).log(ModBlocks.STRIPPED_LUCI_LOG).wood(ModBlocks.STRIPPED_LUCI_WOOD);
-    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOSSOMING_LUCI_LEAVES);
-    blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.LUCI_LEAVES);
-
-    blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.LUCI_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
-    blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.BLOSSOMING_LUCI_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
-  }
-
-
-  // Custom Registers
-  private void registerChomper(BlockStateModelGenerator blockStateModelGenerator) {
-    Block block = ModBlocks.CHOMPER_BLOCK;
-    Identifier identifier = ModelIds.getBlockModelId(block);
-    Identifier identifier2 = ModelIds.getBlockSubModelId(block, "_open");
-    blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.CHOMPER_BLOCK)
-            .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
-            .coordinate(BlockStateModelGenerator.createBooleanModelMap(ChomperBlock.CHOMPING, identifier2, identifier)));
-  }
-
-  private void registerGreenMushroomLamp(BlockStateModelGenerator blockStateModelGenerator) {
-    Identifier identifier = ModelIds.getBlockModelId(ModBlocks.GREEN_MUSHROOM_LAMP);
-    Identifier identifier2 = ModelIds.getBlockSubModelId(ModBlocks.GREEN_MUSHROOM_LAMP, "_lit");
-    blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.GREEN_MUSHROOM_LAMP)
-            .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
-            .coordinate(BlockStateModelGenerator.createBooleanModelMap(GreenMushroomLampBlock.CLICKED, identifier2, identifier)));
-  }
-
-  private void registerBlueMushroomLamp(BlockStateModelGenerator blockStateModelGenerator) {
-    Identifier identifier = ModelIds.getBlockModelId(ModBlocks.BLUE_MUSHROOM_LAMP);
-    Identifier identifier2 = ModelIds.getBlockSubModelId(ModBlocks.BLUE_MUSHROOM_LAMP, "_lit");
-    blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.BLUE_MUSHROOM_LAMP)
-            .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
-            .coordinate(BlockStateModelGenerator.createBooleanModelMap(BlueMushroomLampBlock.CLICKED, identifier2, identifier)));
-  }
+        // Luci Wood
+        BlockStateModelGenerator.BlockTexturePool luciPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LUCI_PLANKS);
+        luciPool.family(BlockFamilies.register(ModBlocks.LUCI_PLANKS)
+                .stairs(ModBlocks.LUCI_STAIRS)
+                .sign(ModBlocks.LUCI_SIGN, ModBlocks.LUCI_WALL_SIGN)
+                .slab(ModBlocks.LUCI_SLABS)
+                .pressurePlate(ModBlocks.LUCI_PRESSURE_PLATE)
+                .fenceGate(ModBlocks.LUCI_FENCE_GATE)
+                .fence(ModBlocks.LUCI_FENCE)
+                .button(ModBlocks.LUCI_BUTTON)
+                .build());
 
 
-  // Item Models
-  @Override
-  public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-    itemModelGenerator.register(ModItems.CRAB_CLAW, Models.GENERATED);
-    itemModelGenerator.register(ModItems.CRAB_BUCKET, Models.GENERATED);
-    itemModelGenerator.register(ModItems.RAW_SHARK_MEAT, Models.GENERATED);
-    itemModelGenerator.register(ModItems.COOKED_SHARK_MEAT, Models.GENERATED);
-    itemModelGenerator.register(ModItems.JAR, Models.GENERATED);
-    itemModelGenerator.register(ModItems.RAW_CRAB, Models.GENERATED);
-    itemModelGenerator.register(ModItems.COOKED_CRAB, Models.GENERATED);
-    itemModelGenerator.register(ModItems.SHRIMP, Models.GENERATED);
-    itemModelGenerator.register(ModItems.RAW_SHRIMP, Models.GENERATED);
-    itemModelGenerator.register(ModItems.COOKED_SHRIMP, Models.GENERATED);
-    itemModelGenerator.register(ModItems.FROSTITE, Models.GENERATED);
-    itemModelGenerator.register(ModItems.NEPHRITE, Models.GENERATED);
-    itemModelGenerator.register(ModItems.NEPHRITE_NUGGET, Models.GENERATED);
+        blockStateModelGenerator.registerDoor(ModBlocks.LUCI_DOOR);
+        blockStateModelGenerator.registerOrientableTrapdoor(ModBlocks.LUCI_TRAPDOOR);
+        blockStateModelGenerator.registerLog(ModBlocks.LUCI_LOG).log(ModBlocks.LUCI_LOG).wood(ModBlocks.LUCI_WOOD);
+        blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_LUCI_LOG).log(ModBlocks.STRIPPED_LUCI_LOG).wood(ModBlocks.STRIPPED_LUCI_WOOD);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BLOSSOMING_LUCI_LEAVES);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.LUCI_LEAVES);
 
-    itemModelGenerator.register(ModBlocks.LUCI_SAPLING.asItem(), Models.GENERATED);
-    itemModelGenerator.register(ModBlocks.CHRYSALIS_BLOCK.asItem(), Models.GENERATED);
-    itemModelGenerator.register(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk.asItem(), Models.GENERATED);
-    itemModelGenerator.register(ModBlocks.BLOSSOMING_LUCI_SAPLING.asItem(), Models.GENERATED);
-    itemModelGenerator.register(ModBlocks.CLOVER.asItem(), Models.GENERATED);
-    itemModelGenerator.register(ModBlocks.TALL_CLOVER.asItem(), Models.GENERATED);
+        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.LUCI_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.BLOSSOMING_LUCI_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+    }
 
-    itemModelGenerator.register(ModItems.LUCI_BOAT, Models.GENERATED);
-    itemModelGenerator.register(ModItems.LUCI_CHEST_BOAT, Models.GENERATED);
 
-    // Spawn Eggs
-    itemModelGenerator.register(ModItems.CRAB_SPAWN_EGG,
-            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
-    itemModelGenerator.register(ModItems.TURTLE_SPAWN_EGG,
-            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
-    itemModelGenerator.register(ModItems.BUTTERFLY_SPAWN_EGG,
-            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
-    itemModelGenerator.register(ModItems.CATERPILLAR_SPAWN_EGG,
-            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
-    itemModelGenerator.register(ModItems.SHARK_SPAWN_EGG,
-            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
-    itemModelGenerator.register(ModItems.RABBIT_SPAWN_EGG,
-            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
-    itemModelGenerator.register(ModItems.SHRIMP_SPAWN_EGG,
-            new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+    // Custom Registers
+    private void registerChomper(BlockStateModelGenerator blockStateModelGenerator) {
+        Block block = ModBlocks.CHOMPER_BLOCK;
+        Identifier identifier = ModelIds.getBlockModelId(block);
+        Identifier identifier2 = ModelIds.getBlockSubModelId(block, "_open");
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.CHOMPER_BLOCK)
+                .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(ChomperBlock.CHOMPING, identifier2, identifier)));
+    }
 
-  }
+    private void registerGreenMushroomLamp(BlockStateModelGenerator blockStateModelGenerator) {
+        Identifier identifier = ModelIds.getBlockModelId(ModBlocks.GREEN_MUSHROOM_LAMP);
+        Identifier identifier2 = ModelIds.getBlockSubModelId(ModBlocks.GREEN_MUSHROOM_LAMP, "_lit");
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.GREEN_MUSHROOM_LAMP)
+                .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(GreenMushroomLampBlock.CLICKED, identifier2, identifier)));
+    }
+
+    private void registerBlueMushroomLamp(BlockStateModelGenerator blockStateModelGenerator) {
+        Identifier identifier = ModelIds.getBlockModelId(ModBlocks.BLUE_MUSHROOM_LAMP);
+        Identifier identifier2 = ModelIds.getBlockSubModelId(ModBlocks.BLUE_MUSHROOM_LAMP, "_lit");
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.BLUE_MUSHROOM_LAMP)
+                .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates())
+                .coordinate(BlockStateModelGenerator.createBooleanModelMap(BlueMushroomLampBlock.CLICKED, identifier2, identifier)));
+    }
+
+
+    // Item Models
+    @Override
+    public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(ModItems.CRAB_CLAW, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CRAB_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RAW_SHARK_MEAT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COOKED_SHARK_MEAT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.JAR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RAW_CRAB, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COOKED_CRAB, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SHRIMP, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RAW_SHRIMP, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COOKED_SHRIMP, Models.GENERATED);
+        itemModelGenerator.register(ModItems.FROSTITE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.NEPHRITE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.NEPHRITE_NUGGET, Models.GENERATED);
+
+        itemModelGenerator.register(ModBlocks.LUCI_SAPLING.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.CHRYSALIS_BLOCK.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.BLOSSOMING_LUCI_SAPLING.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.CLOVER.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.TALL_CLOVER.asItem(), Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.LUCI_BOAT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LUCI_CHEST_BOAT, Models.GENERATED);
+
+        // Spawn Eggs
+        itemModelGenerator.register(ModItems.CRAB_SPAWN_EGG,
+                new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+        itemModelGenerator.register(ModItems.TURTLE_SPAWN_EGG,
+                new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+        itemModelGenerator.register(ModItems.BUTTERFLY_SPAWN_EGG,
+                new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+        itemModelGenerator.register(ModItems.CATERPILLAR_SPAWN_EGG,
+                new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+        itemModelGenerator.register(ModItems.SHARK_SPAWN_EGG,
+                new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+        itemModelGenerator.register(ModItems.RABBIT_SPAWN_EGG,
+                new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+        itemModelGenerator.register(ModItems.SHRIMP_SPAWN_EGG,
+                new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+
+    }
 }

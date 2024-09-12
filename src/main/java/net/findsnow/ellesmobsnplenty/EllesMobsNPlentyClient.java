@@ -26,50 +26,50 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.world.biome.FoliageColors;
 
 public class EllesMobsNPlentyClient implements ClientModInitializer {
-  @Override
-  public void onInitializeClient() {
-    // Transparent Stuff
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_SAPLING, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLUE_MUSHROOM_LAMP, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GREEN_MUSHROOM_LAMP, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.JAR_BLOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLOSSOMING_LUCI_SAPLING, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_DOOR, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLAURELLE, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_FLAURELLE, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLOSSOMING_LUCI_VINE, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_PETAL, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_FUNGUS, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_LEAF_PILE, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CLOVER, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TALL_CLOVER, RenderLayer.getCutout());
+    @Override
+    public void onInitializeClient() {
+        // Transparent Stuff
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_FUNGUS_SHELF_BLOCk, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLUE_MUSHROOM_LAMP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GREEN_MUSHROOM_LAMP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.JAR_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLOSSOMING_LUCI_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLAURELLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_FLAURELLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BLOSSOMING_LUCI_VINE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_PETAL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_FUNGUS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUCI_LEAF_PILE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CLOVER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TALL_CLOVER, RenderLayer.getCutout());
 
-    // Particles
-    ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_LEAVES_PARTICLE, FallingLeavesParticle.Factory::new);
-    ParticleFactoryRegistry.getInstance().register(ModParticles.LUCI_MUSHROOM_PARTICLE, LuciMushroomBlockParticle.Factory::new);
-    ParticleFactoryRegistry.getInstance().register(ModParticles.BLOSSOMING_FALLING_LEAVES, BlossomingFallingLeavesParticle.Factory::new);
+        // Particles
+        ParticleFactoryRegistry.getInstance().register(ModParticles.FALLING_LEAVES_PARTICLE, FallingLeavesParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.LUCI_MUSHROOM_PARTICLE, LuciMushroomBlockParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.BLOSSOMING_FALLING_LEAVES, BlossomingFallingLeavesParticle.Factory::new);
 
-    // Mobs
-    EntityModelLayerRegistry.registerModelLayer(ModModelLayers.CRAB, CrabModel::getTexturedModelData);
-    EntityRendererRegistry.register(ModEntities.CRAB, CrabRenderer::new);
-    EntityModelLayerRegistry.registerModelLayer(ModModelLayers.TURTLE, TurtleModel::getTexturedModelData);
-    EntityRendererRegistry.register(ModEntities.TURTLE, TurtleRenderer::new);
-    EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BUTTERFLY, ButterflyModel::getTexturedModelData);
-    EntityRendererRegistry.register(ModEntities.BUTTERFLY, ButterflyRenderer::new);
-    EntityModelLayerRegistry.registerModelLayer(ModModelLayers.CATERPILLAR, CaterpillarModel::getTexturedModelData);
-    EntityRendererRegistry.register(ModEntities.CATERPILLAR, CaterpillarRenderer::new);
-    EntityModelLayerRegistry.registerModelLayer(ModModelLayers.SHARK, SharkModel::getTexturedModelData);
-    EntityRendererRegistry.register(ModEntities.SHARK, SharkRenderer::new);
-    EntityModelLayerRegistry.registerModelLayer(ModModelLayers.RABBIT, RabbitModel::getTexturedModelData);
-    EntityRendererRegistry.register(ModEntities.RABBIT, RabbitRenderer::new);
-    EntityModelLayerRegistry.registerModelLayer(ModModelLayers.SHRIMP, ShrimpModel::getTexturedModelData);
-    EntityRendererRegistry.register(ModEntities.SHRIMP, ShrimpRenderer::new);
+        // Mobs
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.CRAB, CrabModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.CRAB, CrabRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.TURTLE, TurtleModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.TURTLE, TurtleRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BUTTERFLY, ButterflyModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.BUTTERFLY, ButterflyRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.CATERPILLAR, CaterpillarModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.CATERPILLAR, CaterpillarRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.SHARK, SharkModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.SHARK, SharkRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.RABBIT, RabbitModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.RABBIT, RabbitRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(ModModelLayers.SHRIMP, ShrimpModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.SHRIMP, ShrimpRenderer::new);
 
-    // Wood
-    TerraformBoatClientHelper.registerModelLayers(ModBoats.LUCI_BOAT_ID, false);
+        // Wood
+        TerraformBoatClientHelper.registerModelLayers(ModBoats.LUCI_BOAT_ID, false);
 
-    // Handlers
-    HandledScreens.register(ModScreenHandlers.CHOMPER_SCREEN_HANDLER, ChomperBlockScreen::new);
+        // Handlers
+        HandledScreens.register(ModScreenHandlers.CHOMPER_SCREEN_HANDLER, ChomperBlockScreen::new);
     }
-  }
+}

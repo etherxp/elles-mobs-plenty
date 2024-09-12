@@ -8,11 +8,11 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModRecipes {
-  public static void registerRecipes() {
-    Registry.register(Registries.RECIPE_SERIALIZER, Identifier.of(EllesMobsNPlenty.MOD_ID, ChomperRecipe.Serializer.ID),
-            ChomperRecipe.Serializer.INSTANCE);
-    Registry.register(Registries.RECIPE_TYPE, Identifier.of(EllesMobsNPlenty.MOD_ID, ChomperRecipe.Type.ID),
-            ChomperRecipe.Type.INSTANCE);
+    public static void registerRecipes() {
+        Registry.register(Registries.RECIPE_SERIALIZER, Identifier.of(EllesMobsNPlenty.MOD_ID, ChomperRecipe.Serializer.ID),
+                ChomperRecipe.Serializer.INSTANCE);
+        Registry.register(Registries.RECIPE_TYPE, Identifier.of(EllesMobsNPlenty.MOD_ID, ChomperRecipe.Type.ID),
+                ChomperRecipe.Type.INSTANCE);
 
-  }
+    }
 }

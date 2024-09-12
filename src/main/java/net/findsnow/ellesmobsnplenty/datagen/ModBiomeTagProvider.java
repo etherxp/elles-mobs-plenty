@@ -8,12 +8,12 @@ import net.minecraft.registry.tag.BiomeTags;
 import java.util.concurrent.CompletableFuture;
 
 public class ModBiomeTagProvider extends FabricTagProvider.EntityTypeTagProvider {
-  public ModBiomeTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
-    super(output, completableFuture);
-  }
+    public ModBiomeTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
+        super(output, completableFuture);
+    }
 
-  @Override
-  protected void configure(RegistryWrapper.WrapperLookup arg) {
+    @Override
+    protected void configure(RegistryWrapper.WrapperLookup arg) {
 
-  }
+    }
 }

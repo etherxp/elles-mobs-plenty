@@ -10,11 +10,11 @@ import net.minecraft.util.Identifier;
 public class ModBlockEntities {
 
 
-  public static final BlockEntityType<ChomperBlockEntity> CHOMPER_BLOCK_ENTITY =
-          Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(EllesMobsNPlenty.MOD_ID, "chomper_block_entity"),
-                  BlockEntityType.Builder.create(ChomperBlockEntity::new, ModBlocks.CHOMPER_BLOCK).build(null));
+    public static final BlockEntityType<ChomperBlockEntity> CHOMPER_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(EllesMobsNPlenty.MOD_ID, "chomper_block_entity"),
+                    BlockEntityType.Builder.create(ChomperBlockEntity::new, ModBlocks.CHOMPER_BLOCK).build(null));
 
-  public static void registerBlockEntities() {
-    EllesMobsNPlenty.LOGGER.info("Registering Block Entities for " + EllesMobsNPlenty.MOD_ID);
-  }
+    public static void registerBlockEntities() {
+        EllesMobsNPlenty.LOGGER.info("Registering Block Entities for " + EllesMobsNPlenty.MOD_ID);
+    }
 }

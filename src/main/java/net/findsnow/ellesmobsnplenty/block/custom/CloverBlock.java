@@ -20,13 +20,13 @@ import static net.minecraft.block.TallPlantBlock.HALF;
 import static net.minecraft.block.TallPlantBlock.withWaterloggedState;
 
 public class CloverBlock extends ShortPlantBlock {
-  public static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 2, 16);
-  public CloverBlock(Settings settings) {
-    super(settings);
-  }
+    public static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 2, 16);
+    public CloverBlock(Settings settings) {
+        super(settings);
+    }
 
-  @Override
-  public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-    return SHAPE;
-  }
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
 }

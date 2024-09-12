@@ -5,18 +5,18 @@ import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.world.World;
 
 public class SharkSwimGoal extends Goal {
-  private final SharkEntity shark;
-  private final World world;
-  private int swimTick;
+    private final SharkEntity shark;
+    private final World world;
+    private int swimTick;
 
-  public SharkSwimGoal(SharkEntity shark) {
-    this.shark = shark;
-    this.world = shark.getWorld();
-  }
+    public SharkSwimGoal(SharkEntity shark) {
+        this.shark = shark;
+        this.world = shark.getWorld();
+    }
 
 
-  @Override
-  public boolean canStart() {
-    return false;
-  }
+    @Override
+    public boolean canStart() {
+        return false;
+    }
 }

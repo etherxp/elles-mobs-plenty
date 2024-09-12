@@ -16,36 +16,36 @@ import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 
 public class RockBlock extends PlantBlock {
-  public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-  private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 7, 16);
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 7, 16);
 
-  protected RockBlock(Settings settings) {
-    super(settings);
-  }
+    protected RockBlock(Settings settings) {
+        super(settings);
+    }
 
-  @Override
-  protected MapCodec<? extends PlantBlock> getCodec() {
-    return null;
-  }
+    @Override
+    protected MapCodec<? extends PlantBlock> getCodec() {
+        return null;
+    }
 
-  @Override
-  protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-    return SHAPE;
-  }
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
 
-  @Nullable
-  @Override
-  public BlockState getPlacementState(ItemPlacementContext ctx) {
-    return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
-  }
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    }
 
-  @Override
-  protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    builder.add(FACING);
-  }
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
+    }
 
-  @Override
-  public BlockState rotate(BlockState state, BlockRotation rotation) {
-    return this.getDefaultState().with(FACING, rotation.rotate(state.get(FACING)));
-  }
+    @Override
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return this.getDefaultState().with(FACING, rotation.rotate(state.get(FACING)));
+    }
 }

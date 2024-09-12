@@ -17,23 +17,23 @@ import net.minecraft.world.WorldView;
 import java.util.Optional;
 
 public class BlossomingLuciLeavesBlock extends LeavesBlock {
-  public static final BooleanProperty HAS_BLOSSOMS = BooleanProperty.of("has_blossoms");
+    public static final BooleanProperty HAS_BLOSSOMS = BooleanProperty.of("has_blossoms");
 
-  public BlossomingLuciLeavesBlock(Settings settings) {
-    super(settings);
+    public BlossomingLuciLeavesBlock(Settings settings) {
+        super(settings);
 
-  }
-
-  @Override
-  public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-    super.randomDisplayTick(state, world, pos, random);
-    if (random.nextInt(20) == 0) {
-      BlockPos blockPos = pos.down();
-      BlockState blockState = world.getBlockState(blockPos);
-      if (!isFaceFullSquare(blockState.getCollisionShape(world, blockPos), Direction.UP)) {
-        ParticleUtil.spawnParticle(world, pos, random, ModParticles.FALLING_LEAVES_PARTICLE);
-      }
     }
-  }
+
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        super.randomDisplayTick(state, world, pos, random);
+        if (random.nextInt(20) == 0) {
+            BlockPos blockPos = pos.down();
+            BlockState blockState = world.getBlockState(blockPos);
+            if (!isFaceFullSquare(blockState.getCollisionShape(world, blockPos), Direction.UP)) {
+                ParticleUtil.spawnParticle(world, pos, random, ModParticles.FALLING_LEAVES_PARTICLE);
+            }
+        }
+    }
 }
 

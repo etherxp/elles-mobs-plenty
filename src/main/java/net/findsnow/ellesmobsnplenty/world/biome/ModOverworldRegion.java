@@ -14,21 +14,21 @@ import terrablender.api.VanillaParameterOverlayBuilder;
 import java.util.function.Consumer;
 
 public class ModOverworldRegion extends Region {
-  public ModOverworldRegion(Identifier name, int weight) {
-    super(name, RegionType.OVERWORLD, weight);
-  }
+    public ModOverworldRegion(Identifier name, int weight) {
+        super(name, RegionType.OVERWORLD, weight);
+    }
 
-  @Override
-  public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
-    VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
-    new ParameterUtils.ParameterPointListBuilder()
-            .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.NEUTRAL, ParameterUtils.Temperature.WARM))
-            .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.NEUTRAL, ParameterUtils.Humidity.WET))
-            .continentalness(ParameterUtils.Continentalness.span(ParameterUtils.Continentalness.NEAR_INLAND, ParameterUtils.Continentalness.INLAND))
-            .erosion(ParameterUtils.Erosion.span(ParameterUtils.Erosion.EROSION_2, ParameterUtils.Erosion.EROSION_4))
-            .depth(ParameterUtils.Depth.SURFACE)
-            .weirdness(ParameterUtils.Weirdness.MID_SLICE_NORMAL_ASCENDING)
-            .build().forEach(point -> builder.add(point, ModBiomes.LUCI_REGION_1));
-    builder.build().forEach(mapper);
-  }
+    @Override
+    public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
+        VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
+        new ParameterUtils.ParameterPointListBuilder()
+                .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.NEUTRAL, ParameterUtils.Temperature.WARM))
+                .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.NEUTRAL, ParameterUtils.Humidity.WET))
+                .continentalness(ParameterUtils.Continentalness.span(ParameterUtils.Continentalness.NEAR_INLAND, ParameterUtils.Continentalness.INLAND))
+                .erosion(ParameterUtils.Erosion.span(ParameterUtils.Erosion.EROSION_2, ParameterUtils.Erosion.EROSION_4))
+                .depth(ParameterUtils.Depth.SURFACE)
+                .weirdness(ParameterUtils.Weirdness.MID_SLICE_NORMAL_ASCENDING)
+                .build().forEach(point -> builder.add(point, ModBiomes.LUCI_REGION_1));
+        builder.build().forEach(mapper);
+    }
 }

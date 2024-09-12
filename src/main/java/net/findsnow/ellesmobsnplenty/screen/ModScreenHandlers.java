@@ -13,11 +13,11 @@ import javax.script.ScriptEngine;
 
 public class ModScreenHandlers {
 
-  public static final ScreenHandlerType<ChomperBlockScreenHandler> CHOMPER_SCREEN_HANDLER =
-          Registry.register(Registries.SCREEN_HANDLER, Identifier.of(EllesMobsNPlenty.MOD_ID, "chomper"),
-                  new ExtendedScreenHandlerType<>(ChomperBlockScreenHandler::new, ChomperBlockEntityData.PACKET_CODEC));
+    public static final ScreenHandlerType<ChomperBlockScreenHandler> CHOMPER_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(EllesMobsNPlenty.MOD_ID, "chomper"),
+                    new ExtendedScreenHandlerType<>(ChomperBlockScreenHandler::new, ChomperBlockEntityData.PACKET_CODEC));
 
-  public static void registerScreenHandler() {
-    EllesMobsNPlenty.LOGGER.info("Registering Screen Handlers for" + EllesMobsNPlenty.MOD_ID);
-  }
+    public static void registerScreenHandler() {
+        EllesMobsNPlenty.LOGGER.info("Registering Screen Handlers for" + EllesMobsNPlenty.MOD_ID);
+    }
 }

@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
 public class ModBiomeTags {
-  public static final TagKey<Biome> SPAWNS_GREEN_CRAB = TagKey.of(RegistryKeys.BIOME, Identifier.of(EllesMobsNPlenty.MOD_ID, "spawns_green_crab"));
-  public static final TagKey<Biome> SPAWNS_BLUE_CRAB = TagKey.of(RegistryKeys.BIOME, Identifier.of(EllesMobsNPlenty.MOD_ID, "spawns_blue_crab"));
-  public static final TagKey<Biome> SPAWNS_RED_CRAB = TagKey.of(RegistryKeys.BIOME, Identifier.of(EllesMobsNPlenty.MOD_ID, "spawns_red_crab"));
+    public static final TagKey<Biome> SPAWNS_GREEN_CRAB = TagKey.of(RegistryKeys.BIOME, Identifier.of(EllesMobsNPlenty.MOD_ID, "spawns_green_crab"));
+    public static final TagKey<Biome> SPAWNS_BLUE_CRAB = TagKey.of(RegistryKeys.BIOME, Identifier.of(EllesMobsNPlenty.MOD_ID, "spawns_blue_crab"));
+    public static final TagKey<Biome> SPAWNS_RED_CRAB = TagKey.of(RegistryKeys.BIOME, Identifier.of(EllesMobsNPlenty.MOD_ID, "spawns_red_crab"));
 }

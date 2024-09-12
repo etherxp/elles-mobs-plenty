@@ -9,12 +9,12 @@ import net.findsnow.ellesmobsnplenty.world.biome.ModBiomes;
 import net.minecraft.world.gen.GenerationStep;
 
 public class ModTreeGeneration {
-  public static void generateTrees() {
-    BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.LUCI_REGION_1),
-            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.LUCERO_PLACED_KEY);
-    BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.LUCI_REGION_1),
-            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.BLOSSOMING_LUCI_KEY);
-    BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.LUCI_REGION_1),
-            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.FALLEN_LUCI_KEY);
-  }
+    public static void generateTrees() {
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.LUCI_REGION_1),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.LUCERO_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.LUCI_REGION_1),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.BLOSSOMING_LUCI_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.LUCI_REGION_1),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.FALLEN_LUCI_KEY);
+    }
 }

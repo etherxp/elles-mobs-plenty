@@ -23,53 +23,53 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class LuciFungusBlock extends FlowerBlock {
-  public LuciFungusBlock(RegistryEntry<StatusEffect> stewEffect, float effectLengthInSeconds, Settings settings) {
-    super(stewEffect, effectLengthInSeconds, settings);
-  }
-
-  @Override
-  protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-    return floor.isOf(ModBlocks.LUCI_FUNGAL_BOCK) || floor.isIn(BlockTags.DIRT) || floor.isOf(Blocks.FARMLAND);
-  }
-
-  @Override
-  protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
-                                           PlayerEntity player, Hand hand, BlockHitResult hit) {
-    Item item = stack.getItem();
-    if (stack.isOf(ModItems.JAR)) {
-      if (!world.isClient) {
-        stack.decrement(1);
-        ItemStack firebugJarStack = new ItemStack(ModBlocks.JAR_BLOCK);
-        player.giveItemStack(firebugJarStack);
-        world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, SoundCategory.BLOCKS);
-        world.playSound(null, pos, SoundEvents.ENTITY_BEE_HURT, SoundCategory.BLOCKS, 0.3f, -1f);
-      }
-      return ItemActionResult.SUCCESS;
+    public LuciFungusBlock(RegistryEntry<StatusEffect> stewEffect, float effectLengthInSeconds, Settings settings) {
+        super(stewEffect, effectLengthInSeconds, settings);
     }
-    return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
-  }
 
-  @Override
-  public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-    if (isNight(world)) {
-      FireflyParticle(world, pos, random);
+    @Override
+    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+        return floor.isOf(ModBlocks.LUCI_FUNGAL_BOCK) || floor.isIn(BlockTags.DIRT) || floor.isOf(Blocks.FARMLAND);
     }
-  }
+
+    @Override
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
+                                             PlayerEntity player, Hand hand, BlockHitResult hit) {
+        Item item = stack.getItem();
+        if (stack.isOf(ModItems.JAR)) {
+            if (!world.isClient) {
+                stack.decrement(1);
+                ItemStack firebugJarStack = new ItemStack(ModBlocks.JAR_BLOCK);
+                player.giveItemStack(firebugJarStack);
+                world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH, SoundCategory.BLOCKS);
+                world.playSound(null, pos, SoundEvents.ENTITY_BEE_HURT, SoundCategory.BLOCKS, 0.3f, -1f);
+            }
+            return ItemActionResult.SUCCESS;
+        }
+        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
+    }
+
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        if (isNight(world)) {
+            FireflyParticle(world, pos, random);
+        }
+    }
 
 
-  public void FireflyParticle(World world, BlockPos pos, Random random) {
-    int i = pos.getX();
-    int j = pos.getY() + 2;
-    int k = pos.getZ();
-    double d = (double)i + random.nextDouble();
-    double e = (double)j + random.nextDouble();
-    double f = (double)k + random.nextDouble();
-    world.addParticle(ModParticles.LUCI_MUSHROOM_PARTICLE, d, e, f, 0.0, 0.0, 0.0);
-  }
+    public void FireflyParticle(World world, BlockPos pos, Random random) {
+        int i = pos.getX();
+        int j = pos.getY() + 2;
+        int k = pos.getZ();
+        double d = (double)i + random.nextDouble();
+        double e = (double)j + random.nextDouble();
+        double f = (double)k + random.nextDouble();
+        world.addParticle(ModParticles.LUCI_MUSHROOM_PARTICLE, d, e, f, 0.0, 0.0, 0.0);
+    }
 
 
-  private boolean isNight(World world) {
-    long timeOfDay = world.getTimeOfDay() % 24000;
-    return timeOfDay >= 13000 && timeOfDay <= 23000;
-  }
+    private boolean isNight(World world) {
+        long timeOfDay = world.getTimeOfDay() % 24000;
+        return timeOfDay >= 13000 && timeOfDay <= 23000;
+    }
 }

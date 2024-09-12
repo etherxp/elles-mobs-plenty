@@ -15,30 +15,30 @@ import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 
 public class JarBlock extends TransparentBlock {
-  public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-  private static final VoxelShape SHAPE = Block.createCuboidShape(3, 0, 3, 13, 15, 13);
-  public JarBlock(Settings settings) {
-    super(settings.nonOpaque());
-  }
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    private static final VoxelShape SHAPE = Block.createCuboidShape(3, 0, 3, 13, 15, 13);
+    public JarBlock(Settings settings) {
+        super(settings.nonOpaque());
+    }
 
-  @Override
-  protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-    return SHAPE;
-  }
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
 
-  @Nullable
-  @Override
-  public BlockState getPlacementState(ItemPlacementContext ctx) {
-    return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
-  }
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    }
 
-  @Override
-  protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    builder.add(FACING);
-  }
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
+    }
 
-  @Override
-  public boolean canPathfindThrough(BlockState state, NavigationType type) {
-    return false;
-  }
+    @Override
+    public boolean canPathfindThrough(BlockState state, NavigationType type) {
+        return false;
+    }
 }
